@@ -20,6 +20,58 @@ import NavBar from "../components/NavBar.astro";
 	<body>
 		<NavBar />
 		<slot />
+
+		<script>
+			const circle: HTMLElement | null = document.querySelector("#mouse-circle");
+			let circleX: number = 0;
+			let circleY: number = 0;
+			let cursorX: number = 0;
+			let cursorY: number = 0;
+			let target: HTMLElement | null;
+
+			function updateCircle() {
+				let newTarget = target;
+				while (
+					newTarget &&
+					newTarget !== document.documentElement &&
+					newTarget.tagName.toLowerCase() !== "a"
+				) {
+					newTarget = newTarget.parentElement;
+				}
+
+				if (newTarget && newTarget.tagName.toLowerCase() === "a") {
+					const rect = newTarget.getBoundingClientRect();
+					circleX += (rect.left - 10 - circleX) / 10;
+					circleY += (rect.top - 10 - circleY) / 10;
+					circle?.style.setProperty("--circle-x", `${circleX}px`);
+					circle?.style.setProperty("--circle-y", `${circleY}px`);
+					circle?.style.setProperty("--circle-width", `${rect.width + 20}px`);
+					circle?.style.setProperty("--circle-height", `${rect.height + 20}px`);
+				} else {
+					circleX += (cursorX - 15 - circleX) / 10;
+					circleY += (cursorY - 15 - circleY) / 10;
+					circle?.style.setProperty("--circle-x", `${circleX}px`);
+					circle?.style.setProperty("--circle-y", `${circleY}px`);
+					circle?.style.setProperty("--circle-width", "30px");
+					circle?.style.setProperty("--circle-height", "30px");
+				}
+				requestAnimationFrame(updateCircle);
+			}
+			requestAnimationFrame(updateCircle);
+
+			document.documentElement.addEventListener("mouseleave", (e) => {
+				if (circle) circle.style.display = "none";
+			});
+			document.documentElement.addEventListener("mouseenter", (e) => {
+				if (circle) circle.style.display = "block";
+			});
+			document.documentElement.addEventListener("mousemove", (e) => {
+				cursorX = e.clientX;
+				cursorY = e.clientY;
+				target = e.target as HTMLElement;
+			});
+		</script>
+		<div id="mouse-circle"></div>
 	</body>
 </html>
 
@@ -27,10 +79,12 @@ import NavBar from "../components/NavBar.astro";
 	:root {
 		--color: #050505;
 		--bg-color: white;
+		--accent: 125, 187, 125;
 	}
 	html.dark {
 		--color: rgb(229, 231, 235);
 		--bg-color: #050505;
+		--accent: 179, 255, 179;
 	}
 
 	* {
@@ -65,5 +119,23 @@ import NavBar from "../components/NavBar.astro";
 		width: 100%;
 		color: var(--color);
 		background-color: var(--bg-color);
+	}
+
+	#mouse-circle {
+		--circle-x: 0px;
+		--circle-y: 0px;
+		--circle-width: 0px;
+		--circle-height: 0px;
+		position: fixed;
+		width: var(--circle-width);
+		height: var(--circle-height);
+		left: var(--circle-x);
+		top: var(--circle-y);
+		background-color: rgba(var(--accent), 25%);
+		border-radius: 500px;
+		pointer-events: none;
+		transition:
+			width 200ms,
+			height 200ms;
 	}
 </style>
