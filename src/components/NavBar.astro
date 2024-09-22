@@ -1,0 +1,108 @@
+---
+import Logo from "./Logo.astro";
+import GitHubIcon from "~icons/ri/github-line";
+import TwitterIcon from "~icons/ri/twitter-x-line";
+import MoonIcon from "~icons/ri/moon-line";
+import SunIcon from "~icons/ri/sun-line";
+import LightBulbIcon from "~icons/ri/lightbulb-line";
+---
+
+<script>
+	const darkModeToggle = document.querySelector("#dark-mode-toggle");
+	const htmlElement = document.querySelector("html");
+
+	const isDarkMode = (theme: string | null) =>
+		theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+	const changeDarkModeToggle = (isDark: boolean) => {
+		if (isDark) {
+			darkModeToggle?.children[0].classList.remove("hidden");
+			darkModeToggle?.children[1].classList.add("hidden");
+		} else {
+			darkModeToggle?.children[0].classList.add("hidden");
+			darkModeToggle?.children[1].classList.remove("hidden");
+		}
+	};
+
+	const theme = localStorage.getItem("theme");
+	const isDark = isDarkMode(theme);
+
+	changeDarkModeToggle(isDark);
+
+	if (isDark) {
+		htmlElement?.classList.add("dark");
+	}
+
+	darkModeToggle?.addEventListener("click", (_) => {
+		const theme = localStorage.getItem("theme");
+		const currentlyDark = isDarkMode(theme);
+
+		localStorage.setItem("theme", currentlyDark ? "light" : "dark");
+
+		currentlyDark ? htmlElement?.classList.remove("dark") : htmlElement?.classList.add("dark");
+
+		changeDarkModeToggle(!currentlyDark);
+	});
+</script>
+
+<nav>
+	<div>
+		<a class="home" href="/">
+			<Logo />
+		</a>
+	</div>
+	<div class="links">
+		<a href="/projects">
+			<LightBulbIcon />
+			Projects
+		</a>
+		<a href="https://github.com/amrbashir" target="_blank">
+			<GitHubIcon />
+			GitHub
+		</a>
+		<a href="https://x.com/amrbashir_dev" target="_blank">
+			<TwitterIcon />
+			Twitter
+		</a>
+		<a id="dark-mode-toggle">
+			<MoonIcon />
+			<SunIcon class:list={"hidden"} />
+		</a>
+	</div>
+</nav>
+
+<style>
+	nav {
+		width: 100%;
+		height: 100px;
+		padding: 0 32px;
+		overflow: hidden;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.links {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	a {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		gap: 2px;
+		color: var(--color);
+		opacity: 0.6;
+	}
+
+	a:hover {
+		opacity: 1;
+	}
+
+	.hidden {
+		display: none;
+	}
+</style>
