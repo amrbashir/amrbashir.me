@@ -27,19 +27,19 @@ import NavBar from "../components/NavBar.astro";
 			let circleY: number = 0;
 			let cursorX: number = 0;
 			let cursorY: number = 0;
-			let target: HTMLElement | null;
+			let target: HTMLElement | null | undefined;
 
 			function updateCircle() {
 				let newTarget = target;
-				while (
-					newTarget &&
-					newTarget !== document.documentElement &&
-					newTarget.tagName.toLowerCase() !== "a"
-				) {
+				while (newTarget) {
+					if (newTarget.tagName === "A" || newTarget.role === "button") {
+						break;
+					}
+
 					newTarget = newTarget.parentElement;
 				}
 
-				if (newTarget && newTarget.tagName.toLowerCase() === "a") {
+				if (newTarget) {
 					const rect = newTarget.getBoundingClientRect();
 					circleX += (rect.left - 10 - circleX) / 10;
 					circleY += (rect.top - 10 - circleY) / 10;
