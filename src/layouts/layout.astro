@@ -1,5 +1,7 @@
 ---
 import NavBar from "../components/NavBar.astro";
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -8,7 +10,7 @@ import NavBar from "../components/NavBar.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Amr Bashir</title>
+		<title>{`${title ? title + " · " : ""} Amr Bashir`}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -112,6 +114,13 @@ import NavBar from "../components/NavBar.astro";
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+
+	*:focus-visible {
+		outline-color: currentColor;
+		outline-style: solid;
+		outline-width: 0.1rem;
+		outline-offset: 0.1rem;
 	}
 
 	html {
