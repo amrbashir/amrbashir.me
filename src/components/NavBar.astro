@@ -96,23 +96,26 @@ import LightBulbIcon from "~icons/ri/lightbulb-line";
 		gap: 20px;
 	}
 
-	a {
+	a,
+	div[role="button"] {
 		text-decoration: none;
 		display: flex;
 		align-items: center;
 		gap: 2px;
 		color: var(--color);
 		opacity: 0.6;
+		outline-offset: 10px;
 	}
 
-	a:hover {
+	a:hover,
+	div[role="button"]:hover,
+	a:focus-visible,
+	div[role="button"]:focus-visible {
 		opacity: 1;
 	}
 
 	#dark-mode-toggle {
-		display: flex;
 		justify-content: center;
-		align-items: center;
 		cursor: pointer;
 	}
 

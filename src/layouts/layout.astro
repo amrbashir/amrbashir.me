@@ -21,57 +21,78 @@ import NavBar from "../components/NavBar.astro";
 		<NavBar />
 		<slot />
 
+		<div id="mouse-circle" style="display: none;"></div>
 		<script>
-			const circle: HTMLElement | null = document.querySelector("#mouse-circle");
-			let circleX: number = 0;
-			let circleY: number = 0;
-			let cursorX: number = 0;
-			let cursorY: number = 0;
-			let target: HTMLElement | null | undefined;
+			const circle: HTMLElement = document.querySelector("#mouse-circle")!;
+
+			const CIRCLE_RADIUS = 15;
+			const CIRCLE_WIDTH = CIRCLE_RADIUS * 2;
+			const HOVER_PADDING = 20;
+			const TRAIL_SPEED = 10;
+
+			let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
+			let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
+			let cursorX: number = window.innerWidth / 2;
+			let cursorY: number = window.innerHeight / 2;
+
+			function moveCircle(
+				x: number,
+				y: number,
+				width: number = CIRCLE_WIDTH,
+				height: number = CIRCLE_WIDTH
+			) {
+				circle.style.setProperty("--circle-x", `${x}px`);
+				circle.style.setProperty("--circle-y", `${y}px`);
+				circle.style.setProperty("--circle-width", `${width}px`);
+				circle.style.setProperty("--circle-height", `${height}px`);
+			}
 
 			function updateCircle() {
-				let newTarget = target;
-				while (newTarget) {
-					if (newTarget.tagName === "A" || newTarget.role === "button") {
+				let target = document.elementFromPoint(cursorX, cursorY);
+				while (target) {
+					if (target.tagName === "A" || target.role === "button") {
 						break;
 					}
-
-					newTarget = newTarget.parentElement;
+					target = target.parentElement;
 				}
 
-				if (newTarget) {
-					const rect = newTarget.getBoundingClientRect();
-					circleX += (rect.left - 10 - circleX) / 10;
-					circleY += (rect.top - 10 - circleY) / 10;
-					circle?.style.setProperty("--circle-x", `${circleX}px`);
-					circle?.style.setProperty("--circle-y", `${circleY}px`);
-					circle?.style.setProperty("--circle-width", `${rect.width + 20}px`);
-					circle?.style.setProperty("--circle-height", `${rect.height + 20}px`);
+				if (target) {
+					const rect = target.getBoundingClientRect();
+					circleX += (rect.left - TRAIL_SPEED - circleX) / TRAIL_SPEED;
+					circleY += (rect.top - TRAIL_SPEED - circleY) / TRAIL_SPEED;
+					moveCircle(
+						circleX,
+						circleY,
+						rect.width + HOVER_PADDING,
+						rect.height + HOVER_PADDING
+					);
 				} else {
-					circleX += (cursorX - 15 - circleX) / 10;
-					circleY += (cursorY - 15 - circleY) / 10;
-					circle?.style.setProperty("--circle-x", `${circleX}px`);
-					circle?.style.setProperty("--circle-y", `${circleY}px`);
-					circle?.style.setProperty("--circle-width", "30px");
-					circle?.style.setProperty("--circle-height", "30px");
+					circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
+					circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
+					moveCircle(circleX, circleY);
 				}
+
 				requestAnimationFrame(updateCircle);
 			}
 			requestAnimationFrame(updateCircle);
 
-			document.documentElement.addEventListener("mouseleave", (e) => {
-				if (circle) circle.style.display = "none";
-			});
 			document.documentElement.addEventListener("mouseenter", (e) => {
-				if (circle) circle.style.display = "block";
+				cursorX = e.clientX;
+				cursorY = e.clientY;
+				circleX = cursorX - CIRCLE_RADIUS;
+				circleY = cursorY - CIRCLE_RADIUS;
+				// on enter, move the circle to where the cursor is
+				moveCircle(circleX, circleY);
+				circle.style.display = "block";
 			});
 			document.documentElement.addEventListener("mousemove", (e) => {
 				cursorX = e.clientX;
 				cursorY = e.clientY;
-				target = e.target as HTMLElement;
+			});
+			document.documentElement.addEventListener("mouseleave", () => {
+				circle.style.display = "none";
 			});
 		</script>
-		<div id="mouse-circle"></div>
 	</body>
 </html>
 
@@ -132,7 +153,7 @@ import NavBar from "../components/NavBar.astro";
 		left: var(--circle-x);
 		top: var(--circle-y);
 		background-color: rgba(var(--accent), 25%);
-		border-radius: 500px;
+		border-radius: var(--circle-width);
 		pointer-events: none;
 		transition:
 			width 200ms,
