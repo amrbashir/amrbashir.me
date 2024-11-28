@@ -5,27 +5,20 @@ import Layout from "../layouts/layout.astro";
 <Layout title="Page not found">
 	<div>
 		<h1>404</h1>
+		<br />
 		<p>This page isn't available. Sorry about that.</p>
 	</div>
 </Layout>
 
 <style>
 	div {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		gap: 5px;
-		width: 100%;
-		height: 100%;
-		margin-top: -100px;
+		padding: 10rem;
 	}
-
 	h1 {
-		font-size: 5rem;
+		font-weight: bold;
 	}
 
 	p {
-		opacity: 0.8;
+		color: rgba(var(--color), 75%);
 	}
 </style>

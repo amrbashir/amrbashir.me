@@ -22,7 +22,9 @@ const { title } = Astro.props;
 
 	<body>
 		<NavBar />
-		<slot />
+		<main>
+			<slot />
+		</main>
 
 		<a id="scroll-to-top" href="#top"><ArrowUp /></a>
 
@@ -163,6 +165,9 @@ const { title } = Astro.props;
 		width: 100%;
 		color: rgb(var(--color));
 		background-color: rgb(var(--bg-color));
+	}
+	main {
+		padding: 32px;
 	}
 
 	#mouse-circle {
