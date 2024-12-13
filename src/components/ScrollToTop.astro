@@ -1,0 +1,39 @@
+---
+import ArrowUp from "~icons/ri/arrow-up-line";
+---
+
+<script>
+	const scrollToTop: HTMLElement = document.querySelector("#scroll-to-top")!;
+	window.addEventListener("scroll", () => {
+		if (window.scrollY >= 100) {
+			scrollToTop.style.display = "flex";
+		} else {
+			scrollToTop.style.display = "none";
+		}
+	});
+</script>
+
+<a id="scroll-to-top" href="#top"><ArrowUp /></a>
+
+<style is:global>
+	#scroll-to-top {
+		text-decoration: none;
+
+		position: fixed;
+		bottom: 2rem;
+		right: 2rem;
+
+		width: 2rem;
+		height: 2rem;
+
+		display: none;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		border-radius: 2rem;
+
+		background-color: rgba(var(--accent), 25%);
+		color: var(--color);
+	}
+</style>

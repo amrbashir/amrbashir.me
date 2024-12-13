@@ -1,6 +1,7 @@
 ---
+import Cursor from "../components/Cursor.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
 import NavBar from "../components/NavBar.astro";
-import ArrowUp from "~icons/ri/arrow-up-line";
 
 const { title } = Astro.props;
 ---
@@ -25,94 +26,13 @@ const { title } = Astro.props;
 
 	<body>
 		<NavBar />
+
 		<main>
 			<slot />
 		</main>
 
-		<a id="scroll-to-top" href="#top"><ArrowUp /></a>
-
-		<div id="mouse-circle" style="display: none;"></div>
-
-		<script>
-			const circle: HTMLElement = document.querySelector("#mouse-circle")!;
-
-			const CIRCLE_RADIUS = 15;
-			const CIRCLE_WIDTH = CIRCLE_RADIUS * 2;
-			const HOVER_PADDING = 20;
-			const TRAIL_SPEED = 10;
-
-			let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
-			let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
-			let cursorX: number = window.innerWidth / 2;
-			let cursorY: number = window.innerHeight / 2;
-
-			function moveCircle(
-				x: number,
-				y: number,
-				width: number = CIRCLE_WIDTH,
-				height: number = CIRCLE_WIDTH
-			) {
-				circle.style.setProperty("--circle-x", `${x}px`);
-				circle.style.setProperty("--circle-y", `${y}px`);
-				circle.style.setProperty("--circle-width", `${width}px`);
-				circle.style.setProperty("--circle-height", `${height}px`);
-			}
-
-			function updateCircle() {
-				let target = document.elementFromPoint(cursorX, cursorY);
-				while (target) {
-					if (target.tagName === "A" || target.role === "button") {
-						break;
-					}
-					target = target.parentElement;
-				}
-
-				if (target) {
-					const rect = target.getBoundingClientRect();
-					circleX += (rect.left - TRAIL_SPEED - circleX) / TRAIL_SPEED;
-					circleY += (rect.top - TRAIL_SPEED - circleY) / TRAIL_SPEED;
-					moveCircle(
-						circleX,
-						circleY,
-						rect.width + HOVER_PADDING,
-						rect.height + HOVER_PADDING
-					);
-				} else {
-					circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
-					circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
-					moveCircle(circleX, circleY);
-				}
-
-				requestAnimationFrame(updateCircle);
-			}
-			requestAnimationFrame(updateCircle);
-
-			document.documentElement.addEventListener("mouseenter", (e) => {
-				cursorX = e.clientX;
-				cursorY = e.clientY;
-				circleX = cursorX - CIRCLE_RADIUS;
-				circleY = cursorY - CIRCLE_RADIUS;
-				// on enter, move the circle to where the cursor is
-				moveCircle(circleX, circleY);
-				circle.style.display = "block";
-			});
-			document.documentElement.addEventListener("mousemove", (e) => {
-				cursorX = e.clientX;
-				cursorY = e.clientY;
-			});
-			document.documentElement.addEventListener("mouseleave", () => {
-				circle.style.display = "none";
-			});
-
-			const scrollToTop: HTMLElement = document.querySelector("#scroll-to-top")!;
-			window.addEventListener("scroll", () => {
-				if (window.scrollY >= 100) {
-					scrollToTop.style.display = "flex";
-				} else {
-					scrollToTop.style.display = "none";
-				}
-			});
-		</script>
+		<Cursor />
+		<ScrollToTop />
 	</body>
 </html>
 
@@ -171,45 +91,6 @@ const { title } = Astro.props;
 	}
 
 	main {
-		padding: 32px;
-	}
-
-	#mouse-circle {
-		--circle-x: 0px;
-		--circle-y: 0px;
-		--circle-width: 0px;
-		--circle-height: 0px;
-		position: fixed;
-		width: var(--circle-width);
-		height: var(--circle-height);
-		left: var(--circle-x);
-		top: var(--circle-y);
-		background-color: rgba(var(--accent), 25%);
-		border-radius: var(--circle-width);
-		pointer-events: none;
-		transition:
-			width 200ms,
-			height 200ms;
-	}
-
-	#scroll-to-top {
-		text-decoration: none;
-
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
-
-		width: 30px;
-		height: 30px;
-
-		display: none;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-
-		border-radius: 30px;
-
-		background-color: rgba(var(--accent), 25%);
-		color: var(--color);
+		padding: 2rem;
 	}
 </style>
