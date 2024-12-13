@@ -25,9 +25,11 @@ const { title } = Astro.props;
 	</head>
 
 	<body>
-		<NavBar />
+		<header>
+			<NavBar />
+		</header>
 
-		<main>
+		<main id="main-content">
 			<slot />
 		</main>
 
@@ -41,11 +43,13 @@ const { title } = Astro.props;
 		--color: 5, 5, 5;
 		--bg-color: 255, 255, 255;
 		--accent: 125, 187, 125;
+		--color-on-accent: 5, 5, 5;
 	}
 	html.dark {
 		--color: 229, 231, 235;
 		--bg-color: 5, 5, 5;
 		--accent: 179, 255, 179;
+		--color-on-accent: 5, 5, 5;
 	}
 
 	* {

@@ -53,12 +53,16 @@ import LightBulbIcon from "~icons/ri/lightbulb-line";
 </script>
 
 <nav>
-	<div>
+	<ul>
+		<a id="skip-to-main-content" href="#main-content" aria-label="Home">
+			Skip to main content
+		</a>
 		<a class="home" href="/" aria-label="Home">
 			<Logo />
 		</a>
-	</div>
-	<div class="links">
+	</ul>
+
+	<ul>
 		<a href="/projects" title="Projects">
 			<LightBulbIcon />
 			Projects
@@ -75,7 +79,7 @@ import LightBulbIcon from "~icons/ri/lightbulb-line";
 			<MoonIcon />
 			<SunIcon class:list={"hidden"} />
 		</div>
-	</div>
+	</ul>
 </nav>
 
 <style>
@@ -89,7 +93,7 @@ import LightBulbIcon from "~icons/ri/lightbulb-line";
 		align-items: center;
 	}
 
-	.links {
+	nav > ul {
 		display: flex;
 		align-items: center;
 		gap: 0.1rem;
@@ -121,5 +125,19 @@ import LightBulbIcon from "~icons/ri/lightbulb-line";
 
 	.hidden {
 		display: none;
+	}
+
+	#skip-to-main-content {
+		background-color: rgba(var(--accent), 100%);
+		outline-color: rgba(var(--color), 100%);
+		color: rgba(var(--color-on-accent), 100%);
+		position: absolute;
+		top: -5rem;
+		left: 1rem;
+		z-index: 9999;
+	}
+
+	#skip-to-main-content:focus {
+		top: 1rem;
 	}
 </style>
