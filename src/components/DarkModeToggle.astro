@@ -1,0 +1,65 @@
+---
+import MoonIcon from "~icons/ri/moon-line";
+import SunIcon from "~icons/ri/sun-line";
+---
+
+<script>
+	const htmlElement = document.querySelector("html");
+	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
+
+	const isDarkMode = (theme: string | null) =>
+		theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+	const changeDarkModeToggle = (isDark: boolean) => {
+		if (isDark) {
+			darkModeToggle?.children[0].classList.remove("hidden");
+			darkModeToggle?.children[1].classList.add("hidden");
+		} else {
+			darkModeToggle?.children[0].classList.add("hidden");
+			darkModeToggle?.children[1].classList.remove("hidden");
+		}
+	};
+
+	const theme = localStorage.getItem("theme");
+	const isDark = isDarkMode(theme);
+
+	changeDarkModeToggle(isDark);
+
+	if (isDark) {
+		htmlElement?.classList.add("dark");
+	}
+
+	const toggle = () => {
+		const theme = localStorage.getItem("theme");
+		const currentlyDark = isDarkMode(theme);
+
+		localStorage.setItem("theme", currentlyDark ? "light" : "dark");
+
+		currentlyDark ? htmlElement?.classList.remove("dark") : htmlElement?.classList.add("dark");
+
+		changeDarkModeToggle(!currentlyDark);
+	};
+
+	darkModeToggle?.addEventListener("click", toggle);
+	darkModeToggle?.addEventListener("keypress", (e) => {
+		if (e.key === "Enter") {
+			toggle();
+		}
+	});
+</script>
+
+<div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
+	<MoonIcon />
+	<SunIcon class:list={"hidden"} />
+</div>
+
+<style>
+	#dark-mode-toggle {
+		justify-content: center;
+		cursor: pointer;
+	}
+
+	.hidden {
+		display: none;
+	}
+</style>
