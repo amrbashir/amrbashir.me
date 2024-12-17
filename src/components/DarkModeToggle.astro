@@ -7,10 +7,12 @@ import SunIcon from "~icons/ri/sun-line";
 	const htmlElement = document.querySelector("html");
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
 
-	const isDarkMode = (theme: string | null) =>
-		theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+	const isDarkMode = () => {
+		const theme = localStorage.getItem("theme");
+		return theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+	};
 
-	const changeDarkModeToggle = (isDark: boolean) => {
+	const changeDarkModeToggleIcon = (isDark: boolean) => {
 		if (isDark) {
 			darkModeToggle?.children[0].classList.remove("hidden");
 			darkModeToggle?.children[1].classList.add("hidden");
@@ -20,32 +22,30 @@ import SunIcon from "~icons/ri/sun-line";
 		}
 	};
 
-	const theme = localStorage.getItem("theme");
-	const isDark = isDarkMode(theme);
-
-	changeDarkModeToggle(isDark);
-
-	if (isDark) {
-		htmlElement?.classList.add("dark");
-	}
-
-	const toggle = () => {
-		const theme = localStorage.getItem("theme");
-		const currentlyDark = isDarkMode(theme);
-
-		localStorage.setItem("theme", currentlyDark ? "light" : "dark");
-
-		currentlyDark ? htmlElement?.classList.remove("dark") : htmlElement?.classList.add("dark");
-
-		changeDarkModeToggle(!currentlyDark);
+	const changeHtmlTheme = (isDark: boolean) => {
+		isDark ? htmlElement?.classList.add("dark") : htmlElement?.classList.remove("dark");
 	};
 
-	darkModeToggle?.addEventListener("click", toggle);
+	const toggleDarkMode = () => {
+		const isDark = isDarkMode();
+
+		changeHtmlTheme(!isDark);
+		changeDarkModeToggleIcon(!isDark);
+
+		localStorage.setItem("theme", isDark ? "light" : "dark");
+	};
+
+	darkModeToggle?.addEventListener("click", toggleDarkMode);
 	darkModeToggle?.addEventListener("keypress", (e) => {
 		if (e.key === "Enter") {
-			toggle();
+			toggleDarkMode();
 		}
 	});
+
+	// change dark mode on mount
+	const isDark = isDarkMode();
+	changeDarkModeToggleIcon(isDark);
+	changeHtmlTheme(isDark);
 </script>
 
 <div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
