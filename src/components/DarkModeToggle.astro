@@ -4,37 +4,77 @@ import SunIcon from "~icons/ri/sun-line";
 ---
 
 <script>
-	const htmlElement = document.querySelector("html");
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
 
-	const isDarkMode = () => {
+	const isDarkMode = (): boolean => {
 		const theme = localStorage.getItem("theme");
 		return theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
 	};
 
 	const changeDarkModeToggleIcon = (isDark: boolean) => {
+		if (!darkModeToggle) return;
+
+		const darkIcon = darkModeToggle.children[0];
+		const lightIcon = darkModeToggle.children[1];
+
 		if (isDark) {
-			darkModeToggle?.children[0].classList.remove("hidden");
-			darkModeToggle?.children[1].classList.add("hidden");
+			darkIcon.classList.remove("hidden");
+			lightIcon.classList.add("hidden");
 		} else {
-			darkModeToggle?.children[0].classList.add("hidden");
-			darkModeToggle?.children[1].classList.remove("hidden");
+			darkIcon.classList.add("hidden");
+			lightIcon.classList.remove("hidden");
 		}
 	};
 
 	const changeHtmlTheme = (isDark: boolean) => {
-		isDark ? htmlElement?.classList.add("dark") : htmlElement?.classList.remove("dark");
+		isDark
+			? document.documentElement.classList.add("dark")
+			: document.documentElement.classList.remove("dark");
+	};
+
+	const calculateEndRadius = (): Number => {
+		if (!darkModeToggle) return 0;
+
+		const rect = darkModeToggle.getBoundingClientRect();
+		const x = rect.left + rect.width / 2;
+		const y = rect.top + rect.height / 2;
+
+		return Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+	};
+
+	const changeBgClipPosition = () => {
+		if (!darkModeToggle) return;
+
+		const rect = darkModeToggle.getBoundingClientRect();
+		const x = rect.left + rect.width / 2;
+		const y = rect.top + rect.height / 2;
+
+		document.body.style.setProperty("--clip-x", `${x}px`);
+		document.body.style.setProperty("--clip-y", `${y}px`);
+	};
+
+	const changeBgClipRadius = (isDark: boolean) => {
+		document.body.classList.add("bg-transition");
+
+		requestAnimationFrame(() => {
+			const endRadius = isDark ? 0 : calculateEndRadius();
+			document.body.style.setProperty("--clip-radius", `${endRadius}px`);
+
+			setTimeout(() => document.body.classList.remove("bg-transition"), 400);
+		});
 	};
 
 	const toggleDarkMode = () => {
 		const isDark = isDarkMode();
 
-		changeHtmlTheme(!isDark);
 		changeDarkModeToggleIcon(!isDark);
+		changeHtmlTheme(!isDark);
+		changeBgClipRadius(!isDark);
 
 		localStorage.setItem("theme", isDark ? "light" : "dark");
 	};
 
+	// setup dark mode toggle handlers
 	darkModeToggle?.addEventListener("click", toggleDarkMode);
 	darkModeToggle?.addEventListener("keypress", (e) => {
 		if (e.key === "Enter") {
@@ -46,6 +86,7 @@ import SunIcon from "~icons/ri/sun-line";
 	const isDark = isDarkMode();
 	changeDarkModeToggleIcon(isDark);
 	changeHtmlTheme(isDark);
+	changeBgClipPosition();
 </script>
 
 <div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
@@ -54,12 +95,34 @@ import SunIcon from "~icons/ri/sun-line";
 </div>
 
 <style>
+	body {
+		--clip-radius: 0px;
+		--clip-x: 0px;
+		--clip-y: 0px;
+	}
+
+	body::after {
+		top: 0;
+		left: 0;
+		position: absolute;
+		background-color: white;
+		width: 100vw;
+		height: 100vh;
+		z-index: -999;
+		transition: clip-path 400ms;
+		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
+	}
+
+	body.bg-transition {
+		background-color: rgb(5, 5, 5);
+	}
+
+	body.bg-transition::after {
+		content: "";
+	}
+
 	#dark-mode-toggle {
 		justify-content: center;
 		cursor: pointer;
-	}
-
-	.hidden {
-		display: none;
 	}
 </style>
