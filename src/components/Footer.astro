@@ -1,10 +1,50 @@
+---
+import GitHubIcon from "~icons/ri/github-line";
+import TwitterIcon from "~icons/ri/twitter-x-line";
+import AtIcon from "~icons/ri/at-line";
+---
+
 <footer>
+	<div>
+		<a href="https://github.com/amrbashir" target="_blank" title="GitHub">
+			<GitHubIcon />
+		</a>
+		<a href="https://x.com/amrbashir_dev" target="_blank" title="Twitter">
+			<TwitterIcon />
+		</a>
+		<a href="mailto:contact@amrbashir.me" title="contact@amrbashir.me">
+			<AtIcon />
+		</a>
+	</div>
 	<p>© Amr Bashir. All rights reserved.</p>
 </footer>
 
 <style>
 	footer {
-		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	div {
+		display: flex;
+	}
+
+	div a {
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		gap: 0.2rem;
+		color: var(--color);
+		opacity: 0.4;
+		border-radius: 500rem;
+		padding: 0.5rem;
+	}
+
+	div a:hover,
+	div a:focus-visible {
+		opacity: 1;
 	}
 
 	p {
