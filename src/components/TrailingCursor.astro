@@ -30,7 +30,10 @@
 		function updateCircle() {
 			let target = document.elementFromPoint(cursorX, cursorY);
 			while (target) {
-				if (target.tagName === "A" || target.role === "button") {
+				if (
+					(target.tagName === "A" || target.role === "button") &&
+					!target.hasAttribute("data-no-trail-cursor")
+				) {
 					break;
 				}
 				target = target.parentElement;

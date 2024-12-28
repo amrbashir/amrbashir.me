@@ -9,7 +9,7 @@ import MailIcon from "~icons/ri/mail-line";
 
 <nav>
 	<ul>
-		<a id="skip-to-main-content" href="#main-content" aria-label="Home">
+		<a id="skip-to-main-content" href="#main-content" aria-label="Home" data-no-trail-cursor>
 			Skip to main content
 		</a>
 		<a class="home" href="/" aria-label="Home">
@@ -82,12 +82,15 @@ import MailIcon from "~icons/ri/mail-line";
 		outline-color: rgba(var(--color), 100%);
 		color: rgba(var(--color-on-accent), 100%);
 		position: absolute;
-		top: -5rem;
-		left: 1rem;
-		z-index: 9999;
+		top: -10rem;
+		left: 0;
+		transition: top 400ms;
+		border-radius: 0 0 1rem 0;
+		z-index: 998;
+		padding: 2rem;
 	}
 
 	#skip-to-main-content:focus {
-		top: 1rem;
+		top: 0;
 	}
 </style>
