@@ -67,9 +67,6 @@ import SunIcon from "~icons/ri/sun-line";
 	const isDark = isDarkMode();
 	changeHtmlTheme(isDark);
 	changeBgClipRadius(isDark);
-	requestAnimationFrame(() => {
-		document.body.classList.add("clip-bg-animation-active");
-	});
 </script>
 
 <div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
