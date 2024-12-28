@@ -13,21 +13,6 @@ import SunIcon from "~icons/ri/sun-line";
 		return theme ? theme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
 	};
 
-	const changeDarkModeToggleIcon = (isDark: boolean) => {
-		if (!darkModeToggle) return;
-
-		const darkIcon = darkModeToggle.children[0];
-		const lightIcon = darkModeToggle.children[1];
-
-		if (isDark) {
-			darkIcon.classList.remove("hidden");
-			lightIcon.classList.add("hidden");
-		} else {
-			darkIcon.classList.add("hidden");
-			lightIcon.classList.remove("hidden");
-		}
-	};
-
 	const changeHtmlTheme = (isDark: boolean) => {
 		isDark
 			? document.documentElement.classList.add("dark")
@@ -69,7 +54,6 @@ import SunIcon from "~icons/ri/sun-line";
 	const toggleDarkMode = () => {
 		const isDark = isDarkMode();
 
-		changeDarkModeToggleIcon(!isDark);
 		changeHtmlTheme(!isDark);
 
 		if (!preferesReducedMotion) {
@@ -89,14 +73,15 @@ import SunIcon from "~icons/ri/sun-line";
 
 	// change dark mode on mount
 	const isDark = isDarkMode();
-	changeDarkModeToggleIcon(isDark);
 	changeHtmlTheme(isDark);
 	changeBgClipPosition();
 </script>
 
 <div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
-	<MoonIcon />
-	<SunIcon class:list={"hidden"} />
+	<div>
+		<SunIcon />
+		<MoonIcon />
+	</div>
 </div>
 
 <style>
@@ -129,5 +114,19 @@ import SunIcon from "~icons/ri/sun-line";
 	#dark-mode-toggle {
 		justify-content: center;
 		cursor: pointer;
+	}
+
+	#dark-mode-toggle > div {
+		max-width: 1.2em;
+		max-height: 1.2em;
+		overflow: hidden;
+	}
+
+	#dark-mode-toggle > div > * {
+		display: block;
+		transition: transform 400ms;
+	}
+	html.dark #dark-mode-toggle > div > * {
+		transform: translateY(-100%);
 	}
 </style>
