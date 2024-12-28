@@ -8,6 +8,7 @@
 		const CIRCLE_RADIUS = 10;
 		const CIRCLE_WIDTH = 20;
 		const TRAIL_SPEED = 10;
+		const PADDING = 5;
 
 		let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
 		let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
@@ -38,9 +39,9 @@
 			if (target) {
 				circle.classList.add("hovering");
 				const rect = target.getBoundingClientRect();
-				circleX += (rect.left - circleX) / TRAIL_SPEED;
-				circleY += (rect.top - circleY) / TRAIL_SPEED;
-				moveCircle(circleX, circleY, rect.width, rect.height);
+				circleX += (rect.left - PADDING - circleX) / TRAIL_SPEED;
+				circleY += (rect.top - PADDING - circleY) / TRAIL_SPEED;
+				moveCircle(circleX, circleY, rect.width + PADDING * 2, rect.height + PADDING * 2);
 			} else {
 				circle.classList.remove("hovering");
 				circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
@@ -64,6 +65,7 @@
 		document.documentElement.addEventListener("mousemove", (e) => {
 			cursorX = e.clientX;
 			cursorY = e.clientY;
+			circle.style.display = "block";
 		});
 		document.documentElement.addEventListener("mouseleave", () => {
 			circle.style.display = "none";

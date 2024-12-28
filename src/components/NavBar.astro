@@ -20,7 +20,7 @@ import MailIcon from "~icons/ri/mail-line";
 	<ul>
 		<a href="/projects" title="Projects">
 			<LightBulbIcon />
-			Projects
+			<span> Projects </span>
 		</a>
 		<a href="https://github.com/amrbashir" target="_blank" title="GitHub">
 			<GitHubIcon />
@@ -39,7 +39,7 @@ import MailIcon from "~icons/ri/mail-line";
 	nav {
 		width: 100%;
 		height: 100%;
-		padding: 0 2rem;
+		padding: 0 1.75rem;
 		overflow: hidden;
 		display: flex;
 		justify-content: space-between;
@@ -49,7 +49,7 @@ import MailIcon from "~icons/ri/mail-line";
 	nav > ul {
 		display: flex;
 		align-items: center;
-		gap: 0.1rem;
+		gap: 1rem;
 	}
 
 	nav a,
@@ -62,7 +62,12 @@ import MailIcon from "~icons/ri/mail-line";
 		transition: opacity 300ms;
 		opacity: 0.6;
 		border-radius: 500rem;
-		padding: 0.5rem;
+	}
+
+	@media only screen and (max-width: 768px) {
+		nav > ul:last-child > a > span {
+			display: none;
+		}
 	}
 
 	nav a:hover,
