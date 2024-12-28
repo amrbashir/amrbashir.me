@@ -1,8 +1,8 @@
 <script>
 	const circle: HTMLElement = document.querySelector("#mouse-circle")!;
 
-	const CIRCLE_RADIUS = 15;
-	const CIRCLE_WIDTH = 30;
+	const CIRCLE_RADIUS = 10;
+	const CIRCLE_WIDTH = 20;
 	const TRAIL_SPEED = 10;
 
 	let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
@@ -32,11 +32,13 @@
 		}
 
 		if (target) {
+			circle.classList.add("hovering");
 			const rect = target.getBoundingClientRect();
 			circleX += (rect.left - circleX) / TRAIL_SPEED;
 			circleY += (rect.top - circleY) / TRAIL_SPEED;
 			moveCircle(circleX, circleY, rect.width, rect.height);
 		} else {
+			circle.classList.remove("hovering");
 			circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
 			circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
 			moveCircle(circleX, circleY);
@@ -77,11 +79,15 @@
 		height: var(--circle-height);
 		left: var(--circle-x);
 		top: var(--circle-y);
-		background-color: rgba(var(--accent), 25%);
 		border-radius: var(--circle-width);
+		border: 0.1rem solid;
 		pointer-events: none;
 		transition:
 			width 200ms,
 			height 200ms;
+	}
+
+	#mouse-circle.hovering {
+		backdrop-filter: invert(1);
 	}
 </style>
