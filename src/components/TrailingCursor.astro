@@ -39,13 +39,11 @@
 			}
 
 			if (target) {
-				circle.classList.add("hovering");
 				const rect = target.getBoundingClientRect();
 				circleX += (rect.left - PADDING - circleX) / TRAIL_SPEED;
 				circleY += (rect.top - PADDING - circleY) / TRAIL_SPEED;
 				moveCircle(circleX, circleY, rect.width + PADDING * 2, rect.height + PADDING * 2);
 			} else {
-				circle.classList.remove("hovering");
 				circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
 				circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
 				moveCircle(circleX, circleY);
@@ -94,9 +92,5 @@
 		transition:
 			width 200ms,
 			height 200ms;
-	}
-
-	#mouse-circle.hovering {
-		backdrop-filter: invert(1);
 	}
 </style>
