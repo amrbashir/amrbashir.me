@@ -1,69 +1,74 @@
 <script>
-	const circle: HTMLElement = document.querySelector("#mouse-circle")!;
+	const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+	const preferesReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-	const CIRCLE_RADIUS = 10;
-	const CIRCLE_WIDTH = 20;
-	const TRAIL_SPEED = 10;
+	if (!isTouchDevice && !preferesReducedMotion) {
+		const circle: HTMLElement = document.querySelector("#mouse-circle")!;
 
-	let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
-	let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
-	let cursorX: number = window.innerWidth / 2;
-	let cursorY: number = window.innerHeight / 2;
+		const CIRCLE_RADIUS = 10;
+		const CIRCLE_WIDTH = 20;
+		const TRAIL_SPEED = 10;
 
-	function moveCircle(
-		x: number,
-		y: number,
-		width: number = CIRCLE_WIDTH,
-		height: number = CIRCLE_WIDTH
-	) {
-		circle.style.setProperty("--circle-x", `${x}px`);
-		circle.style.setProperty("--circle-y", `${y}px`);
-		circle.style.setProperty("--circle-width", `${width}px`);
-		circle.style.setProperty("--circle-height", `${height}px`);
-	}
+		let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
+		let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
+		let cursorX: number = window.innerWidth / 2;
+		let cursorY: number = window.innerHeight / 2;
 
-	function updateCircle() {
-		let target = document.elementFromPoint(cursorX, cursorY);
-		while (target) {
-			if (target.tagName === "A" || target.role === "button") {
-				break;
+		function moveCircle(
+			x: number,
+			y: number,
+			width: number = CIRCLE_WIDTH,
+			height: number = CIRCLE_WIDTH
+		) {
+			circle.style.setProperty("--circle-x", `${x}px`);
+			circle.style.setProperty("--circle-y", `${y}px`);
+			circle.style.setProperty("--circle-width", `${width}px`);
+			circle.style.setProperty("--circle-height", `${height}px`);
+		}
+
+		function updateCircle() {
+			let target = document.elementFromPoint(cursorX, cursorY);
+			while (target) {
+				if (target.tagName === "A" || target.role === "button") {
+					break;
+				}
+				target = target.parentElement;
 			}
-			target = target.parentElement;
-		}
 
-		if (target) {
-			circle.classList.add("hovering");
-			const rect = target.getBoundingClientRect();
-			circleX += (rect.left - circleX) / TRAIL_SPEED;
-			circleY += (rect.top - circleY) / TRAIL_SPEED;
-			moveCircle(circleX, circleY, rect.width, rect.height);
-		} else {
-			circle.classList.remove("hovering");
-			circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
-			circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
-			moveCircle(circleX, circleY);
-		}
+			if (target) {
+				circle.classList.add("hovering");
+				const rect = target.getBoundingClientRect();
+				circleX += (rect.left - circleX) / TRAIL_SPEED;
+				circleY += (rect.top - circleY) / TRAIL_SPEED;
+				moveCircle(circleX, circleY, rect.width, rect.height);
+			} else {
+				circle.classList.remove("hovering");
+				circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
+				circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
+				moveCircle(circleX, circleY);
+			}
 
+			requestAnimationFrame(updateCircle);
+		}
 		requestAnimationFrame(updateCircle);
-	}
-	requestAnimationFrame(updateCircle);
 
-	document.documentElement.addEventListener("mouseenter", (e) => {
-		cursorX = e.clientX;
-		cursorY = e.clientY;
-		circleX = cursorX - CIRCLE_RADIUS;
-		circleY = cursorY - CIRCLE_RADIUS;
-		// on enter, move the circle to where the cursor is
-		moveCircle(circleX, circleY);
-		circle.style.display = "block";
-	});
-	document.documentElement.addEventListener("mousemove", (e) => {
-		cursorX = e.clientX;
-		cursorY = e.clientY;
-	});
-	document.documentElement.addEventListener("mouseleave", () => {
-		circle.style.display = "none";
-	});
+		document.documentElement.addEventListener("mouseenter", (e) => {
+			cursorX = e.clientX;
+			cursorY = e.clientY;
+			circleX = cursorX - CIRCLE_RADIUS;
+			circleY = cursorY - CIRCLE_RADIUS;
+			// on enter, move the circle to where the cursor is
+			moveCircle(circleX, circleY);
+			circle.style.display = "block";
+		});
+		document.documentElement.addEventListener("mousemove", (e) => {
+			cursorX = e.clientX;
+			cursorY = e.clientY;
+		});
+		document.documentElement.addEventListener("mouseleave", () => {
+			circle.style.display = "none";
+		});
+	}
 </script>
 
 <div id="mouse-circle" style="display: none;"></div>
