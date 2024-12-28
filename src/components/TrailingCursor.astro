@@ -6,9 +6,8 @@
 		const circle: HTMLElement = document.querySelector("#mouse-circle")!;
 
 		const CIRCLE_RADIUS = 10;
-		const CIRCLE_WIDTH = 20;
 		const TRAIL_SPEED = 10;
-		const PADDING = 5;
+		const PADDING = 10;
 
 		let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
 		let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
@@ -18,8 +17,8 @@
 		function moveCircle(
 			x: number,
 			y: number,
-			width: number = CIRCLE_WIDTH,
-			height: number = CIRCLE_WIDTH
+			width: number = CIRCLE_RADIUS * 2,
+			height: number = CIRCLE_RADIUS * 2
 		) {
 			circle.style.setProperty("--circle-x", `${x}px`);
 			circle.style.setProperty("--circle-y", `${y}px`);
