@@ -7,7 +7,15 @@ import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<script>
+	// transitions are disabled by default on loading using `preload` class
+	// once the page is loaded i.e `DOMContentLoaded`, enable transitions again
+	window.addEventListener("DOMContentLoaded", () => {
+		document.documentElement.classList.remove("preload");
+	});
+</script>
+
+<html lang="en" class="preload">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -69,6 +77,12 @@ const { title } = Astro.props;
 		outline-offset: 0.1rem;
 	}
 
+	html.preload *,
+	html.preload *::after,
+	html.preload *::before {
+		transition: none !important;
+	}
+
 	html {
 		height: 100vh;
 		width: 100vw;
@@ -95,7 +109,7 @@ const { title } = Astro.props;
 		height: 100%;
 		width: 100%;
 		color: rgb(var(--color));
-		background-color: rgb(var(--bg-color));
+		background-color: rgb(5, 5, 5);
 
 		display: grid;
 		grid-template-rows: 5rem auto 5rem;

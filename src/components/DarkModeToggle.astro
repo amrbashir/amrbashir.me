@@ -29,8 +29,10 @@ import SunIcon from "~icons/ri/sun-line";
 		return Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
 	};
 
-	const changeBgClipPosition = () => {
+	const changeBgClipRadius = (isDark: boolean) => {
 		if (!darkModeToggle) return;
+
+		const endRadius = isDark ? 0 : calculateEndRadius();
 
 		const rect = darkModeToggle.getBoundingClientRect();
 		const x = rect.left + rect.width / 2;
@@ -38,17 +40,7 @@ import SunIcon from "~icons/ri/sun-line";
 
 		document.body.style.setProperty("--clip-x", `${x}px`);
 		document.body.style.setProperty("--clip-y", `${y}px`);
-	};
-
-	const changeBgClipRadius = (isDark: boolean) => {
-		document.body.classList.add("bg-transition");
-
-		requestAnimationFrame(() => {
-			const endRadius = isDark ? 0 : calculateEndRadius();
-			document.body.style.setProperty("--clip-radius", `${endRadius}px`);
-
-			setTimeout(() => document.body.classList.remove("bg-transition"), 400);
-		});
+		document.body.style.setProperty("--clip-radius", `${endRadius}px`);
 	};
 
 	const toggleDarkMode = () => {
@@ -74,7 +66,10 @@ import SunIcon from "~icons/ri/sun-line";
 	// change dark mode on mount
 	const isDark = isDarkMode();
 	changeHtmlTheme(isDark);
-	changeBgClipPosition();
+	changeBgClipRadius(isDark);
+	requestAnimationFrame(() => {
+		document.body.classList.add("clip-bg-animation-active");
+	});
 </script>
 
 <div tabindex="0" role="button" id="dark-mode-toggle" title="Toggle color scheme">
@@ -92,23 +87,16 @@ import SunIcon from "~icons/ri/sun-line";
 	}
 
 	body::after {
+		content: "";
 		top: 0;
 		left: 0;
 		position: absolute;
-		background-color: white;
+		background-color: rgb(255, 255, 255);
 		width: 100vw;
 		height: 100vh;
 		z-index: -999;
-		transition: clip-path 400ms;
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
-	}
-
-	body.bg-transition {
-		background-color: rgb(5, 5, 5);
-	}
-
-	body.bg-transition::after {
-		content: "";
+		transition: clip-path 400ms;
 	}
 
 	#dark-mode-toggle {
