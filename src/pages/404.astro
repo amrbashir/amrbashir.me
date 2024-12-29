@@ -1,24 +1,13 @@
 ---
-import Layout from "../layouts/layout.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Page not found">
-	<div>
-		<h1>404</h1>
+	<span class="block w-fit m-auto">
+		<h1 class="font-bold">404</h1>
 		<br />
-		<p>This page isn't available. Sorry about that.</p>
-	</div>
+		<p class="opacity-75">This page isn't available. Sorry about that.</p>
+		<br />
+		<a href="/" title="Home" class="btn-link inline-flex">Go Home</a>
+	</span>
 </Layout>
-
-<style>
-	div {
-		padding: 10rem;
-	}
-	h1 {
-		font-weight: bold;
-	}
-
-	p {
-		color: rgba(var(--color), 75%);
-	}
-</style>

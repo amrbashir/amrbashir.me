@@ -1,96 +1,33 @@
 ---
 import Logo from "./Logo.astro";
-import GitHubIcon from "~icons/ri/github-line";
-import TwitterIcon from "~icons/ri/twitter-x-line";
 import DarkModeToggle from "./DarkModeToggle.astro";
-import LightBulbIcon from "~icons/ri/lightbulb-line";
-import MailIcon from "~icons/ri/mail-line";
+import Socials from "./Socials.astro";
 ---
 
-<nav>
-	<ul>
-		<a id="skip-to-main-content" href="#main-content" aria-label="Home" data-no-trail-cursor>
-			Skip to main content
+<nav class="w-full h-full px-7 overflow-hidden flex justify-between">
+	<ul class="flex items-center gap-4">
+		<a
+			id="skip-to-main-content"
+			href="#main-content"
+			aria-label="Home"
+			data-no-trail-cursor
+			class="bg-emerald color-current decoration-none z-999 rd-rb-2 p-8 absolute top--40 left-0 focus:top-0 transition-top-300 rd-"
+		>
+			<span class="color-dark"> Skip to main content </span>
 		</a>
-		<a class="home" href="/" aria-label="Home">
+		<a href="/" title="Home" class="btn-link">
 			<Logo />
 		</a>
 	</ul>
 
-	<ul>
-		<a href="/projects" title="Projects">
-			<LightBulbIcon />
-			<span> Projects </span>
+	<ul class="flex items-center gap-1 children:p-2">
+		<a href="/projects" title="Projects" class="btn-link">
+			<span class="i-ri-lightbulb-line inline-block"></span>
+			<span class="hidden sm:inline"> Projects </span>
 		</a>
-		<a href="https://github.com/amrbashir" target="_blank" title="GitHub">
-			<GitHubIcon />
-		</a>
-		<a href="https://x.com/amrbashir_dev" target="_blank" title="Twitter">
-			<TwitterIcon />
-		</a>
-		<a href="mailto:contact@amrbashir.me" title="contact@amrbashir.me">
-			<MailIcon />
-		</a>
+
+		<Socials />
+
 		<DarkModeToggle />
 	</ul>
 </nav>
-
-<style is:global>
-	nav {
-		width: 100%;
-		height: 100%;
-		padding: 0 1.75rem;
-		overflow: hidden;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	nav > ul {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	nav a,
-	nav div[role="button"] {
-		text-decoration: none;
-		display: flex;
-		align-items: center;
-		gap: 0.2rem;
-		color: rgb(var(--color));
-		transition: opacity 300ms;
-		opacity: 0.6;
-		border-radius: 500rem;
-	}
-
-	@media only screen and (max-width: 768px) {
-		nav > ul:last-child > a > span {
-			display: none;
-		}
-	}
-
-	nav a:hover,
-	nav div[role="button"]:hover,
-	nav a:focus-visible,
-	nav div[role="button"]:focus-visible {
-		opacity: 1;
-	}
-
-	#skip-to-main-content {
-		background-color: rgba(var(--accent), 100%);
-		outline-color: rgba(var(--color), 100%);
-		color: rgba(var(--color-on-accent), 100%);
-		position: absolute;
-		top: -10rem;
-		left: 0;
-		transition: top 400ms;
-		border-radius: 0 0 1rem 0;
-		z-index: 998;
-		padding: 2rem;
-	}
-
-	#skip-to-main-content:focus {
-		top: 0;
-	}
-</style>

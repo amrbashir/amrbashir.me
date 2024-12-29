@@ -1,55 +1,10 @@
 ---
-import GitHubIcon from "~icons/ri/github-line";
-import TwitterIcon from "~icons/ri/twitter-x-line";
-import MailIcon from "~icons/ri/mail-line";
+import Socials from "./Socials.astro";
 ---
 
-<footer>
-	<div>
-		<a href="https://github.com/amrbashir" target="_blank" title="GitHub">
-			<GitHubIcon />
-		</a>
-		<a href="https://x.com/amrbashir_dev" target="_blank" title="Twitter">
-			<TwitterIcon />
-		</a>
-		<a href="mailto:contact@amrbashir.me" title="contact@amrbashir.me">
-			<MailIcon />
-		</a>
+<footer class="flex flex-col justify-center items-center">
+	<div class="flex gap-2 children:p-2">
+		<Socials />
 	</div>
-	<p>© Amr Bashir. All rights reserved.</p>
+	<p class="opacity-50 text-xs">© Amr Bashir. All rights reserved.</p>
 </footer>
-
-<style>
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		font-size: small;
-	}
-
-	div {
-		display: flex;
-	}
-
-	div a {
-		text-decoration: none;
-		display: flex;
-		align-items: center;
-		gap: 0.2rem;
-		color: rgb(var(--color));
-		border-radius: 500rem;
-		padding: 0.5rem;
-		opacity: 0.4;
-		transition: opacity 300ms;
-	}
-
-	div a:hover,
-	div a:focus-visible {
-		opacity: 1;
-	}
-
-	p {
-		opacity: 0.4;
-	}
-</style>

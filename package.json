@@ -19,7 +19,7 @@
 		"prettier": "^3.4.2",
 		"prettier-plugin-astro": "^0.14.1",
 		"typescript": "^5.7.2",
-		"unplugin-icons": "^0.19.3"
+		"unocss": "^0.65.3"
 	},
 	"packageManager": "pnpm@9.11.0"
 }

@@ -7,7 +7,6 @@
 
 		const CIRCLE_RADIUS = 10;
 		const TRAIL_SPEED = 10;
-		const PADDING = 10;
 
 		let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
 		let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
@@ -40,9 +39,9 @@
 
 			if (target) {
 				const rect = target.getBoundingClientRect();
-				circleX += (rect.left - PADDING - circleX) / TRAIL_SPEED;
-				circleY += (rect.top - PADDING - circleY) / TRAIL_SPEED;
-				moveCircle(circleX, circleY, rect.width + PADDING * 2, rect.height + PADDING * 2);
+				circleX += (rect.left - circleX) / TRAIL_SPEED;
+				circleY += (rect.top - circleY) / TRAIL_SPEED;
+				moveCircle(circleX, circleY, rect.width, rect.height);
 			} else {
 				circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
 				circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
@@ -73,7 +72,7 @@
 	}
 </script>
 
-<div id="mouse-circle" style="display: none;"></div>
+<div id="mouse-circle"></div>
 
 <style>
 	#mouse-circle {
@@ -82,6 +81,7 @@
 		--circle-width: 0px;
 		--circle-height: 0px;
 		position: fixed;
+		display: none;
 		width: var(--circle-width);
 		height: var(--circle-height);
 		left: var(--circle-x);
@@ -89,6 +89,7 @@
 		border-radius: var(--circle-width);
 		border: 0.1rem solid;
 		pointer-events: none;
+		z-index: 998;
 		transition:
 			width 200ms,
 			height 200ms;

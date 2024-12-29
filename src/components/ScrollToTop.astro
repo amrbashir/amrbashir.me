@@ -1,7 +1,3 @@
----
-import ArrowUp from "~icons/ri/arrow-up-line";
----
-
 <script>
 	const scrollToTop: HTMLElement = document.querySelector("#scroll-to-top")!;
 	window.addEventListener("scroll", () => {
@@ -13,34 +9,10 @@ import ArrowUp from "~icons/ri/arrow-up-line";
 	});
 </script>
 
-<a id="scroll-to-top" href="#top"><ArrowUp /></a>
-
-<style>
-	#scroll-to-top {
-		text-decoration: none;
-
-		position: fixed;
-		bottom: 2rem;
-		right: 2rem;
-
-		width: 2rem;
-		height: 2rem;
-
-		display: none;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-
-		border-radius: 2rem;
-
-		opacity: 0.6;
-		transition: opacity 300ms;
-
-		color: rgb(var(--color));
-	}
-
-	#scroll-to-top:hover,
-	#scroll-to-top:focus-visible {
-		opacity: 1;
-	}
-</style>
+<a
+	id="scroll-to-top"
+	href="#top"
+	class="decoration-none color-current fixed bottom-8 right-8 w-8 h-8 hidden justify-center items-center cursor-pointer rd-8 opacity-50 transition-opacity-300 hover:opacity-100 focus-visible:opacity-100"
+>
+	<span class="i-ri-arrow-up-line"></span>
+</a>
