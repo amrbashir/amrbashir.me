@@ -1,0 +1,20 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+	frontmatter: {
+		title: string;
+		header: string;
+	};
+}
+const {
+	frontmatter: { title, header },
+} = Astro.props;
+---
+
+<Layout title={title}>
+	<span class="block w-64ch m-auto prose text-dark/75 dark:text-white/75">
+		<h1 class="text-dark dark:text-white font-size-15 font-bold">{header}</h1>
+		<slot />
+	</span>
+</Layout>
