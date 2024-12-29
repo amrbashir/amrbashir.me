@@ -72,8 +72,10 @@
 	class="btn-link cursor-pointer"
 >
 	<div class="max-w-[1.2em] max-h-[1.2em] overflow-hidden">
-		<span class="i-ri-sun-line block transition-transform-300 dark:translate-y-[-100%]"></span>
-		<span class="i-ri-moon-line block transition-transform-300 dark:translate-y-[-100%]"></span>
+		<span class="i-ri-sun-line block transition-all-400 ease-out dark:translate-y-[-100%]"
+		></span>
+		<span class="i-ri-moon-line block transition-all-400 ease-out dark:translate-y-[-100%]"
+		></span>
 	</div>
 </div>
 
@@ -94,6 +96,6 @@
 		height: 100vh;
 		z-index: -999;
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
-		transition: clip-path 300ms;
+		transition: clip-path 400ms ease-out;
 	}
 </style>
