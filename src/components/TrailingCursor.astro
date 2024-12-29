@@ -7,6 +7,7 @@
 
 		const CIRCLE_RADIUS = 10;
 		const TRAIL_SPEED = 10;
+		const PADDING = 10;
 
 		let circleX: number = window.innerWidth / 2 - CIRCLE_RADIUS;
 		let circleY: number = window.innerHeight / 2 - CIRCLE_RADIUS;
@@ -39,9 +40,9 @@
 
 			if (target) {
 				const rect = target.getBoundingClientRect();
-				circleX += (rect.left - circleX) / TRAIL_SPEED;
-				circleY += (rect.top - circleY) / TRAIL_SPEED;
-				moveCircle(circleX, circleY, rect.width, rect.height);
+				circleX += (rect.left - PADDING - circleX) / TRAIL_SPEED;
+				circleY += (rect.top - PADDING - circleY) / TRAIL_SPEED;
+				moveCircle(circleX, circleY, rect.width + PADDING * 2, rect.height + PADDING * 2);
 			} else {
 				circleX += (cursorX - CIRCLE_RADIUS - circleX) / TRAIL_SPEED;
 				circleY += (cursorY - CIRCLE_RADIUS - circleY) / TRAIL_SPEED;
