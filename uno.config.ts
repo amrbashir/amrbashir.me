@@ -8,6 +8,11 @@ export default defineConfig({
 		}),
 	],
 	transformers: [transformerVariantGroup()],
+	theme: {
+		colors: {
+			accent: "#6fa76d",
+		},
+	},
 	shortcuts: {
 		"btn-link": `color-current decoration-none flex items-center gap-1 rd-[500rem]
 					 opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity-400`,
