@@ -13,7 +13,7 @@ export default defineConfig({
 		},
 	},
 	shortcuts: {
-		"btn-link": `decoration-none flex items-center gap-1 rounded-full color-inherit
+		"btn-link": `decoration-none flex items-center gap-1 rd-2 color-inherit
 					   transition-color-400 opacity-60 hover:opacity-100`,
 	},
 	transformers: [transformerVariantGroup(), transformerDirectives()],
