@@ -4,10 +4,13 @@ import ScrollToTop from "@components/ScrollToTop.astro";
 import NavBar from "@components/NavBar.astro";
 import Footer from "@components/Footer.astro";
 
+import "@unocss/reset/tailwind.css";
+
 interface Props {
 	title?: string;
+	class?: string;
 }
-const { title } = Astro.props;
+const { title, class: className } = Astro.props;
 ---
 
 <script>
@@ -41,7 +44,7 @@ const { title } = Astro.props;
 			<NavBar />
 		</header>
 
-		<main id="main-content" class="py-10 px-5">
+		<main id="main-content" class="py-10 px-5" class:list={className}>
 			<slot />
 		</main>
 
@@ -54,12 +57,6 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
 	*:focus-visible {
 		outline-color: currentColor;
 		outline-style: solid;

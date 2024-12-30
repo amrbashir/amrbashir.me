@@ -24,6 +24,9 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.2.5
         version: 1.2.17
+      '@unocss/reset':
+        specifier: ^0.65.3
+        version: 0.65.3
       prettier:
         specifier: ^3.4.2
         version: 3.4.2

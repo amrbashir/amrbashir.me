@@ -1,8 +1,8 @@
 ---
 layout: "@layouts/MDLayout.astro"
 title: "CV"
-header: "CV"
 ---
 
+# CV
 
 Comming soon...

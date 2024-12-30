@@ -1,8 +1,8 @@
 ---
 layout: "@layouts/MDLayout.astro"
 title: "Blog"
-header: "Blog"
 ---
 
+# Blog
 
 Comming soon...

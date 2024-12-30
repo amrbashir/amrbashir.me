@@ -87,7 +87,7 @@ const projects: Projects = {
 
 <Layout title="Projects">
 	<div class="text-center">
-		<h1 class="font-800">Projects</h1>
+		<h1 class="font-800 text-3xl">Projects</h1>
 		<br />
 		<p class="opacity-60 italic">Projects that I created or maintain</p>
 		<br />
@@ -96,9 +96,9 @@ const projects: Projects = {
 
 		{
 			Object.entries(projects).map(([category, projects]) => (
-				<h2 class="opacity-60 font-800 italic">{category}</h2>
+				<h2 class="opacity-60 font-800 italic text-xl">{category}</h2>
 				<br />
-				<ul class="w-64ch m-auto grid grid-cols-2">
+				<ul class="prose m-auto grid grid-cols-2">
 					{
 						projects.map((p) =>(
 							<a

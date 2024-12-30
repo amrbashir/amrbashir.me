@@ -22,8 +22,11 @@ export default defineConfig({
 		presetTypography({
 			cssExtend: {
 				h1: {
-					color: "white",
+					color: "black",
 					"font-weight": "800",
+				},
+				"html.dark h1": {
+					color: "white",
 				},
 				a: {
 					color: "black",

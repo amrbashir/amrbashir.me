@@ -4,18 +4,15 @@ import Layout from "./Layout.astro";
 interface Props {
 	frontmatter: {
 		title: string;
-		header?: string;
 	};
 }
 const {
-	frontmatter: { title, header },
+	frontmatter: { title },
 } = Astro.props;
 ---
 
 <Layout title={title}>
-	<div class="w-64ch m-auto prose text-dark/75 dark:text-white/75">
-		{header && <h1 class="text-dark dark:text-white font-size-15 font-bold">{header}</h1>}
-
+	<article class="prose m-auto text-dark/75 dark:text-light/75">
 		<slot />
-	</div>
+	</article>
 </Layout>
