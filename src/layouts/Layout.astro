@@ -64,8 +64,11 @@ const { title, class: className } = Astro.props;
 		outline-offset: 0.2rem;
 	}
 
+	html.preload,
 	html.preload *,
+	html.preload::after,
 	html.preload *::after,
+	html.preload::before,
 	html.preload *::before {
 		transition: none !important;
 	}

@@ -59,6 +59,11 @@ import MoonLine from "~icons/ri/moon-line";
 		}
 	});
 
+	window.addEventListener("resize", () => {
+		const isDark = isDarkMode();
+		changeBgClipRadius(isDark);
+	});
+
 	// change dark mode on mount
 	const isDark = isDarkMode();
 	changeHtmlTheme(isDark);
