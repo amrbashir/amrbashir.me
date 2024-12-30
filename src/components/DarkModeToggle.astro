@@ -4,8 +4,6 @@ import MoonLine from "~icons/ri/moon-line";
 ---
 
 <script>
-	const preferesReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
 
 	const isDarkMode = (): boolean => {
@@ -48,9 +46,7 @@ import MoonLine from "~icons/ri/moon-line";
 
 		changeHtmlTheme(!isDark);
 
-		if (!preferesReducedMotion) {
-			changeBgClipRadius(!isDark);
-		}
+		changeBgClipRadius(!isDark);
 
 		localStorage.setItem("theme", isDark ? "light" : "dark");
 	};
@@ -102,5 +98,11 @@ import MoonLine from "~icons/ri/moon-line";
 		z-index: -999;
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
 		transition: clip-path 400ms ease-out;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html::after {
+			transition: none;
+		}
 	}
 </style>
