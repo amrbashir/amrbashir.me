@@ -1,11 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro";
 import TauriIcon from "~icons/simple-icons/tauri?raw&width=2.3em&height=2.3em";
 import ViteIcon from "~icons/simple-icons/vite?raw&width=2.3em&height=2.3em";
 import NeoVimIcon from "~icons/simple-icons/neovim?raw&width=2.3em&height=2.3em";
 import NsisIcon from "~icons/simple-icons/nsis?raw&width=2.3em&height=2.3em";
 import MoonLine from "~icons/ri/moon-line?raw&width=2.3em&height=2.3em";
-import WifiQRIcon from "../../public/wifi-qr-icon.svg?raw";
+import WifiQRIcon from "@public/wifi-qr-icon.svg?raw";
 
 type RawIcon = (props: astroHTML.JSX.SVGAttributes) => astroHTML.JSX.Element;
 
@@ -87,14 +87,16 @@ const projects: Projects = {
 
 <Layout title="Projects">
 	<div class="text-center">
-		<h1>Projects</h1>
+		<h1 class="font-800">Projects</h1>
 		<br />
-		<p class="opacity-60 italic">Projects that I created or maintain.</p>
+		<p class="opacity-60 italic">Projects that I created or maintain</p>
+		<br />
+		<div class="b-1 b-solid w-20ch m-auto opacity-50"/>
 		<br />
 
 		{
 			Object.entries(projects).map(([category, projects]) => (
-				<h2 class="opacity-60">{category}</h2>
+				<h2 class="opacity-60 font-800 italic">{category}</h2>
 				<br />
 				<ul class="w-64ch m-auto grid grid-cols-2">
 					{

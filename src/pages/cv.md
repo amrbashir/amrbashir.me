@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/MDLayout.astro"
+layout: "@layouts/MDLayout.astro"
 title: "CV"
 header: "CV"
 ---

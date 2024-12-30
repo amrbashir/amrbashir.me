@@ -21,15 +21,23 @@ export default defineConfig({
 		presetUno(),
 		presetTypography({
 			cssExtend: {
+				h1: {
+					color: "white",
+					"font-weight": "800",
+				},
 				a: {
 					color: "black",
-					"text-decoration": "none",
+					"text-decoration-color": "#55555542",
+				},
+				"a:hover": {
+					"text-decoration-color": "#000",
 				},
 				"html.dark a": {
 					color: "white",
+					"text-decoration-color": "#cdcdcd42",
 				},
-				"a:hover": {
-					"text-decoration": "underline",
+				"html.dark a:hover": {
+					"text-decoration-color": "#fff",
 				},
 			},
 		}),
