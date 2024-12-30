@@ -1,5 +1,14 @@
+---
+import ArrowUpLine from "~icons/ri/arrow-up-line";
+---
+
 <script>
 	const scrollToTop: HTMLElement = document.querySelector("#scroll-to-top")!;
+	window.addEventListener("DOMContentLoaded", () => {
+		if (window.scrollY >= 100) {
+			scrollToTop.style.display = "flex";
+		}
+	});
 	window.addEventListener("scroll", () => {
 		if (window.scrollY >= 100) {
 			scrollToTop.style.display = "flex";
@@ -12,7 +21,8 @@
 <a
 	id="scroll-to-top"
 	href="#top"
-	class="decoration-none color-current fixed bottom-8 right-8 w-4 h-4 hidden justify-center items-center cursor-pointer rd-8 opacity-50 transition-opacity-400 hover:opacity-100 focus-visible:opacity-100"
+	class="decoration-none color-inherit fixed bottom-8 right-8 w-8 h-8 hidden justify-center items-center cursor-pointer rounded-full opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity-400"
+	data-trail-cursor
 >
-	<span class="i-ri-arrow-up-line"></span>
+	<ArrowUpLine />
 </a>

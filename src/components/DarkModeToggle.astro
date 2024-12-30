@@ -1,3 +1,8 @@
+---
+import SunLine from "~icons/ri/sun-line";
+import MoonLine from "~icons/ri/moon-line";
+---
+
 <script>
 	const preferesReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -33,9 +38,9 @@
 		const x = rect.left + rect.width / 2;
 		const y = rect.top + rect.height / 2;
 
-		document.body.style.setProperty("--clip-x", `${x}px`);
-		document.body.style.setProperty("--clip-y", `${y}px`);
-		document.body.style.setProperty("--clip-radius", `${endRadius}px`);
+		document.documentElement.style.setProperty("--clip-x", `${x}px`);
+		document.documentElement.style.setProperty("--clip-y", `${y}px`);
+		document.documentElement.style.setProperty("--clip-radius", `${endRadius}px`);
 	};
 
 	const toggleDarkMode = () => {
@@ -70,30 +75,29 @@
 	id="dark-mode-toggle"
 	title="Toggle color scheme"
 	class="btn-link cursor-pointer"
+	data-trail-cursor
 >
 	<div class="max-w-[1.2em] max-h-[1.2em] overflow-hidden">
-		<span class="i-ri-sun-line block transition-all-400 ease-out dark:translate-y-[-100%]"
-		></span>
-		<span class="i-ri-moon-line block transition-all-400 ease-out dark:translate-y-[-100%]"
-		></span>
+		<SunLine class="block transition-all-400 ease-out dark:translate-y-[-100%]" />
+		<MoonLine class="block transition-all-400 ease-out dark:translate-y-[-100%]" />
 	</div>
 </div>
 
 <style>
-	body {
+	html {
 		--clip-radius: 0px;
 		--clip-x: 0px;
 		--clip-y: 0px;
 	}
 
-	body::after {
+	html::after {
 		content: "";
+		width: 100%;
+		height: 100%;
 		top: 0;
 		left: 0;
 		position: absolute;
 		background-color: rgb(255, 255, 255);
-		width: 100vw;
-		height: 100vh;
 		z-index: -999;
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
 		transition: clip-path 400ms ease-out;

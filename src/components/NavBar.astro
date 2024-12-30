@@ -2,6 +2,7 @@
 import Logo from "./Logo.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 import Socials from "./Socials.astro";
+import LightbulbLine from "~icons/ri/lightbulb-line";
 ---
 
 <nav class="w-full h-full px-7 overflow-hidden flex justify-between">
@@ -10,20 +11,19 @@ import Socials from "./Socials.astro";
 			id="skip-to-main-content"
 			href="#main-content"
 			aria-label="Home"
-			data-no-trail-cursor
-			class="bg-accent color-current decoration-none z-999 rd-rb-2 p-8 absolute top--40 left-0 focus:top-0 transition-top-400 rd-"
+			class="bg-accent color-inherit decoration-none z-999 rd-rb-2 p-8 absolute top--40 left-0 focus:top-0 transition-top-400"
 		>
 			<span class="color-dark"> Skip to main content </span>
 		</a>
 
-		<a href="/" title="Home" class="btn-link">
+		<a href="/" title="Home" class="btn-link" data-trail-cursor>
 			<Logo />
 		</a>
 	</ul>
 
 	<ul class="flex items-center gap-4">
-		<a href="/projects" title="Projects" class="btn-link">
-			<span class="i-ri-lightbulb-line inline-block"></span>
+		<a href="/projects" title="Projects" class="btn-link" data-trail-cursor>
+			<LightbulbLine class="inline-block" />
 			<span class="hidden sm:inline"> Projects </span>
 		</a>
 

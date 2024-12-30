@@ -31,7 +31,7 @@
 			while (target) {
 				if (
 					(target.tagName === "A" || target.role === "button") &&
-					!target.hasAttribute("data-no-trail-cursor")
+					target.hasAttribute("data-trail-cursor")
 				) {
 					break;
 				}

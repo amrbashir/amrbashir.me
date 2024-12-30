@@ -4,7 +4,6 @@ import {
 	transformerVariantGroup,
 	presetTypography,
 	transformerDirectives,
-	presetIcons,
 } from "unocss";
 
 export default defineConfig({
@@ -14,8 +13,8 @@ export default defineConfig({
 		},
 	},
 	shortcuts: {
-		"btn-link": `color-current decoration-none flex items-center gap-1 rd-[500rem]
-		opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity-400`,
+		"btn-link": `decoration-none flex items-center gap-1 rounded-full color-inherit
+					   transition-color-400 opacity-60 hover:opacity-100`,
 	},
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [
@@ -33,9 +32,6 @@ export default defineConfig({
 					"text-decoration": "underline",
 				},
 			},
-		}),
-		presetIcons({
-			scale: 1.2,
 		}),
 	],
 });
