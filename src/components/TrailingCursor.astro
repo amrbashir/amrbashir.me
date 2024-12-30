@@ -33,10 +33,7 @@
 		function updateCircle() {
 			let target = document.elementFromPoint(cursorX, cursorY);
 			while (target) {
-				if (
-					(target.tagName === "A" || target.role === "button") &&
-					target.hasAttribute("data-trail-cursor")
-				) {
+				if (target.tagName === "A" || target.role === "button") {
 					break;
 				}
 				target = target.parentElement;
@@ -45,22 +42,27 @@
 			if (target) {
 				circle.classList.add("hovering");
 
-				const rect = target.getBoundingClientRect();
+				if (target.hasAttribute("data-trail-cursor")) {
+					const rect = target.getBoundingClientRect();
 
-				const paddingData = target.getAttribute("data-trail-cursor-padding");
-				const padding = paddingData !== null ? Number(paddingData ? paddingData : 8) : 0;
-				const radius = window.getComputedStyle(target).borderRadius;
+					const paddingData = target.getAttribute("data-trail-cursor-padding");
+					const padding =
+						paddingData !== null ? Number(paddingData ? paddingData : 8) : 0;
+					const radius = window.getComputedStyle(target).borderRadius;
 
-				circleX += (rect.left - padding - circleX) / TRAIL_SPEED;
-				circleY += (rect.top - padding - circleY) / TRAIL_SPEED;
+					circleX += (rect.left - padding - circleX) / TRAIL_SPEED;
+					circleY += (rect.top - padding - circleY) / TRAIL_SPEED;
 
-				moveCircle(
-					circleX,
-					circleY,
-					rect.width + padding * 2,
-					rect.height + padding * 2,
-					radius
-				);
+					moveCircle(
+						circleX,
+						circleY,
+						rect.width + padding * 2,
+						rect.height + padding * 2,
+						radius
+					);
+				} else {
+					circle.style.display = "none";
+				}
 			} else {
 				circle.classList.remove("hovering");
 
