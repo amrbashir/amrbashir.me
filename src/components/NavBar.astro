@@ -3,6 +3,7 @@ import Logo from "./Logo.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 import Socials from "./Socials.astro";
 import LightbulbLine from "~icons/ri/lightbulb-line";
+import ArticleLine from "~icons/ri/article-line";
 ---
 
 <nav class="w-full h-full px-7 overflow-hidden flex justify-between">
@@ -22,8 +23,13 @@ import LightbulbLine from "~icons/ri/lightbulb-line";
 	</ul>
 
 	<ul class="flex items-center gap-4">
+		<a href="/blog" title="Blog" class="btn-link" data-trail-cursor>
+			<ArticleLine class="sm:hidden" />
+			<span class="hidden sm:inline"> Blog </span>
+		</a>
+
 		<a href="/projects" title="Projects" class="btn-link" data-trail-cursor>
-			<LightbulbLine class="inline-block" />
+			<LightbulbLine class="sm:hidden" />
 			<span class="hidden sm:inline"> Projects </span>
 		</a>
 
