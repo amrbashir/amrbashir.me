@@ -36,7 +36,7 @@ const { title, class: className } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900"
 			rel="stylesheet"
 		/>
 	</head>
@@ -121,6 +121,8 @@ const { title, class: className } = Astro.props;
 		background-image: radial-gradient(
 			circle at 150% 150%,
 			rgba(0, 0, 0, 1) 0%,
+			rgba(0, 0, 0, 0.75) 25%,
+			rgba(0, 0, 0, 0.5) 50%,
 			rgba(0, 0, 0, 0) 75%
 		);
 	}
@@ -130,7 +132,9 @@ const { title, class: className } = Astro.props;
 		background-image: radial-gradient(
 			circle at 200% 200%,
 			rgba(255, 255, 255, 1) 0%,
-			rgba(0, 0, 0, 0) 100%
+			rgba(255, 255, 255, 0.75) 25%,
+			rgba(255, 255, 255, 0.5) 50%,
+			rgba(255, 255, 255, 0) 75%
 		);
 	}
 </style>
