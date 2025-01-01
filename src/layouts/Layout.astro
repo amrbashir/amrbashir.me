@@ -39,7 +39,7 @@ const { title, class: className } = Astro.props;
 		/>
 	</head>
 
-	<body class="w-screen h-screen color-dark dark:color-light grid grid-rows-[5rem_auto_5rem]">
+	<body class="w-screen h-screen color-dark dark:color-light flex flex-col">
 		<header>
 			<NavBar />
 		</header>
@@ -47,6 +47,8 @@ const { title, class: className } = Astro.props;
 		<main id="main-content" class="py-10 px-7" class:list={className}>
 			<slot />
 		</main>
+
+		<div class="spacer"></div>
 
 		<Footer />
 
