@@ -1,10 +1,20 @@
 ---
 import Socials from "./Socials.astro";
+
+interface Props {
+	showFooterSocials?: boolean;
+}
+
+const { showFooterSocials = true } = Astro.props;
 ---
 
 <footer class="flex flex-col justify-center items-center pb-2 gap-2">
-	<div class="text-size-[0.7rem] flex gap-4">
-		<Socials />
-	</div>
-	<p class="text-size-[0.5rem] opacity-60">CC BY-NC-SA 4.0 2024-PRESENT © Amr Bashir</p>
+	{
+		showFooterSocials && (
+			<div class="text-size-[0.7rem] flex gap-4">
+				<Socials />
+			</div>
+		)
+	}
+	<p class="text-size-xs opacity-60">CC BY-NC-SA 4.0 2024-PRESENT © Amr Bashir</p>
 </footer>

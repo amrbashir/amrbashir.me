@@ -9,16 +9,17 @@ import "@unocss/reset/tailwind.css";
 interface Props {
 	title?: string;
 	class?: string;
+	showFooterSocials?: boolean;
 }
-const { title, class: className } = Astro.props;
+const { title, class: className, showFooterSocials } = Astro.props;
 ---
 
 <script>
 	// transitions are disabled by default on loading using `preload` class
-	// once the page is loaded i.e `DOMContentLoaded`, enable transitions again
-	window.addEventListener("DOMContentLoaded", () => {
-		document.documentElement.classList.remove("preload");
-	});
+	// once the page is loaded i.e dark/light mode have applied
+	window.addEventListener("DOMContentLoaded", () =>
+		setTimeout(() => document.documentElement.classList.remove("preload"), 100)
+	);
 </script>
 
 <html lang="en" class="preload">
@@ -50,7 +51,7 @@ const { title, class: className } = Astro.props;
 
 		<div class="spacer"></div>
 
-		<Footer />
+		<Footer showFooterSocials={showFooterSocials} />
 
 		<ScrollToTop />
 

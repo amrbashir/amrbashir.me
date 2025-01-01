@@ -6,12 +6,13 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [UnoCSS(), mdx()],
-    vite: {
-        plugins: [
-            Icons({
-                compiler: "astro",
-            }),
-        ],
-    },
+	integrations: [UnoCSS(), mdx()],
+	vite: {
+		plugins: [
+			Icons({
+				compiler: "astro",
+				defaultClass: "inline-block align-text-bottom",
+			}),
+		],
+	},
 });

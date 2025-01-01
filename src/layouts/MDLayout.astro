@@ -4,14 +4,15 @@ import Layout from "./Layout.astro";
 interface Props {
 	frontmatter: {
 		title: string;
+		showFooterSocials: boolean;
 	};
 }
 const {
-	frontmatter: { title },
+	frontmatter: { title, showFooterSocials },
 } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title} showFooterSocials={showFooterSocials}>
 	<article class="prose m-auto text-dark/75 dark:text-light/75">
 		<slot />
 	</article>

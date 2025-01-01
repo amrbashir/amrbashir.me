@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"denoland.vscode-deno",
+		"astro-build.astro-vscode",
+		"unifiedjs.vscode-mdx",
+		"antfu.unocss",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode"
+	]
+}

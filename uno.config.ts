@@ -14,7 +14,7 @@ export default defineConfig({
 	},
 	shortcuts: {
 		spacer: "flex-1",
-		separator: "b-1 b-solid b-dark dark:b-light opacity-30",
+		separator: "b-1 b-solid b-dark dark:b-light opacity-10",
 		"btn-link": `decoration-none flex items-center gap-1 rd-2 color-inherit
 					   transition-color-400 opacity-60 hover:opacity-100`,
 	},
@@ -38,17 +38,20 @@ export default defineConfig({
 				},
 				a: {
 					color: "black",
-					"text-decoration-color": "#55555542",
+					"text-decoration": "none",
+					transition: "border-bottom-color 300ms ease-in-out",
+					"border-bottom": "0.5px solid",
+					"border-bottom-color": "#55555542",
 				},
 				"a:hover": {
-					"text-decoration-color": "#000",
+					"border-bottom-color": "#000",
 				},
 				"html.dark a": {
 					color: "white",
-					"text-decoration-color": "#cdcdcd42",
+					"border-bottom-color": "#cdcdcd42",
 				},
 				"html.dark a:hover": {
-					"text-decoration-color": "#fff",
+					"border-bottom-color": "#fff",
 				},
 			},
 		}),
