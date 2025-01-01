@@ -2,27 +2,11 @@
 layout: "@layouts/MDLayout.astro"
 ---
 
-<img src="/portrait.jpg" alt="portrait" class="portrait" />
+<img src="/portrait.jpg" alt="portrait" class="w-50 h-50 rd-50% lt-md:mx-auto" />
 
-<br />
 
-Hey, I am **Amr Bashir**, Proud Muslim and open source enthusiastic.
+Hey, I am **Amr Bashir**, open source enthusiastic, full-stack and Desktop applications Developer who is currently based in Tanta, Egypt.
 
 This site is under construction but feel free to look around.
 
 Checkout my projects [here](/projects) or send an e-mail to [contact@amrbashir.me](mailto:contact@amrbashir.me)
-
-
-<style>
-	.portrait {
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-	}
-
-	@media screen and (max-width: 768px) {
-		.portrait {
-			margin: 0 auto;
-		}
-	}
-</style>
