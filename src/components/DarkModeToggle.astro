@@ -15,6 +15,10 @@ import MoonLine from "~icons/ri/moon-line";
 		isDark
 			? document.documentElement.classList.add("dark")
 			: document.documentElement.classList.remove("dark");
+
+		document
+			.querySelector('meta[name="theme-color"]')
+			?.setAttribute("content", isDark ? "#000000" : "#eaebe6");
 	};
 
 	const calculateEndRadius = (): Number => {
