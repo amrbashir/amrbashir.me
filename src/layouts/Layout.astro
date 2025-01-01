@@ -60,13 +60,15 @@ const { title, class: className } = Astro.props;
 
 <style is:global>
 	:root {
-		--bg-color: 234, 235, 230;
-		--bg-color-inverse: 5, 5, 5;
+		--bg-color-light: 234, 235, 230;
+		--bg-color-dark: 5, 5, 5;
+		--bg-color: var(--bg-color-light);
+		--bg-color-inverse: var(--bg-color-dark);
 	}
 
 	html.dark {
-		--bg-color: 5, 5, 5;
-		--bg-color-inverse: 234, 235, 230;
+		--bg-color: var(--bg-color-dark);
+		--bg-color-inverse: var(--bg-color-light);
 	}
 
 	*:focus-visible {
@@ -89,7 +91,7 @@ const { title, class: className } = Astro.props;
 		overflow-x: hidden;
 		overflow-y: scroll;
 		scroll-behavior: smooth;
-		background-color: rgb(var(--bg-color));
+		background-color: rgb(var(--bg-color-dark));
 		font-family:
 			Inter,
 			ui-sans-serif,
@@ -116,7 +118,7 @@ const { title, class: className } = Astro.props;
 		left: 0;
 		position: fixed;
 		z-index: -999;
-		background-color: rgb(var(--bg-color));
+		background-color: rgb(var(--bg-color-light));
 	}
 
 	html::after {
@@ -135,5 +137,9 @@ const { title, class: className } = Astro.props;
 			rgba(var(--bg-color-inverse), 0.5) 50%,
 			rgba(var(--bg-color-inverse), 0) 75%
 		);
+	}
+
+	html.dark::after {
+		opacity: 0.3;
 	}
 </style>
