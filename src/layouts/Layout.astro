@@ -27,6 +27,8 @@ const { title, class: className } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
+		<meta name="theme-color" content="#000" />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 		<title>{`${title ? title + " · " : ""} Amr Bashir`}</title>
@@ -39,7 +41,7 @@ const { title, class: className } = Astro.props;
 		/>
 	</head>
 
-	<body class="w-screen h-screen color-dark dark:color-light flex flex-col">
+	<body class="w-100dvw h-100dvh color-dark dark:color-light flex flex-col">
 		<header>
 			<NavBar />
 		</header>
@@ -96,5 +98,30 @@ const { title, class: className } = Astro.props;
 			"Segoe UI Emoji",
 			Segoe UI Symbol,
 			"Noto Color Emoji";
+	}
+
+	html::before {
+		content: "";
+		position: fixed;
+		z-index: -998;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		background-image: radial-gradient(
+			circle at 150% 150%,
+			rgba(0, 0, 0, 1) 0%,
+			rgba(0, 0, 0, 0) 75%
+		);
+	}
+
+	html.dark::before {
+		opacity: 0.3;
+		background-image: radial-gradient(
+			circle at 200% 200%,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(0, 0, 0, 0) 100%
+		);
 	}
 </style>
