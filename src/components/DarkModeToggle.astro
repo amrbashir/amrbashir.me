@@ -96,21 +96,21 @@ import MoonLine from "~icons/ri/moon-line";
 		--clip-y: 0px;
 	}
 
-	html::after {
+	html::before {
 		content: "";
 		width: 100%;
 		height: 100%;
 		top: 0;
 		left: 0;
 		position: fixed;
-		background-color: rgb(234, 235, 230);
 		z-index: -999;
+		background-color: rgb(234, 235, 230);
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
 		transition: clip-path 400ms ease-out;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		html::after {
+		html::before {
 			transition: none;
 		}
 	}

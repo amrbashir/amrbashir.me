@@ -42,9 +42,7 @@ const { title, class: className } = Astro.props;
 	</head>
 
 	<body class="w-100dvw h-100dvh color-dark dark:color-light flex flex-col">
-		<header>
-			<NavBar />
-		</header>
+		<NavBar />
 
 		<main id="main-content" class="py-10 px-7" class:list={className}>
 			<slot />
@@ -81,7 +79,7 @@ const { title, class: className } = Astro.props;
 		overflow-x: hidden;
 		overflow-y: scroll;
 		scroll-behavior: smooth;
-		background-color: black;
+		background-color: rgb(10, 10, 10);
 		font-family:
 			Inter,
 			ui-sans-serif,
@@ -100,15 +98,15 @@ const { title, class: className } = Astro.props;
 			"Noto Color Emoji";
 	}
 
-	html::before {
+	html::after {
 		content: "";
 		position: fixed;
-		z-index: -998;
 		bottom: 0;
 		right: 0;
 		width: 100%;
 		height: 100%;
 		opacity: 0.5;
+		z-index: -998;
 		background-image: radial-gradient(
 			circle at 150% 150%,
 			rgba(0, 0, 0, 1) 0%,
@@ -116,7 +114,7 @@ const { title, class: className } = Astro.props;
 		);
 	}
 
-	html.dark::before {
+	html.dark::after {
 		opacity: 0.3;
 		background-image: radial-gradient(
 			circle at 200% 200%,

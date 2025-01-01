@@ -6,41 +6,49 @@ import LightbulbLine from "~icons/ri/lightbulb-line";
 import ArticleLine from "~icons/ri/article-line";
 ---
 
-<nav class="w-full h-20 px-7 overflow-hidden flex justify-between">
-	<ul class="flex items-center">
-		<a
-			id="skip-to-main-content"
-			href="#main-content"
-			aria-label="Home"
-			class="bg-dark dark:bg-[rgb(234,235,230)] color-inherit decoration-none z-999 rd-rb-2 p-8 absolute top--40 left-0 focus:top-0 transition-top-400"
-		>
-			<span class="color-[rgb(234,235,230)] dark:color-dark"> Skip to main content </span>
-		</a>
+<header class="sticky top-0 backdrop-blur-3xl z-10 shadow-2xl dark:shadow-black/50">
+	<nav class="w-full h-20 px-7 overflow-hidden flex justify-between sticky top-0">
+		<div class="flex items-center">
+			<a
+				id="skip-to-main-content"
+				href="#main-content"
+				aria-label="Home"
+				class="bg-dark dark:bg-[rgb(234,235,230)] color-inherit decoration-none z-1000 rd-rb-2 p-8 absolute top--40 left-0 focus:top-0 transition-top-400"
+			>
+				<span class="color-[rgb(234,235,230)] dark:color-dark"> Skip to main content </span>
+			</a>
 
-		<a href="/" title="Home" class="btn-link" data-trail-cursor data-trail-cursor-padding>
-			<Logo />
-		</a>
-	</ul>
+			<a href="/" title="Home" class="btn-link" data-trail-cursor data-trail-cursor-padding>
+				<Logo />
+			</a>
+		</div>
 
-	<ul class="flex items-center gap-4">
-		<a
-			href="/projects"
-			title="Projects"
-			class="btn-link"
-			data-trail-cursor
-			data-trail-cursor-padding
-		>
-			<span class="lt-md:hidden"> Projects </span>
-			<LightbulbLine class="md:hidden" />
-		</a>
+		<div class="flex items-center gap-4">
+			<a
+				href="/projects"
+				title="Projects"
+				class="btn-link"
+				data-trail-cursor
+				data-trail-cursor-padding
+			>
+				<span class="lt-md:hidden"> Projects </span>
+				<LightbulbLine class="md:hidden" />
+			</a>
 
-		<a href="/blog" title="Blog" class="btn-link" data-trail-cursor data-trail-cursor-padding>
-			<span class="lt-md:hidden"> Blog </span>
-			<ArticleLine class="md:hidden" />
-		</a>
+			<a
+				href="/blog"
+				title="Blog"
+				class="btn-link"
+				data-trail-cursor
+				data-trail-cursor-padding
+			>
+				<span class="lt-md:hidden"> Blog </span>
+				<ArticleLine class="md:hidden" />
+			</a>
 
-		<Socials />
+			<Socials />
 
-		<DarkModeToggle />
-	</ul>
-</nav>
+			<DarkModeToggle />
+		</div>
+	</nav>
+</header>

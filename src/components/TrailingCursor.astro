@@ -18,7 +18,8 @@
 			y: number,
 			width: number = CIRCLE_RADIUS * 2,
 			height: number = CIRCLE_RADIUS * 2,
-			radius: number | string = CIRCLE_RADIUS * 2
+			radius: number | string = CIRCLE_RADIUS * 2,
+			zIndex: string = "999"
 		) {
 			circle.style.setProperty("--circle-x", `${x}px`);
 			circle.style.setProperty("--circle-y", `${y}px`);
@@ -28,6 +29,16 @@
 				"--circle-radius",
 				typeof radius === "string" ? radius : `${radius}px`
 			);
+			circle.style.setProperty("--circle-z-index", zIndex);
+		}
+
+		function traverseZIndex(target: Element): string {
+			let zIndex = window.getComputedStyle(target).zIndex;
+			while (zIndex === "auto" && target.parentElement) {
+				target = target.parentElement;
+				zIndex = window.getComputedStyle(target).zIndex;
+			}
+			return zIndex;
 		}
 
 		function updateCircle() {
@@ -48,7 +59,10 @@
 					const paddingData = target.getAttribute("data-trail-cursor-padding");
 					const padding =
 						paddingData !== null ? Number(paddingData ? paddingData : 8) : 0;
+
 					const radius = window.getComputedStyle(target).borderRadius;
+
+					let zIndex = traverseZIndex(target);
 
 					circleX += (rect.left - padding - circleX) / TRAIL_SPEED;
 					circleY += (rect.top - padding - circleY) / TRAIL_SPEED;
@@ -58,7 +72,8 @@
 						circleY,
 						rect.width + padding * 2,
 						rect.height + padding * 2,
-						radius
+						radius,
+						zIndex
 					);
 				} else {
 					circle.style.display = "none";
@@ -104,6 +119,7 @@
 		--circle-width: 0px;
 		--circle-height: 0px;
 		--circle-radius: 0px;
+		--circle-z-index: 999;
 		position: fixed;
 		display: none;
 		width: var(--circle-width);
@@ -113,7 +129,7 @@
 		border-radius: var(--circle-radius);
 		border: 0.1rem solid;
 		pointer-events: none;
-		z-index: 998;
+		z-index: var(--circle-z-index);
 		transition:
 			width 200ms,
 			height 200ms;
