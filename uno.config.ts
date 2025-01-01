@@ -30,6 +30,12 @@ export default defineConfig({
 				"html.dark h1": {
 					color: "white",
 				},
+				strong: {
+					color: "black",
+				},
+				"html.dark strong": {
+					color: "white",
+				},
 				a: {
 					color: "black",
 					"text-decoration-color": "#55555542",
