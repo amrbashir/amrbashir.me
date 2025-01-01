@@ -98,6 +98,17 @@ const { title, class: className } = Astro.props;
 			"Noto Color Emoji";
 	}
 
+	html::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		z-index: -999;
+		background-color: rgb(234, 235, 230);
+	}
+
 	html::after {
 		content: "";
 		position: fixed;
