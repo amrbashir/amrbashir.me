@@ -14,6 +14,7 @@ export default defineConfig({
 	},
 	shortcuts: {
 		spacer: "flex-1",
+		separator: "b-1 b-solid b-dark dark:b-light opacity-30",
 		"btn-link": `decoration-none flex items-center gap-1 rd-2 color-inherit
 					   transition-color-400 opacity-60 hover:opacity-100`,
 	},
