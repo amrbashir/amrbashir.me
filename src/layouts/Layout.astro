@@ -59,6 +59,16 @@ const { title, class: className } = Astro.props;
 </html>
 
 <style is:global>
+	:root {
+		--bg-color: 234, 235, 230;
+		--bg-color-inverse: 5, 5, 5;
+	}
+
+	html.dark {
+		--bg-color: 5, 5, 5;
+		--bg-color-inverse: 234, 235, 230;
+	}
+
 	*:focus-visible {
 		outline-color: currentColor;
 		outline-style: solid;
@@ -79,7 +89,7 @@ const { title, class: className } = Astro.props;
 		overflow-x: hidden;
 		overflow-y: scroll;
 		scroll-behavior: smooth;
-		background-color: rgb(5, 5, 5);
+		background-color: rgb(var(--bg-color));
 		font-family:
 			Inter,
 			ui-sans-serif,
@@ -106,7 +116,7 @@ const { title, class: className } = Astro.props;
 		left: 0;
 		position: fixed;
 		z-index: -999;
-		background-color: rgb(234, 235, 230);
+		background-color: rgb(var(--bg-color));
 	}
 
 	html::after {
@@ -120,21 +130,10 @@ const { title, class: className } = Astro.props;
 		z-index: -998;
 		background-image: radial-gradient(
 			circle at 150% 150%,
-			rgba(0, 0, 0, 1) 0%,
-			rgba(0, 0, 0, 0.75) 25%,
-			rgba(0, 0, 0, 0.5) 50%,
-			rgba(0, 0, 0, 0) 75%
-		);
-	}
-
-	html.dark::after {
-		opacity: 0.3;
-		background-image: radial-gradient(
-			circle at 200% 200%,
-			rgb(234, 235, 230, 1) 0%,
-			rgb(234, 235, 230, 0.75) 25%,
-			rgb(234, 235, 230, 0.5) 50%,
-			rgb(234, 235, 230, 0) 75%
+			rgba(var(--bg-color-inverse), 1) 0%,
+			rgba(var(--bg-color-inverse), 0.75) 25%,
+			rgba(var(--bg-color-inverse), 0.5) 50%,
+			rgba(var(--bg-color-inverse), 0) 75%
 		);
 	}
 </style>
