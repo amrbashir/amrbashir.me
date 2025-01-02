@@ -2,8 +2,6 @@
 import Logo from "./Logo.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
 import Socials from "./Socials.astro";
-import LightbulbIcon from "~icons/ri/lightbulb-line";
-import ArticleIcon from "~icons/ri/article-line";
 ---
 
 <header>
@@ -32,7 +30,7 @@ import ArticleIcon from "~icons/ri/article-line";
 				data-trail-cursor-padding
 			>
 				<span class="lt-md:hidden"> Projects </span>
-				<LightbulbIcon class="md:hidden" />
+				<span class="i-ri-lightbulb-line md:hidden"></span>
 			</a>
 
 			<a
@@ -43,7 +41,7 @@ import ArticleIcon from "~icons/ri/article-line";
 				data-trail-cursor-padding
 			>
 				<span class="lt-md:hidden"> Blog </span>
-				<ArticleIcon class="md:hidden" />
+				<span class="i-ri-article-line md:hidden"></span>
 			</a>
 
 			<Socials />

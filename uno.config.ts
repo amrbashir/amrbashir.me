@@ -4,6 +4,7 @@ import {
 	transformerVariantGroup,
 	presetTypography,
 	transformerDirectives,
+	presetIcons,
 } from "unocss";
 
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [
 		presetUno(),
+		presetIcons(),
 		presetTypography({
 			cssExtend: {
 				h1: {

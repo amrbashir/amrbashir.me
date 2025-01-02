@@ -1,10 +1,5 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import TauriIcon from "~icons/simple-icons/tauri?raw&width=2.3em&height=2.3em";
-import ViteIcon from "~icons/simple-icons/vite?raw&width=2.3em&height=2.3em";
-import NeoVimIcon from "~icons/simple-icons/neovim?raw&width=2.3em&height=2.3em";
-import NsisIcon from "~icons/simple-icons/nsis?raw&width=2.3em&height=2.3em";
-import MoonIcon from "~icons/ri/moon-line?raw&width=2.3em&height=2.3em";
 import WifiQRIcon from "@public/wifi-qr-icon.svg?raw";
 
 type RawIcon = (props: astroHTML.JSX.SVGAttributes) => astroHTML.JSX.Element;
@@ -14,7 +9,7 @@ interface Projects {
 		name: string;
 		description: string;
 		url: string;
-		icon: RawIcon | RawIcon[] | string;
+		icon: RawIcon | string | string[];
 		class?: string;
 	}[];
 }
@@ -25,31 +20,33 @@ const projects: Projects = {
 			name: "tauri",
 			description: "Build smaller, faster, and more secure desktop and mobile applications with a web frontend",
 			url: "https://github.com/tauri-apps/tauri",
-			icon: TauriIcon,
+			icon: 'i-simple-icons-tauri',
 		},
 		{
 			name: "create-tauri-app",
 			description: "Rapidly scaffold out a new tauri app project",
 			url: "https://github.com/tauri-apps/create-tauri-app",
-			icon: TauriIcon,
+			icon: 'i-simple-icons-tauri',
 		},
 		{
 			name: "vite-plugin-tauri",
 			description: "Integrate Tauri in a Vite project to build cross-platform apps",
 			url: "https://github.com/amrbashir/vite-plugin-tauri",
-			icon: [ViteIcon, TauriIcon],
+			icon: ['i-simple-icons-vite', 'i-simple-icons-tauri'],
 		},
 		{
 			name: "muda",
 			description: "Menu Utilities for Desktop Applications in Rust",
 			url: "https://github.com/tauri-apps/muda",
-			icon: TauriIcon,
+			icon: 'i-simple-icons-tauri',
+
 		},
 		{
 			name: "tray-icon",
 			description: "Tray icons for Desktop Applications in Rust",
 			url: "https://github.com/tauri-apps/tray-icon",
-			icon: TauriIcon,
+			icon: 'i-simple-icons-tauri',
+
 		},
 
 	],
@@ -58,7 +55,7 @@ const projects: Projects = {
 			name: "hijri-widget",
 			description: "Minimal Android widget for displaying Hijri date",
 			url: "https://github.com/amrbashir/hijri-widget",
-			icon: MoonIcon,
+			icon: 'i-ri-moon-line',
 			class: "scale-x--100",
 		},
 		{
@@ -73,13 +70,13 @@ const projects: Projects = {
 			name: "nvim-docs-view",
 			description: "A neovim plugin to display lsp hover documentation in a side panel",
 			url: "https://github.com/amrbashir/nvim-docs-view",
-			icon: NeoVimIcon,
+			icon: 'i-simple-icons-neovim',
 		},
 		{
 			name: "nsis-plugin-rs",
 			description: "A template for writing an NSIS dill plugin in Rust ",
 			url: "https://github.com/amrbashir/nsis-plugin-rs",
-			icon: NsisIcon,
+			icon: 'i-simple-icons-nsis',
 		},
 	],
 };
@@ -105,16 +102,18 @@ const projects: Projects = {
 								href={p.url}
 								target="_blank"
 								title={p.name}
-								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2"
+								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[auto_auto] place-items-center gap-2"
 								data-trail-cursor
 							>
-								<div class="flex justify-center items-center opacity-60" class:list={p.class}>
+								<div class="flex justify-center items-center opacity-60 py-4 px-8" class:list={p.class}>
 									{
 										Array.isArray(p.icon)
-											? (<div class="flex first:children:(translate-x-20% translate-y--30%) last:children:translate-x--20%">
-												<Fragment set:html={p.icon} />
+											? (<div class="flex first:children:(translate-y--50% translate-x--50%)">
+												{p.icon.map(icon => <span class="scale-200" class:list={icon} />)}
 											   </div>)
-											: (<Fragment set:html={p.icon} />)
+											: typeof p.icon === "string" && p.icon.includes('>')
+												? <Fragment set:html={p.icon} />
+												: (<span class="scale-200" class:list={p.icon} />)
 									}
 								</div>
 								<div>

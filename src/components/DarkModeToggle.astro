@@ -1,8 +1,3 @@
----
-import SunIcon from "~icons/ri/sun-line";
-import MoonIcon from "~icons/ri/moon-line";
----
-
 <script>
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
 
@@ -84,8 +79,10 @@ import MoonIcon from "~icons/ri/moon-line";
 	data-trail-cursor-padding
 >
 	<div class="max-w-[1.2em] max-h-[1.2em] overflow-hidden">
-		<SunIcon class="block transition-all-400 ease-out dark:translate-y-[-100%]" />
-		<MoonIcon class="block transition-all-400 ease-out dark:translate-y-[-100%]" />
+		<span class="i-ri-sun-line block transition-all-400 ease-out dark:translate-y-[-100%]"
+		></span>
+		<span class="i-ri-moon-line block transition-all-400 ease-out dark:translate-y-[-100%]">
+		</span>
 	</div>
 </div>
 
