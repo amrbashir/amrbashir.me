@@ -6,7 +6,7 @@ interface Props {
 
 const { showFooterGoBack = true, backUrl } = Astro.props;
 const url = Astro.url.toString();
-const idx = url.lastIndexOf("/");
+const idx = (url.endsWith("/") ? url.slice(0, -1) : url).lastIndexOf("/");
 const oneLevelUpUrl = url.slice(0, idx + 1);
 ---
 
