@@ -21,7 +21,14 @@ export default defineConfig({
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [
 		presetUno(),
-		presetIcons({}),
+		presetIcons({
+			extraProperties: {
+				display: "inline-block",
+				height: "1.2em",
+				width: "1.2em",
+				"vertical-align": "text-bottom",
+			},
+		}),
 		presetTypography({
 			cssExtend: {
 				h1: {
