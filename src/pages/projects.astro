@@ -102,10 +102,10 @@ const projects: Projects = {
 								href={p.url}
 								target="_blank"
 								title={p.name}
-								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[auto_auto] place-items-center gap-2"
+								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2"
 								data-trail-cursor
 							>
-								<div class="flex justify-center items-center opacity-60 py-4 px-8" class:list={p.class}>
+								<div class="flex justify-center items-center opacity-60" class:list={p.class}>
 									{
 										Array.isArray(p.icon)
 											? (<div class="flex first:children:(translate-y--50% translate-x--50%)">
