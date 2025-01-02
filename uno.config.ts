@@ -21,7 +21,7 @@ export default defineConfig({
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [
 		presetUno(),
-		presetIcons(),
+		presetIcons({}),
 		presetTypography({
 			cssExtend: {
 				h1: {
