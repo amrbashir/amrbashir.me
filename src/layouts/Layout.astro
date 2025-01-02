@@ -9,9 +9,10 @@ import "@unocss/reset/tailwind.css";
 interface Props {
 	title?: string;
 	class?: string;
-	showFooterSocials?: boolean;
+	showFooterGoBack?: boolean;
+	backUrl?: string;
 }
-const { title, class: className, showFooterSocials } = Astro.props;
+const { title, class: className, showFooterGoBack, backUrl } = Astro.props;
 ---
 
 <script>
@@ -60,11 +61,9 @@ const { title, class: className, showFooterSocials } = Astro.props;
 
 		<main id="main-content" class="py-10 px-7" class:list={className}>
 			<slot />
+
+			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
 		</main>
-
-		<div class="spacer"></div>
-
-		<Footer showFooterSocials={showFooterSocials} />
 
 		<ScrollToTop />
 

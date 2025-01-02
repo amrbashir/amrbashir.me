@@ -1,20 +1,29 @@
 ---
-import Socials from "./Socials.astro";
-
 interface Props {
-	showFooterSocials?: boolean;
+	showFooterGoBack?: boolean;
+	backUrl?: string;
 }
 
-const { showFooterSocials = true } = Astro.props;
+const { showFooterGoBack = true, backUrl } = Astro.props;
+const url = Astro.url.toString();
+const idx = url.lastIndexOf("/");
+const oneLevelUpUrl = url.slice(0, idx + 1);
 ---
 
-<footer class="flex flex-col justify-center items-center pb-2 gap-2">
+<footer>
 	{
-		showFooterSocials && (
-			<div class="text-size-sm flex gap-4">
-				<Socials />
+		showFooterGoBack && (
+			<div class="prose mx-auto my-8">
+				<br />
+				<span class="opacity-50 font-mono"> {">"}</span>
+				<a href={backUrl ?? oneLevelUpUrl} class="opacity-50 hover:opacity-100 font-mono">
+					cd ..
+				</a>
 			</div>
 		)
 	}
-	<p class="text-size-xs opacity-60">CC BY-NC-SA 4.0 2024-PRESENT © Amr Bashir</p>
+	<div class="prose mt-10 mb-6 prose m-auto flex">
+		<span class="opacity-50 text-xs"> CC BY-NC-SA 4.0 2024-PRESENT © Amr Bashir </span>
+		<span class="flex-auto"></span>
+	</div>
 </footer>
