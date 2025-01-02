@@ -98,7 +98,7 @@ const projects: Projects = {
 			Object.entries(projects).map(([category, projects]) => (
 				<h2 class="opacity-60 font-800 italic text-xl">{category}</h2>
 				<br />
-				<ul class="m-auto grid sm:grid-cols-2">
+				<div class="max-w-65ch m-auto grid sm:grid-cols-2">
 					{
 						projects.map((p) =>(
 							<a
@@ -124,7 +124,7 @@ const projects: Projects = {
 							</a>
 						))
 					}
-				</ul>
+				</div>
 				<br />
 			))
 		}
