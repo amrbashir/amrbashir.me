@@ -28,16 +28,29 @@ const { title, class: className, showFooterSocials } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 
+		<title>{`${title ? title + " · " : ""}Amr Bashir`}</title>
+
+		<meta name="author" content="Amr Bashir" />
+
+		<meta property="og:title" content={`${title ? title + " · " : ""}Amr Bashir`} />
+		<meta name="twitter:title" content={`${title ? title + " · " : ""}Amr Bashir`} />
+		<meta name="description" content="Amr Bashir's Portfolio" />
+		<meta property="og:description" content="Amr Bashir's Portfolio" />
+		<meta name="twitter:description" content="Amr Bashir's Portfolio" />
+		<meta property="og:image" content="https://amrbashir.me/og.png" />
+		<meta name="twitter:image" content="https://amrbashir.me/og.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<meta name="revisit-after" content="7 days" />
+
 		<meta name="theme-color" content="#000" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-		<title>{`${title ? title + " · " : ""} Amr Bashir`}</title>
-
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
 			rel="stylesheet"
 		/>
 	</head>

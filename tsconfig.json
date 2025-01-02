@@ -6,7 +6,6 @@
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
 			"@public/*": ["public/*"]
-		},
-		"types": ["unplugin-icons/types/astro"]
+		}
 	}
 }
