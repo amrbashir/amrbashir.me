@@ -240,4 +240,18 @@ const { title, class: className, showFooterGoBack, backUrl } = Astro.props;
 			--stagger: 20 !important;
 		}
 	}
+
+	a.heading-link::before {
+		position: relative;
+	}
+	a.heading-link::before {
+		content: "#";
+		position: absolute;
+		transform: translateX(-150%);
+		opacity: 0;
+		transition: opacity 300ms ease-in-out;
+	}
+	a.heading-link:hover::before {
+		opacity: 1;
+	}
 </style>
