@@ -72,7 +72,7 @@ export default defineConfig({
 	shortcuts: {
 		separator: "b-1 b-solid b-dark/10 dark:b-light/10",
 		"btn-link": `decoration-none flex items-center gap-1 rd-2 color-inherit
-					   transition-color-400 opacity-60 hover:opacity-100`,
+					   transition-opacity-400 opacity-60 hover:opacity-100`,
 	},
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [presetUno(), icons(), typography()],
