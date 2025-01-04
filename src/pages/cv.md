@@ -60,6 +60,10 @@ Vue.js, SolidJS, React, Svelte
 
 Tauri, Electron, Win32, GTK
 
+##### _Mobile applications Technologies_
+
+Kotlin and Jetpack Compose, Dart and Flutter
+
 ##### _Design Skills_
 
 Figma, Adobe Photoshop, Adobe Illustrator, Inkscape
