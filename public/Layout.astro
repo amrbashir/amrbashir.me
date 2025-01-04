@@ -1,0 +1,254 @@
+---
+import TrailingCursor from "@components/TrailingCursor.astro";
+import ScrollToTop from "@components/ScrollToTop.astro";
+import NavBar from "@components/NavBar.astro";
+import Footer from "@components/Footer.astro";
+
+import "@unocss/reset/tailwind.css";
+
+interface Props {
+	title?: string;
+	class?: string;
+	showFooterGoBack?: boolean;
+	backUrl?: string;
+}
+const { title, class: className, showFooterGoBack, backUrl } = Astro.props;
+---
+
+<script>
+	// transitions are disabled by default on loading using `preload` class
+	// once the page is loaded i.e dark/light mode have applied
+	window.addEventListener("DOMContentLoaded", () =>
+		setTimeout(() => document.documentElement.classList.remove("preload"), 100)
+	);
+</script>
+
+<html lang="en" class="preload">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+
+		<title>{`${title ? title + " · " : ""}Amr Bashir`}</title>
+
+		<meta name="author" content="Amr Bashir" />
+
+		<meta property="og:title" content={`${title ? title + " · " : ""}Amr Bashir`} />
+		<meta name="twitter:title" content={`${title ? title + " · " : ""}Amr Bashir`} />
+		<meta name="description" content="Amr Bashir's Portfolio" />
+		<meta property="og:description" content="Amr Bashir's Portfolio" />
+		<meta name="twitter:description" content="Amr Bashir's Portfolio" />
+		<meta property="og:image" content="https://amrbashir.me/og.png" />
+		<meta name="twitter:image" content="https://amrbashir.me/og.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<meta name="revisit-after" content="7 days" />
+
+		<meta name="theme-color" content="#000" />
+
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/favicon.svg"
+			media="(prefers-color-scheme: light)"
+		/>
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/favicon.svg"
+			media="(prefers-color-scheme: dark)"
+		/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+
+	<body class="w-100dvw h-100dvh color-dark dark:color-light flex flex-col">
+		<NavBar />
+
+		<main id="main-content" class="py-10 px-7" class:list={className}>
+			<slot />
+
+			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
+		</main>
+
+		<ScrollToTop />
+
+		<TrailingCursor />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--bg-color-light: 234, 235, 230;
+		--bg-color-dark: 5, 5, 5;
+		--bg-color: var(--bg-color-light);
+		--bg-color-inverse: var(--bg-color-dark);
+	}
+
+	html.dark {
+		--bg-color: var(--bg-color-dark);
+		--bg-color-inverse: var(--bg-color-light);
+	}
+
+	*:focus-visible {
+		outline-color: currentColor;
+		outline-style: solid;
+		outline-width: 0.1rem;
+		outline-offset: 0.2rem;
+	}
+
+	html.preload,
+	html.preload *,
+	html.preload::after,
+	html.preload *::after,
+	html.preload::before,
+	html.preload *::before {
+		transition: none !important;
+	}
+
+	html {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+		background-color: rgb(var(--bg-color-dark));
+		font-family:
+			Inter,
+			ui-sans-serif,
+			system-ui,
+			-apple-system,
+			BlinkMacSystemFont,
+			Segoe UI,
+			Roboto,
+			Helvetica Neue,
+			Arial,
+			Noto Sans,
+			sans-serif,
+			"Apple Color Emoji",
+			"Segoe UI Emoji",
+			Segoe UI Symbol,
+			"Noto Color Emoji";
+	}
+
+	html::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		z-index: -999;
+		background-color: rgb(var(--bg-color-light));
+	}
+
+	html::after {
+		content: "";
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.5;
+		z-index: -998;
+		background-image: radial-gradient(
+			circle at 150% 150%,
+			rgba(var(--bg-color-inverse), 1) 0%,
+			rgba(var(--bg-color-inverse), 0.75) 25%,
+			rgba(var(--bg-color-inverse), 0.5) 50%,
+			rgba(var(--bg-color-inverse), 0) 75%
+		);
+	}
+
+	html.dark::after {
+		opacity: 0.3;
+	}
+
+	/* https://antfu.me/posts/sliding-enter-animation */
+	@keyframes slide-enter {
+		0% {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.slide-enter,
+		.slide-enter-content > * {
+			--stagger: 0;
+			--delay: 90ms;
+			--start: 0ms;
+			animation: slide-enter 0.6s both 1;
+			animation-delay: calc(var(--start) + var(--stagger) * var(--delay));
+		}
+
+		.slide-enter-content > *:nth-child(1) {
+			--stagger: 1 !important;
+		}
+		.slide-enter-content > *:nth-child(2) {
+			--stagger: 2 !important;
+		}
+		.slide-enter-content > *:nth-child(3) {
+			--stagger: 3 !important;
+		}
+		.slide-enter-content > *:nth-child(4) {
+			--stagger: 4 !important;
+		}
+		.slide-enter-content > *:nth-child(5) {
+			--stagger: 5 !important;
+		}
+		.slide-enter-content > *:nth-child(6) {
+			--stagger: 6 !important;
+		}
+		.slide-enter-content > *:nth-child(7) {
+			--stagger: 7 !important;
+		}
+		.slide-enter-content > *:nth-child(8) {
+			--stagger: 8 !important;
+		}
+		.slide-enter-content > *:nth-child(9) {
+			--stagger: 9 !important;
+		}
+		.slide-enter-content > *:nth-child(10) {
+			--stagger: 10 !important;
+		}
+		.slide-enter-content > *:nth-child(11) {
+			--stagger: 11 !important;
+		}
+		.slide-enter-content > *:nth-child(12) {
+			--stagger: 12 !important;
+		}
+		.slide-enter-content > *:nth-child(13) {
+			--stagger: 13 !important;
+		}
+		.slide-enter-content > *:nth-child(14) {
+			--stagger: 14 !important;
+		}
+		.slide-enter-content > *:nth-child(15) {
+			--stagger: 15 !important;
+		}
+		.slide-enter-content > *:nth-child(16) {
+			--stagger: 16 !important;
+		}
+		.slide-enter-content > *:nth-child(17) {
+			--stagger: 17 !important;
+		}
+		.slide-enter-content > *:nth-child(18) {
+			--stagger: 18 !important;
+		}
+		.slide-enter-content > *:nth-child(19) {
+			--stagger: 19 !important;
+		}
+		.slide-enter-content > *:nth-child(20) {
+			--stagger: 20 !important;
+		}
+	}
+</style>

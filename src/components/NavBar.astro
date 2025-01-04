@@ -1,9 +1,9 @@
 ---
-import Logo from "./Logo.astro";
 import DarkModeToggle from "./DarkModeToggle.astro";
+import Logo from "@public/logo.svg?raw";
 ---
 
-<header>
+<header class="print:hidden">
 	<nav class="w-full h-20 px-7 overflow-hidden flex justify-between sticky top-0">
 		<div class="flex items-center">
 			<a
@@ -16,11 +16,15 @@ import DarkModeToggle from "./DarkModeToggle.astro";
 			</a>
 
 			<a href="/" title="Home" class="btn-link" data-trail-cursor data-trail-cursor-padding>
-				<Logo />
+				<Fragment set:html={Logo} />
 			</a>
 		</div>
 
 		<div class="flex items-center gap-4">
+			<a href="/cv" title="CV" class="btn-link" data-trail-cursor data-trail-cursor-padding>
+				<span class="lt-md:hidden"> CV </span>
+				<span class="i-myicons-cv md:hidden"></span>
+			</a>
 			<a
 				href="/projects"
 				title="Projects"

@@ -1,15 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import WifiQRIcon from "@public/wifi-qr-icon.svg?raw";
 
-type RawIcon = (props: astroHTML.JSX.SVGAttributes) => astroHTML.JSX.Element;
 
 interface Projects {
 	[key: string]: {
 		name: string;
 		description: string;
 		url: string;
-		icon: RawIcon | string | string[];
+		icon:  string | string[];
 		class?: string;
 	}[];
 }
@@ -62,7 +60,7 @@ const projects: Projects = {
 			name: "wifi-qr",
 			description: "A small Windows utiliy to show a QR code for the stored WiFi connections",
 			url: "https://github.com/amrbashir/wifi-qr",
-			icon: WifiQRIcon,
+			icon: 'i-myicons-wifi-qr',
 		},
 	],
 	Miscellaneous: [
