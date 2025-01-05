@@ -4,16 +4,15 @@ import Layout from "./Layout.astro";
 interface Props {
 	frontmatter: {
 		title?: string;
+		description?: string;
 		showFooterGoBack?: boolean;
 		backUrl?: string;
 	};
 }
-const {
-	frontmatter: { title, showFooterGoBack, backUrl },
-} = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
-<Layout title={title} showFooterGoBack={showFooterGoBack} backUrl={backUrl}>
+<Layout {...frontmatter}>
 	<article class="prose slide-enter-content m-auto text-dark/75 dark:text-light/75">
 		<slot />
 	</article>
