@@ -13,7 +13,7 @@ description: "Amr Bashir's CV"
 
 # Amr Bashir
 
-> Full-stack Web and Desktop Software Engineer
+> Senior Software Engineer
 
 > Passionate about customizing systems and exploring new technologies,
 > continually seeking to innovate and expand my expertise.
