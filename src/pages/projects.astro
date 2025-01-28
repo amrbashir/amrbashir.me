@@ -50,6 +50,12 @@ const projects: Projects = {
 	],
 	Applications: [
 		{
+			name: "kal",
+			description: "App launcher and productivity tool for Windows",
+			url: "https://github.com/amrbashir/kal",
+			icon: 'i-ri-keyboard-line',
+		},
+		{
 			name: "hijri-widget",
 			description: "Minimal Android widget for displaying Hijri date",
 			url: "https://github.com/amrbashir/hijri-widget",
@@ -64,6 +70,12 @@ const projects: Projects = {
 		},
 	],
 	Miscellaneous: [
+		{
+			name: "amrbashir.me",
+			description: "This website, built using Astro",
+			url: "https://github.com/amrbashir/amrbashir.me",
+			icon: 'i-myicons-logo',
+		},
 		{
 			name: "nvim-docs-view",
 			description: "A neovim plugin to display lsp hover documentation in a side panel",
@@ -100,7 +112,7 @@ const projects: Projects = {
 								href={p.url}
 								target="_blank"
 								title={p.name}
-								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2"
+								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2 items-center"
 								data-trail-cursor
 							>
 								<div class="flex justify-center items-center opacity-60" class:list={p.class}>
