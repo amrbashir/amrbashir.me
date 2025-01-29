@@ -43,7 +43,7 @@ description: "Amr Bashir's CV"
 - [Tauri](https://tauri.app) (_Since 2021_) - Core working-group member and maintainer.
   Tauri is a framework to build cross-platform application using web technologies.
 - [Hijri Widget](https://github.com/amrbashir/hijri-widget) - Android widget application for displaying The Hijri date.
-- [kal](https://github.com/amrbashir/kal) - Keyboard app launcher and productivity tool for Windows.
+- [kal](https://github.com/amrbashir/kal) - Keyboard-driven app launcher and productivity tool for Windows.
 - [vite-plugin-tauri](https://github.com/amrbashir/vite-plugin-tauri) - A Vite plugin to integrate Tauri in an existing Vite project to build cross-platform apps.
 - [amrbashir.me](https://github.com/amrbashir/amrbashir.me) - My personal website using Astro.
 
