@@ -12,7 +12,7 @@ description: "Amr Bashir's CV"
 
 # Amr Bashir
 
-> Senior Software Engineer
+> Fullstack Software Engineer
 
 > Passionate about customizing systems and exploring new technologies,
 > continually seeking to innovate and expand my expertise.
@@ -25,7 +25,7 @@ description: "Amr Bashir's CV"
 
 ### Work Experience
 
-- [CrabNebula](https://crabnebula.dev/) (_Nov 2022 - Nov 2024_) - Senior Software Engineer:
+- [CrabNebula](https://crabnebula.dev/) (_Nov 2022 - Nov 2024_) - R&D Software Engineer:
 
     - Maintained the Tauri project as part of the R&D team ensuring robust performance and stability.
       Gaining a lot of knowledge about operating system APIs especially Windows, X11 and GTK.
