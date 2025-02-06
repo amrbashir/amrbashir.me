@@ -28,7 +28,7 @@ const finalDescription = description ?? "Amr Bashir's Portfolio";
 if (import.meta.env.PROD) {
 	// breakline every 30 chars
 	// https://github.com/antfu/antfu.me/blob/e1c316863c2cf8d649274b872a3229e971c505b5/vite.config.ts#L247
-	const lines = (title ?? "an open source enthusiastic")
+	const lines = (title ?? "an open source enthusiast")
 		.split(/(.{0,30})(?:\s|$)/g)
 		.filter(Boolean);
 	const ogTemplate = ogTemplateRaw
