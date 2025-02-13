@@ -1,13 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
-
 interface Projects {
 	[key: string]: {
 		name: string;
 		description: string;
 		url: string;
-		icon:  string | string[];
+		icon: string | string[];
 		class?: string;
 	}[];
 }
@@ -16,57 +15,62 @@ const projects: Projects = {
 	Tauri: [
 		{
 			name: "tauri",
-			description: "Build smaller, faster, and more secure desktop and mobile applications with a web frontend",
+			description:
+				"Build smaller, faster, and more secure desktop and mobile applications with a web frontend",
 			url: "https://github.com/tauri-apps/tauri",
-			icon: 'i-simple-icons-tauri',
+			icon: "i-simple-icons-tauri",
 		},
 		{
 			name: "create-tauri-app",
 			description: "Rapidly scaffold out a new tauri app project",
 			url: "https://github.com/tauri-apps/create-tauri-app",
-			icon: 'i-simple-icons-tauri',
+			icon: "i-simple-icons-tauri",
 		},
 		{
 			name: "vite-plugin-tauri",
 			description: "Integrate Tauri in a Vite project to build cross-platform apps",
 			url: "https://github.com/amrbashir/vite-plugin-tauri",
-			icon: ['i-simple-icons-vite', 'i-simple-icons-tauri'],
+			icon: ["i-simple-icons-vite", "i-simple-icons-tauri"],
 		},
 		{
 			name: "muda",
 			description: "Menu Utilities for Desktop Applications in Rust",
 			url: "https://github.com/tauri-apps/muda",
-			icon: 'i-simple-icons-tauri',
-
+			icon: "i-simple-icons-tauri",
 		},
 		{
 			name: "tray-icon",
 			description: "Tray icons for Desktop Applications in Rust",
 			url: "https://github.com/tauri-apps/tray-icon",
-			icon: 'i-simple-icons-tauri',
-
+			icon: "i-simple-icons-tauri",
 		},
-
 	],
 	Applications: [
 		{
 			name: "kal",
 			description: "App launcher and productivity tool for Windows",
 			url: "https://github.com/amrbashir/kal",
-			icon: 'i-ri-keyboard-line',
+			icon: "i-ri-keyboard-line",
+		},
+		{
+			name: "komorebi-switcher",
+			description:
+				"A minimal workspace switcher for the Komorebi tiling window manager, seamlessly integrated into Windows 10/11 taskbar",
+			url: "https://github.com/amrbashir/komorebi-switcher",
+			icon: "i-carbon-workspace",
 		},
 		{
 			name: "hijri-widget",
 			description: "Minimal Android widget for displaying Hijri date",
 			url: "https://github.com/amrbashir/hijri-widget",
-			icon: 'i-ri-moon-line',
+			icon: "i-ri-moon-line",
 			class: "scale-x--100",
 		},
 		{
 			name: "wifi-qr",
 			description: "A small Windows utiliy to show a QR code for the stored WiFi connections",
 			url: "https://github.com/amrbashir/wifi-qr",
-			icon: 'i-myicons-wifi-qr',
+			icon: "i-myicons-wifi-qr",
 		},
 	],
 	Miscellaneous: [
@@ -74,19 +78,19 @@ const projects: Projects = {
 			name: "amrbashir.me",
 			description: "This website, built using Astro",
 			url: "https://github.com/amrbashir/amrbashir.me",
-			icon: 'i-myicons-logo',
+			icon: "i-myicons-logo",
 		},
 		{
 			name: "nvim-docs-view",
 			description: "A neovim plugin to display lsp hover documentation in a side panel",
 			url: "https://github.com/amrbashir/nvim-docs-view",
-			icon: 'i-simple-icons-neovim',
+			icon: "i-simple-icons-neovim",
 		},
 		{
 			name: "nsis-plugin-rs",
 			description: "A template for writing an NSIS dll plugin in Rust ",
 			url: "https://github.com/amrbashir/nsis-plugin-rs",
-			icon: 'i-simple-icons-nsis',
+			icon: "i-simple-icons-nsis",
 		},
 	],
 };
@@ -98,16 +102,16 @@ const projects: Projects = {
 		<br />
 		<p class="opacity-60 italic">Projects that I created or maintaining</p>
 		<br />
-		<div class="separator w-20ch m-auto"/>
+		<div class="separator w-20ch m-auto"></div>
 		<br />
 
 		{
 			Object.entries(projects).map(([category, projects]) => (
-				<h2 class="opacity-60 font-800 italic text-xl">{category}</h2>
-				<br />
-				<div class="max-w-65ch slide-enter-content m-auto grid sm:grid-cols-2">
-					{
-						projects.map((p) =>(
+				<>
+					<h2 class="opacity-60 font-800 italic text-xl">{category}</h2>
+					<br />
+					<div class="max-w-65ch slide-enter-content m-auto grid sm:grid-cols-2">
+						{projects.map((p) => (
 							<a
 								href={p.url}
 								target="_blank"
@@ -115,26 +119,31 @@ const projects: Projects = {
 								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2 items-center"
 								data-trail-cursor
 							>
-								<div class="flex justify-center items-center opacity-60" class:list={p.class}>
-									{
-										Array.isArray(p.icon)
-											? (<div class="flex first:children:(translate-y--50% translate-x--50%)">
-												{p.icon.map(icon => <span class="scale-200" class:list={icon} />)}
-											   </div>)
-											: typeof p.icon === "string" && p.icon.includes('>')
-												? <Fragment set:html={p.icon} />
-												: (<span class="scale-200" class:list={p.icon} />)
-									}
+								<div
+									class="flex justify-center items-center opacity-60"
+									class:list={p.class}
+								>
+									{Array.isArray(p.icon) ? (
+										<div class="flex first:children:(translate-y--50% translate-x--50%)">
+											{p.icon.map((icon) => (
+												<span class="scale-200" class:list={icon} />
+											))}
+										</div>
+									) : typeof p.icon === "string" && p.icon.includes(">") ? (
+										<Fragment set:html={p.icon} />
+									) : (
+										<span class="scale-200" class:list={p.icon} />
+									)}
 								</div>
 								<div>
 									<div class="text-xl">{p.name}</div>
 									<div class="opacity-60 text-sm">{p.description}</div>
 								</div>
 							</a>
-						))
-					}
-				</div>
-				<br />
+						))}
+					</div>
+					<br />
+				</>
 			))
 		}
 	</div>

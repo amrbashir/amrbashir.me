@@ -44,6 +44,7 @@ description: "Amr Bashir's CV"
   Tauri is a framework to build cross-platform application using web technologies.
 - [Hijri Widget](https://github.com/amrbashir/hijri-widget) - Android widget application for displaying The Hijri date.
 - [kal](https://github.com/amrbashir/kal) - Keyboard-driven app launcher and productivity tool for Windows.
+- [komorebi-switcher](https://github.com/amrbashir/komorebi-switcher) - A minimal workspace switcher for the Komorebi tiling window manager, seamlessly integrated into Windows 10/11 taskbar..
 - [vite-plugin-tauri](https://github.com/amrbashir/vite-plugin-tauri) - A Vite plugin to integrate Tauri in an existing Vite project to build cross-platform apps.
 - [amrbashir.me](https://github.com/amrbashir/amrbashir.me) - My personal website using Astro.
 

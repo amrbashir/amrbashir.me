@@ -19,7 +19,7 @@
 			width: number = CIRCLE_RADIUS * 2,
 			height: number = CIRCLE_RADIUS * 2,
 			radius: number | string = CIRCLE_RADIUS * 2,
-			zIndex: string = "999"
+			zIndex: string = "999",
 		) {
 			circle.style.setProperty("--circle-x", `${x}px`);
 			circle.style.setProperty("--circle-y", `${y}px`);
@@ -27,7 +27,7 @@
 			circle.style.setProperty("--circle-height", `${height}px`);
 			circle.style.setProperty(
 				"--circle-radius",
-				typeof radius === "string" ? radius : `${radius}px`
+				typeof radius === "string" ? radius : `${radius}px`,
 			);
 			circle.style.setProperty("--circle-z-index", zIndex);
 		}
@@ -73,7 +73,7 @@
 						rect.width + padding * 2,
 						rect.height + padding * 2,
 						radius,
-						zIndex
+						zIndex,
 					);
 				} else {
 					circle.style.display = "none";

@@ -16,13 +16,13 @@ const icons = () =>
 			width: "1.2em",
 			"vertical-align": "text-bottom",
 		},
+		/* prettier-ignore */
 		collections: {
 			myicons: FileSystemIconLoader("./src/assets/icons"),
-
 			devicon: () => import("@iconify-json/devicon").then((i) => i.default as any),
+			carbon: () => import("@iconify-json/carbon").then((i) => i.default as any),
 			ri: () => import("@iconify-json/ri").then((i) => i.default as any),
-			"simple-icons": () =>
-				import("@iconify-json/simple-icons").then((i) => i.default as any),
+			"simple-icons": () => import("@iconify-json/simple-icons").then((i) => i.default as any),
 			"skill-icons": () => import("@iconify-json/skill-icons").then((i) => i.default as any),
 		},
 	});
