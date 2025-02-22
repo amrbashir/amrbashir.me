@@ -22,7 +22,7 @@ const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
 const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
 const ogImage = `https://amrbashir.me/og/${ogFileName}`;
 
-const finalTitle = `${title ? title + " · " : ""}Amr Bashir`;
+const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
 const finalDescription = description ?? "Amr Bashir's Portfolio";
 
 if (import.meta.env.PROD) {
@@ -50,7 +50,7 @@ if (import.meta.env.PROD) {
 	// transitions are disabled by default on loading using `preload` class
 	// once the page is loaded i.e dark/light mode have applied
 	window.addEventListener("DOMContentLoaded", () =>
-		setTimeout(() => document.documentElement.classList.remove("preload"), 100),
+		setTimeout(() => document.documentElement.classList.remove("preload"), 100)
 	);
 </script>
 
