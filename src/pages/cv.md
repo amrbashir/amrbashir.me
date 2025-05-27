@@ -30,7 +30,7 @@ description: "Amr Bashir's CV"
     - Maintained the Tauri project as part of the R&D team ensuring robust performance and stability.
       Gaining a lot of knowledge about operating system APIs especially Windows, X11 and GTK.
 
-    - Worked on a scalable cloud platform using Rust and MongoDB in the backend and SolidJS in the frontend
+    - Worked on a scalable cloud platform using Rust (Axum & Rspc) and MongoDB in the backend and SolidJS in the frontend
       and leveraging the Ory suite (kratos, hydra and keto) for user management and OAuth.
 
 - Freelancing POS mobile app (_Mar 2022 - Jun 2022_):
