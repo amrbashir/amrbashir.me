@@ -25,13 +25,19 @@ description: "Amr Bashir's CV"
 
 ### Work Experience
 
+- [Altera Al](https://github.com/lyfegame/) (_Mar 2025 - May 2025_) - Windows Developer Freelancer
+
+    - Implemented various Windows features into a Tauri app, including interfacing with
+      Microsoft Excel though COM APIs.
+
 - [CrabNebula](https://crabnebula.dev/) (_Nov 2022 - Nov 2024_) - R&D Software Engineer:
 
     - Maintained the Tauri project as part of the R&D team ensuring robust performance and stability.
       Gaining a lot of knowledge about operating system APIs especially Windows, X11 and GTK.
 
-    - Worked on a scalable cloud platform using Rust (Axum & Rspc) and MongoDB in the backend and SolidJS in the frontend
-      and leveraging the Ory suite (kratos, hydra and keto) for user management and OAuth.
+    - Worked on a scalable cloud platform using Rust (Axum & Rspc) and MongoDB in the backend and SolidJS in the frontend.
+        - Implemented multiple endpoints with respective UI
+        - Contributed to user management specifically permissions and capabilities using the Ory suite (kratos, hydra and keto).
 
 - Freelancing POS mobile app (_Mar 2022 - Jun 2022_):
 
@@ -52,15 +58,15 @@ description: "Amr Bashir's CV"
 
 ##### _Programming Languages_
 
-Rust, JavaScript/TypeScript, PowerShell, Bash, Kotlin, C/C++, Python, Dart
+JavaScript/TypeScript, Rust, PowerShell, Bash, Kotlin, C/C++, Python, Dart
 
 ##### _Back-end Technologies_
 
-Axum, MongoDB, SQLite, Docker, Node.js, Deno, GitHub Actions, Cloudflare Workers
+Node.js, Express.js, Prisma, Postgres, NestJS, Axum, MongoDB, SQLite, Docker, Deno, GitHub Actions, Cloudflare Workers
 
 ##### _Front-end Frameworks_
 
-Vue.js, SolidJS, React, Astro
+React, Vue.js, SolidJS, Astro
 
 ##### _Desktop applications Technologies_
 
