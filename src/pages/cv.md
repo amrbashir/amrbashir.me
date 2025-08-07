@@ -25,6 +25,11 @@ description: "Amr Bashir's CV"
 
 ### Work Experience
 
+- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025) - Fullstack freelancer
+	- Implemented an erp-system to manage storage, invoices, customers and transactions for a local store in Egypt. Built in public and hosted on Deno Deploy.
+	- Backend is built using tRPC for type-safe APIs and PostgresSQL through Prisma for type-safe database access.
+	- Frontend is built in React with Vite, TanStack Router for type-safe routing, TanStack Query and tRPC for end-to-end type-safe API communication,  and i18next for internationalization.
+
 - [Altera Al](https://github.com/lyfegame/) (_Mar 2025 - May 2025_) - Windows Developer Freelancer
 
     - Implemented various Windows features into a Tauri app, including interfacing with
@@ -62,7 +67,7 @@ JavaScript/TypeScript, Rust, PowerShell, Bash, Kotlin, C/C++, Python, Dart
 
 ##### _Back-end Technologies_
 
-Node.js, Express.js, Prisma, Postgres, NestJS, Axum, MongoDB, SQLite, Docker, Deno, GitHub Actions, Cloudflare Workers
+Node.js, Express.js, Prisma, Postgres, tRPC, NestJS, Axum, MongoDB, SQLite, Docker, Deno, GitHub Actions, Cloudflare Workers
 
 ##### _Front-end Frameworks_
 
