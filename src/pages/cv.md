@@ -25,7 +25,7 @@ description: "Amr Bashir's CV"
 
 ### Work Experience
 
-- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025) - Fullstack freelancer
+- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025_) - Fullstack freelancer
 	- Implemented an erp-system to manage storage, invoices, customers and transactions for a local store in Egypt. Built in public and hosted on Deno Deploy.
 	- Backend is built using tRPC for type-safe APIs and PostgresSQL through Prisma for type-safe database access.
 	- Frontend is built in React with Vite, TanStack Router for type-safe routing, TanStack Query and tRPC for end-to-end type-safe API communication,  and i18next for internationalization.
