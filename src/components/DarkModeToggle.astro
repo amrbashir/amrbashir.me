@@ -88,6 +88,15 @@
 	}
 
 	html::before {
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		z-index: -999;
+		background-color: rgb(var(--bg-color-light));
+
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
 		transition: clip-path 400ms ease-out;
 	}

@@ -114,6 +114,7 @@ if (import.meta.env.PROD) {
 		--bg-color-inverse: var(--bg-color-light);
 	}
 
+	/* Focus outline for accessibility */
 	*:focus-visible {
 		outline-color: currentColor;
 		outline-style: solid;
@@ -121,6 +122,7 @@ if (import.meta.env.PROD) {
 		outline-offset: 0.2rem;
 	}
 
+	/* Disable transitions until page is loaded */
 	html.preload,
 	html.preload *,
 	html.preload::after,
@@ -153,17 +155,7 @@ if (import.meta.env.PROD) {
 			"Noto Color Emoji";
 	}
 
-	html::before {
-		content: "";
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		position: fixed;
-		z-index: -999;
-		background-color: rgb(var(--bg-color-light));
-	}
-
+	/* Background gradient bottom right */
 	html::after {
 		content: "";
 		position: fixed;
@@ -181,7 +173,6 @@ if (import.meta.env.PROD) {
 			rgba(var(--bg-color-inverse), 0) 75%
 		);
 	}
-
 	html.dark::after {
 		opacity: 0.3;
 	}
@@ -271,9 +262,7 @@ if (import.meta.env.PROD) {
 		}
 	}
 
-	a.heading-link::before {
-		position: relative;
-	}
+	/* Show (#) before headings (h1, h2) */
 	a.heading-link::before {
 		content: "#";
 		position: absolute;
