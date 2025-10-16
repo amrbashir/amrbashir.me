@@ -1,5 +1,6 @@
 <script>
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
+	const metaThemeColorTag = document.querySelector('meta[name="theme-color"]');
 
 	const isDarkMode = (): boolean => {
 		const theme = localStorage.getItem("theme");
@@ -7,13 +8,13 @@
 	};
 
 	const changeHtmlTheme = (isDark: boolean) => {
+		// change html class
 		isDark
 			? document.documentElement.classList.add("dark")
 			: document.documentElement.classList.remove("dark");
 
-		document
-			.querySelector('meta[name="theme-color"]')
-			?.setAttribute("content", isDark ? "#000000" : "#eaebe6");
+		// update theme-color meta tag
+		metaThemeColorTag?.setAttribute("content", isDark ? "#000000" : "#eaebe6");
 	};
 
 	const calculateEndRadius = (): Number => {
@@ -42,26 +43,19 @@
 
 	const toggleDarkMode = () => {
 		const isDark = isDarkMode();
-
 		changeHtmlTheme(!isDark);
-
 		changeBgClipRadius(!isDark);
-
 		localStorage.setItem("theme", isDark ? "light" : "dark");
 	};
 
 	// setup dark mode toggle handlers
 	darkModeToggle?.addEventListener("click", toggleDarkMode);
 	darkModeToggle?.addEventListener("keypress", (e) => {
-		if (e.key === "Enter") {
-			toggleDarkMode();
-		}
+		if (e.key === "Enter") toggleDarkMode();
 	});
 
-	window.addEventListener("resize", () => {
-		const isDark = isDarkMode();
-		changeBgClipRadius(isDark);
-	});
+	// recalculate clip radius on resize
+	window.addEventListener("resize", () => changeBgClipRadius(isDarkMode()));
 
 	// change dark mode on mount
 	const isDark = isDarkMode();
