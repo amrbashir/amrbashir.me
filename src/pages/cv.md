@@ -25,15 +25,16 @@ description: "Amr Bashir's CV"
 
 ### Work Experience
 
-- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025_) - Fullstack freelancer
+- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025_) - Fullstack Engineer - Freelance
 	- Implemented an erp-system to manage storage, invoices, customers and transactions for a local store in Egypt. Built in public and hosted on Deno Deploy.
 	- Backend is built using tRPC for type-safe APIs and PostgresSQL through Prisma for type-safe database access.
 	- Frontend is built in React with Vite, TanStack Router for type-safe routing, TanStack Query and tRPC for end-to-end type-safe API communication,  and i18next for internationalization.
 
-- [Altera Al](https://github.com/lyfegame/) (_Mar 2025 - May 2025_) - Windows Developer Freelancer
+- [CrabNebula](https://crabnebula.dev/) (_Mar 2025 - Apr 2025_) - Windows Software Engineer - Freelance
 
-    - Implemented various Windows features into a Tauri app, including interfacing with
-      Microsoft Excel though COM APIs.
+    - Implemented various Windows features into a Tauri app, including:
+        - Interfacing with Microsoft Excel though COM APIs.
+        - Integrate the app into the Windows OS to show as a sidebar for the whole OS (kinda like a second taskbar).
 
 - [CrabNebula](https://crabnebula.dev/) (_Nov 2022 - Nov 2024_) - R&D Software Engineer:
 
@@ -53,7 +54,7 @@ description: "Amr Bashir's CV"
 
 - [Tauri](https://tauri.app) (_Since 2021_) - Core working-group member and maintainer.
   Tauri is a framework to build cross-platform application using web technologies.
-- [Hijri Widget](https://github.com/amrbashir/hijri-widget) - Android widget application for displaying The Hijri date.
+- [Hijri Widget](https://github.com/amrbashir/hijri-widget) - Android widget application for displaying The Hijri date with 2K active users.
 - [kal](https://github.com/amrbashir/kal) - Keyboard-driven app launcher and productivity tool for Windows.
 - [komorebi-switcher](https://github.com/amrbashir/komorebi-switcher) - A minimal workspace switcher for the Komorebi tiling window manager, seamlessly integrated into Windows 10/11 taskbar..
 - [vite-plugin-tauri](https://github.com/amrbashir/vite-plugin-tauri) - A Vite plugin to integrate Tauri in an existing Vite project to build cross-platform apps.
