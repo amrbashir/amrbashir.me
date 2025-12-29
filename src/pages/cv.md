@@ -8,91 +8,71 @@ description: "Amr Bashir's CV"
 	<span class="i-ri-arrow-down-line"></span> Download as PDF
 </a>
 
-<img src="/portrait.webp" alt="portrait" width="150" height="150" style="border-radius: 50%" class="ml-2px" align="right"/>
+<img src="/portrait.webp" alt="portrait" width="150" height="150" style="border-radius: 50%" class="print:hidden ml-2px" align="right"/>
 
 # Amr Bashir
 
-> Fullstack Software Engineer
+**Fullstack Software Engineer**
 
-> Passionate about customizing systems and exploring new technologies,
-> continually seeking to innovate and expand my expertise.
+Passionate about customizing systems and exploring new technologies, continually seeking to innovate and expand expertise.
 
-### Contact information
+## Contact Information
 
-- Website: https://amrbashir.me
-- E-mail: contact@amrbashir.me
-- Location: [Tanta, Egypt](https://maps.app.goo.gl/w8qBz34YJ8f9XPMH8)
+- **Website:** [amrbashir.me](https://amrbashir.me)
+- **E-mail:** [contact@amrbashir.me](mailto:contact@amrbashir.me)
+- **Location:** Tanta, Egypt
 
-### Work Experience
+## Work Experience
 
-- [erp-system](https://erp-system.amrbashir.me) (_June 2025 - July 2025_) - Fullstack Engineer - Freelance
-	- Implemented an erp-system to manage storage, invoices, customers and transactions for a local store in Egypt. Built in public and hosted on Deno Deploy.
-	- Backend is built using tRPC for type-safe APIs and PostgresSQL through Prisma for type-safe database access.
-	- Frontend is built in React with Vite, TanStack Router for type-safe routing, TanStack Query and tRPC for end-to-end type-safe API communication,  and i18next for internationalization.
+**erp-system** _(June 2025 - July 2025)_ — Fullstack Engineer, Freelance
 
-- [CrabNebula](https://crabnebula.dev/) (_Mar 2025 - Apr 2025_) - Windows Software Engineer - Freelance
+- Implemented ERP system for local store in Egypt (storage, invoices, customers, transactions)
+- Backend: tRPC, PostgreSQL, Prisma
+- Frontend: React, Vite, TanStack Router, TanStack Query, tRPC, i18next
 
-    - Implemented various Windows features into a Tauri app, including:
-        - Interfacing with Microsoft Excel though COM APIs.
-        - Integrate the app into the Windows OS to show as a sidebar for the whole OS (kinda like a second taskbar).
+**CrabNebula** _(Mar 2025 - Apr 2025)_ — Windows Software Engineer, Freelance
 
-- [CrabNebula](https://crabnebula.dev/) (_Nov 2022 - Nov 2024_) - R&D Software Engineer:
+- Added Windows features to Tauri app
+- Interfaced with Microsoft Excel via COM APIs
+- Integrated app as OS-wide sidebar
 
-    - Maintained the Tauri project as part of the R&D team ensuring robust performance and stability.
-      Gaining a lot of knowledge about operating system APIs especially Windows, X11 and GTK.
+**CrabNebula** _(Nov 2022 - Nov 2024)_ — R&D Software Engineer
 
-    - Worked on a scalable cloud platform using Rust (Axum & Rspc) and MongoDB in the backend and SolidJS in the frontend.
-        - Implemented multiple endpoints with respective UI
-        - Contributed to user management specifically permissions and capabilities using the Ory suite (kratos, hydra and keto).
+- Maintained Tauri project for performance and stability
+- Gained experience with Windows, X11, GTK APIs
+- Developed scalable cloud platform (Rust, Axum, Rspc, MongoDB, SolidJS)
+- Implemented endpoints and UI
+- Contributed to user management (Ory suite: kratos, hydra, keto)
 
-- Freelancing POS mobile app (_Mar 2022 - Jun 2022_):
+**Freelancing POS mobile app** _(Mar 2022 - Jun 2022)_
 
-    - Developed a Flutter Point of Sale (POS) system/application with an admin dashboard for iOS and Android.
-    - The system included local server, database and communication between different devices.
+- Developed Flutter POS system for iOS/Android with admin dashboard
+- Built local server, database, device communication
 
-### Open-source Experience
+## Open-source Experience
 
-- [Tauri](https://tauri.app) (_Since 2021_) - Core working-group member and maintainer.
-  Tauri is a framework to build cross-platform application using web technologies.
-- [Hijri Widget](https://github.com/amrbashir/hijri-widget) - Android widget application for displaying The Hijri date with 2K active users.
-- [kal](https://github.com/amrbashir/kal) - Keyboard-driven app launcher and productivity tool for Windows.
-- [komorebi-switcher](https://github.com/amrbashir/komorebi-switcher) - A minimal workspace switcher for the Komorebi tiling window manager, seamlessly integrated into Windows 10/11 taskbar..
-- [vite-plugin-tauri](https://github.com/amrbashir/vite-plugin-tauri) - A Vite plugin to integrate Tauri in an existing Vite project to build cross-platform apps.
-- [amrbashir.me](https://github.com/amrbashir/amrbashir.me) - My personal website using Astro.
+- **Tauri** (since 2021): Core working-group member, maintainer. Cross-platform app framework.
+- **Hijri Widget**: Android widget for Hijri date (2K users)
+- **kal**: Keyboard-driven app launcher for Windows
+- **komorebi-switcher**: Workspace switcher for Komorebi tiling WM, Windows 10/11
+- **vite-plugin-tauri**: Vite plugin for Tauri integration
+- **amrbashir.me**: Personal website (Astro)
 
-### Skills
+## Skills
 
-##### _Programming Languages_
+- **Programming Languages:** JavaScript, TypeScript, Rust, PowerShell, Bash, Kotlin, C, C++, Python, Dart
+- **Back-end:** Node.js, Express.js, Prisma, Postgres, tRPC, NestJS, Axum, MongoDB, SQLite, Docker, Deno, GitHub Actions, Cloudflare Workers
+- **Front-end:** React, Vue.js, SolidJS, Astro
+- **Desktop:** Tauri, Electron, Win32, GTK
+- **Mobile:** Kotlin, Jetpack Compose, Dart, Flutter
+- **Design:** Figma, Adobe Photoshop, Adobe Illustrator, Inkscape
 
-JavaScript/TypeScript, Rust, PowerShell, Bash, Kotlin, C/C++, Python, Dart
+## Education
 
-##### _Back-end Technologies_
+- **Bachelor in English Literature**, 2016 - 2020
+  Faculty of Languages and Translation, Al-Azhar University
 
-Node.js, Express.js, Prisma, Postgres, tRPC, NestJS, Axum, MongoDB, SQLite, Docker, Deno, GitHub Actions, Cloudflare Workers
-
-##### _Front-end Frameworks_
-
-React, Vue.js, SolidJS, Astro
-
-##### _Desktop applications Technologies_
-
-Tauri, Electron, Win32, GTK
-
-##### _Mobile applications Technologies_
-
-Kotlin and Jetpack Compose, Dart and Flutter
-
-##### _Design Skills_
-
-Figma, Adobe Photoshop, Adobe Illustrator, Inkscape
-
-### Education
-
-- Bachelor in English Literature (_2016 - 2020_)
-
-    Faculty of Languages ​and Translation, Al-Azhar University
-
-### Languages
+## Languages
 
 - Arabic (Native)
 - English (Fluent)
