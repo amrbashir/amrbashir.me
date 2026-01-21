@@ -53,7 +53,6 @@ Passionate about customizing systems and exploring new technologies, continually
 
 - **Tauri** (since 2021): Core working-group member, maintainer. Cross-platform app framework.
 - **Hijri Widget**: Android widget for Hijri date (2K users)
-- **kal**: Keyboard-driven app launcher for Windows
 - **komorebi-switcher**: Workspace switcher for Komorebi tiling WM, Windows 10/11
 - **vite-plugin-tauri**: Vite plugin for Tauri integration
 - **amrbashir.me**: Personal website (Astro)
