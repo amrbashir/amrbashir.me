@@ -4,27 +4,27 @@
       <path d="M45.514 22.46a20.642 20.642 0 0 0-20.688 20.688v425.704a20.642 20.642 0 0 0 20.688 20.687h420.972a20.642 20.642 0 0 0 20.688-20.687V43.148a20.642 20.642 0 0 0-20.688-20.687z" style="stroke-width:1.33534"/>
     </clipPath>
   </defs>
-  <path d="M45.514 22.46a20.642 20.642 0 0 0-20.688 20.688v425.704a20.642 20.642 0 0 0 20.688 20.687h420.972a20.642 20.642 0 0 0 20.688-20.687V43.148a20.642 20.642 0 0 0-20.688-20.687z" style="fill:#00000000;stroke:#fff;stroke-width:1.33534;fill-opacity:1"/>
+  <path d="M45.514 22.46a20.642 20.642 0 0 0-20.688 20.688v425.704a20.642 20.642 0 0 0 20.688 20.687h420.972a20.642 20.642 0 0 0 20.688-20.687V43.148a20.642 20.642 0 0 0-20.688-20.687z" style="fill:#00000000;stroke:currentColor;stroke-width:4;fill-opacity:1"/>
   <g clip-path="url(#a)">
-    <path d="M24.826 22.461h115.587v101.667H24.826z" style="fill:#ffffff20;stroke-width:.965294;fill-opacity:1"/>
-    <path d="M140.413 22.461H256v101.667H140.413z" style="fill:#ffffff50;fill-opacity:1;stroke-width:.965294"/>
-    <path d="M256 22.461h115.587v101.667H256z" style="fill:#ffffffaa;fill-opacity:1;stroke-width:.965294"/>
-    <path d="M371.587 22.461h115.587v101.667H371.587z" style="fill:#ffffffff;fill-opacity:1;stroke-width:.965294"/>
+    <path d="M24.826 22.461h115.587v101.667H24.826z" style="fill:currentColor;stroke-width:.965294;fill-opacity:0.4"/>
+    <path d="M140.413 22.461H256v101.667H140.413z" style="fill:currentColor;fill-opacity:0.6;stroke-width:.965294"/>
+    <path d="M256 22.461h115.587v101.667H256z" style="fill:currentColor;fill-opacity:0.6;stroke-width:.965294"/>
+    <path d="M371.587 22.461h115.587v101.667H371.587z" style="fill:currentColor;fill-opacity:1;stroke-width:.965294"/>
   </g>
   <g transform="translate(-82.085 -13.375)">
-    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:#fff;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
-    <path d="M376.985 311.353h14.9v191.56h-14.9z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:13.6677;stroke-dasharray:none;stroke-opacity:1"/>
+    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:currentColor;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="M376.985 311.353h14.9v191.56h-14.9z" style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:13.6677;stroke-dasharray:none;stroke-opacity:1"/>
   </g>
   <g transform="matrix(-1 0 0 1 594.085 53.312)">
-    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:#fff;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
-    <path d="M376.985 311.353h14.9v125.292h-14.9z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:11.0536;stroke-dasharray:none;stroke-opacity:1"/>
+    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:currentColor;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="M376.985 311.353h14.9v125.292h-14.9z" style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:11.0536;stroke-dasharray:none;stroke-opacity:1"/>
   </g>
   <g transform="translate(-112.985 -110.031)">
-    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:#fff;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
-    <path d="M376.985 311.353h14.9V599.57h-14.9z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:16.7649;stroke-dasharray:none;stroke-opacity:1"/>
+    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:currentColor;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="M376.985 311.353h14.9V599.57h-14.9z" style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:16.7649;stroke-dasharray:none;stroke-opacity:1"/>
   </g>
   <g transform="matrix(-1 0 0 1 624.985 -46.988)">
-    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:#fff;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
-    <path d="M376.985 311.353h14.9v225.591h-14.9z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:14.8321;stroke-dasharray:none;stroke-opacity:1"/>
+    <circle cx="426.251" cy="311.9" r="41.766" style="fill:none;stroke:currentColor;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"/>
+    <path d="M376.985 311.353h14.9v225.591h-14.9z" style="fill:currentColor;fill-opacity:1;stroke:none;stroke-width:14.8321;stroke-dasharray:none;stroke-opacity:1"/>
   </g>
 </svg>
