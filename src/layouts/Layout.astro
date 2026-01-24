@@ -155,28 +155,6 @@ if (import.meta.env.PROD) {
 			"Noto Color Emoji";
 	}
 
-	/* Background gradient bottom right */
-	html::after {
-		content: "";
-		position: fixed;
-		bottom: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0.5;
-		z-index: -998;
-		background-image: radial-gradient(
-			circle at 150% 150%,
-			rgba(var(--bg-color-inverse), 1) 0%,
-			rgba(var(--bg-color-inverse), 0.75) 25%,
-			rgba(var(--bg-color-inverse), 0.5) 50%,
-			rgba(var(--bg-color-inverse), 0) 75%
-		);
-	}
-	html.dark::after {
-		opacity: 0.3;
-	}
-
 	/* https://antfu.me/posts/sliding-enter-animation */
 	@keyframes slide-enter {
 		0% {
