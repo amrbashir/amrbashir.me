@@ -1,0 +1,25 @@
+---
+interface Props {
+	slug: string;
+	title: string;
+	pubDate: Date | string;
+	updated?: Date | string;
+}
+
+const { slug, title, pubDate } = Astro.props;
+---
+
+<li
+	class="flex flex-col md:flex-row md:items-center gap-2 opacity-75 hover:opacity-100 transition-opacity"
+>
+	<a class="text-lg" href={`/post/${slug}/`}>{title}</a>
+
+	<time class="text-sm opacity-50" datetime={pubDate.toString()}>
+		{
+			new Date(pubDate).toLocaleDateString("en-us", {
+				month: "short",
+				day: "numeric",
+			})
+		}
+	</time>
+</li>

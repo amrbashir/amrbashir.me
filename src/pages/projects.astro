@@ -98,55 +98,53 @@ const projects: Projects = {
 };
 ---
 
-<Layout title="Projects" description="Amr Bashir's Projects">
-	<div class="text-center">
-		<h1 class="font-800 text-3xl">Projects</h1>
-		<br />
-		<p class="opacity-60 italic">Projects that I created or maintaining</p>
-		<br />
-		<div class="separator w-20ch m-auto"></div>
-		<br />
+<Layout title="Projects" description="Amr Bashir's Projects" class="mx-auto">
+	<h1 class="font-800 text-3xl text-center">Projects</h1>
+	<br />
+	<p class="opacity-60 italic text-center">Projects that I created or maintaining</p>
+	<br />
+	<div class="separator w-20ch m-auto"></div>
+	<br />
 
-		{
-			Object.entries(projects).map(([category, projects]) => (
-				<>
-					<h2 class="opacity-60 font-800 italic text-xl">{category}</h2>
-					<br />
-					<div class="max-w-65ch slide-enter-content m-auto grid sm:grid-cols-2">
-						{projects.map((p) => (
-							<a
-								href={p.url}
-								target="_blank"
-								title={p.name}
-								class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2 items-center"
-								data-trail-cursor
+	{
+		Object.entries(projects).map(([category, projects]) => (
+			<>
+				<h2 class="opacity-60 font-800 italic text-xl text-center">{category}</h2>
+				<br />
+				<div class="max-w-65ch slide-enter-content m-auto grid sm:grid-cols-2">
+					{projects.map((p) => (
+						<a
+							href={p.url}
+							target="_blank"
+							title={p.name}
+							class="text-start color-inherit decoration-none rd-2 p-4 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100 grid grid-cols-[3.75rem_auto] gap-2 items-center"
+							data-trail-cursor
+						>
+							<div
+								class="flex justify-center items-center opacity-60"
+								class:list={p.class}
 							>
-								<div
-									class="flex justify-center items-center opacity-60"
-									class:list={p.class}
-								>
-									{Array.isArray(p.icon) ? (
-										<div class="flex first:children:(translate-y--50% translate-x--50%)">
-											{p.icon.map((icon) => (
-												<span class="scale-200" class:list={icon} />
-											))}
-										</div>
-									) : typeof p.icon === "string" && p.icon.includes(">") ? (
-										<Fragment set:html={p.icon} />
-									) : (
-										<span class="scale-200" class:list={p.icon} />
-									)}
-								</div>
-								<div>
-									<div class="text-xl">{p.name}</div>
-									<div class="opacity-60 text-sm">{p.description}</div>
-								</div>
-							</a>
-						))}
-					</div>
-					<br />
-				</>
-			))
-		}
-	</div>
+								{Array.isArray(p.icon) ? (
+									<div class="flex first:children:(translate-y--50% translate-x--50%)">
+										{p.icon.map((icon) => (
+											<span class="scale-200" class:list={icon} />
+										))}
+									</div>
+								) : typeof p.icon === "string" && p.icon.includes(">") ? (
+									<Fragment set:html={p.icon} />
+								) : (
+									<span class="scale-200" class:list={p.icon} />
+								)}
+							</div>
+							<div>
+								<div class="text-xl">{p.name}</div>
+								<div class="opacity-60 text-sm">{p.description}</div>
+							</div>
+						</a>
+					))}
+				</div>
+				<br />
+			</>
+		))
+	}
 </Layout>

@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import MDLayout from "@layouts/MDLayout.astro";
+
+export async function getStaticPaths() {
+	let posts = await getCollection("posts");
+
+	return posts.map((post) => {
+		return {
+			params: { slug: post.data.slug },
+			props: { post },
+		};
+	});
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<MDLayout
+	frontmatter={{
+		title: post.data.title,
+		backUrl: "/posts/",
+	}}
+>
+	<h1 class="font-800 text-3xl mb-0">{post.data.title}</h1>
+	<time class="text-sm opacity-50! !-mt-6000" datetime={post.data.pubDate.toString()}>
+		{
+			new Date(post.data.pubDate).toLocaleDateString("en-us", {
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			})
+		}
+	</time>
+
+	<Content />
+</MDLayout>

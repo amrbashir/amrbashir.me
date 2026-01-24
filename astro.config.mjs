@@ -3,11 +3,13 @@ import UnoCSS from "unocss/astro";
 import mdx from "@astrojs/mdx";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://amrbashir.me",
-	integrations: [UnoCSS(), mdx()],
+	base: "/",
+	integrations: [UnoCSS(), mdx(), sitemap()],
 	markdown: {
 		rehypePlugins: [
 			rehypeSlug,

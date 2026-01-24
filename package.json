@@ -12,11 +12,13 @@
 		"format:check": "prettier . --check"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^4.0.8",
-		"astro": "^5.15.9"
+		"@astrojs/mdx": "^4.3.13",
+		"@astrojs/rss": "^4.0.15",
+		"@astrojs/sitemap": "^3.7.0",
+		"astro": "^5.16.15"
 	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.4",
+		"@astrojs/check": "^0.9.6",
 		"@iconify-json/carbon": "^1.2.6",
 		"@iconify-json/devicon": "^1.2.11",
 		"@iconify-json/ri": "^1.2.5",
