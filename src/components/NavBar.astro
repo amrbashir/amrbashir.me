@@ -31,6 +31,7 @@ import Logo from "@public/logo.svg?raw";
 				<span class="i-ri-file-text-line md:hidden"></span>
 				<span class="lt-md:hidden"> Blog </span>
 			</a>
+
 			<a
 				href="/projects"
 				title="Projects"
@@ -48,7 +49,7 @@ import Logo from "@public/logo.svg?raw";
 			</a>
 
 			<a
-				class="btn-link"
+				class="btn-link hidden md:visible"
 				href="https://github.com/amrbashir"
 				target="_blank"
 				title="GitHub"
@@ -59,7 +60,7 @@ import Logo from "@public/logo.svg?raw";
 			</a>
 
 			<a
-				class="btn-link"
+				class="btn-link hidden md:visible"
 				href="https://x.com/amrbashir_dev"
 				target="_blank"
 				title="Twitter"
@@ -70,7 +71,7 @@ import Logo from "@public/logo.svg?raw";
 			</a>
 
 			<a
-				class="btn-link"
+				class="btn-link hidden md:visible"
 				href="https://www.linkedin.com/in/amrbashir-dev"
 				target="_blank"
 				title="LinkedIn"
@@ -81,13 +82,23 @@ import Logo from "@public/logo.svg?raw";
 			</a>
 
 			<a
-				class="btn-link"
+				class="btn-link hidden md:visible"
 				href="mailto:hi@amrbashir.me"
 				title="hi@amrbashir.me"
 				data-trail-cursor
 				data-trail-cursor-padding
 			>
 				<span class="i-ri-mail-line"></span>
+			</a>
+
+			<a
+				class="btn-link"
+				href=`${import.meta.env.SITE}/rss.xml`
+				title="RSS"
+				data-trail-cursor
+				data-trail-cursor-padding
+			>
+				<span class="i-ri-rss-line"></span>
 			</a>
 
 			<DarkModeToggle />
