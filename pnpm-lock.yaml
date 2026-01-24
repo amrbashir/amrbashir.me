@@ -20,6 +20,9 @@ importers:
       astro:
         specifier: ^5.16.15
         version: 5.16.15(@types/node@24.10.1)(jiti@2.4.2)(rollup@4.53.3)(tsx@4.19.2)(typescript@5.7.2)(yaml@2.7.1)
+      unocss-merge:
+        specifier: ^0.8.2
+        version: 0.8.2
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.6
@@ -2512,6 +2515,17 @@ packages:
 
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
+
+  unocss-merge@0.8.2:
+    resolution: {integrity: sha512-en+PRgvPw3SWICFw2ePtZUkP9Z77KS88Qlc+y8HITN0vSstsxMHgKLPPQ72TNkkOZCLozKW0WxlWgC0JuugosA==}
+    peerDependencies:
+      memoize: ^10.2.0
+      react: '>=18'
+    peerDependenciesMeta:
+      memoize:
+        optional: true
+      react:
+        optional: true
 
   unocss@0.65.3:
     resolution: {integrity: sha512-v/nQ7BVIeW9UlEPElOu6xwqp0TTF2dZeIOfzos52b/N0cwWB9dBOjZM5hTn//ePQVzXm/M/n+Lm8E7gRP4TUfg==}
@@ -5798,6 +5812,10 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
+
+  unocss-merge@0.8.2:
+    dependencies:
+      clsx: 2.1.1
 
   unocss@0.65.3(postcss@8.5.6)(rollup@4.53.3)(vite@6.4.1(@types/node@24.10.1)(jiti@2.4.2)(tsx@4.19.2)(yaml@2.7.1))(vue@3.5.13(typescript@5.7.2)):
     dependencies:

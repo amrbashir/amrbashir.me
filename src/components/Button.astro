@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes, HTMLTag } from "astro/types";
+import { unoMerge } from "unocss-merge";
+
+export type Props<Tag extends HTMLTag = "button"> = HTMLAttributes<Tag> & {
+	tag?: Tag;
+};
+
+export const buttonClasses = `flex items-center gap-2 rd-2 p-4
+							 transition-background-color-300 transition-opacity-300
+		                    hover:bg-dark/5 dark:hover:bg-light/5 opacity-50 hover:opacity `;
+
+const { tag = "button", class: className, ...props } = Astro.props;
+const Tag = tag;
+---
+
+<Tag data-slot="button" class={unoMerge(buttonClasses, className)} {...props}>
+	<slot />
+</Tag>

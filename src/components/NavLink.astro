@@ -1,19 +1,16 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import Button from "./Button.astro";
 
 interface Props extends HTMLAttributes<"a"> {
 	icon?: string;
+	iconOnly?: boolean;
 }
 
-const { class: className, icon, ...props } = Astro.props;
+const { class: className, icon, title, iconOnly = false, ...props } = Astro.props;
 ---
 
-<a
-	aria-label={props.title}
-	class={`decoration-none gap-1 rd-2 flex items-center
-            transition-opacity-400 opacity-60 hover:opacity-100 ${className ?? ""}`}
-	{...props}
->
+<Button tag="a" {...props} class:list={["p-2", className]} title={title}>
 	<span class={icon}></span>
-	<span class="lt-md:hidden"> <slot /> </span>
-</a>
+	{!iconOnly && <span class="hidden md:inline">{title}</span>}
+</Button>

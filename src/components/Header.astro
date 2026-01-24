@@ -11,48 +11,60 @@ import SkipToMainContentButton from "@components/SkipToMainContentButton.astro";
 		<div class="flex items-center">
 			<SkipToMainContentButton />
 
-			<NavLink href="/" title="Home">
-				<Fragment set:html={Logo} />
-			</NavLink>
+			<NavLink
+				class="first:children:size-8"
+				iconOnly
+				icon="i-myicons-logo"
+				title="Home"
+				href="/"
+			/>
 		</div>
 
 		<!-- Right Content -->
 		<div class="flex items-center gap-4">
-			<NavLink href="/posts" title="Blog" icon="i-ri-file-text-line"> Blog </NavLink>
-			<NavLink href="/projects" title="Projects" icon="i-ri-lightbulb-line">
-				Projects
-			</NavLink>
+			<!-- Main Navigation Links -->
+			<NavLink icon="i-ri-file-text-line" title="Blog" href="/posts" />
+			<NavLink icon="i-ri-lightbulb-line" title="Projects" href="/projects" />
 
+			<!-- Socials that are hidden on smaller screens -->
 			<NavLink
 				class="hidden md:flex"
-				href="https://github.com/amrbashir"
-				title="GitHub"
+				iconOnly
 				icon="i-ri-github-line"
+				title="GitHub"
+				href="https://github.com/amrbashir"
 				target="_blank"
 			/>
 			<NavLink
 				class="hidden md:flex"
-				href="https://x.com/amrbashir_dev"
-				title="Twitter"
+				iconOnly
 				icon="i-ri-twitter-x-line"
+				title="Twitter"
+				href="https://x.com/amrbashir_dev"
 				target="_blank"
 			/>
 			<NavLink
 				class="hidden md:flex"
-				href="https://linkedin.com/in/amrbashir-dev"
-				title="LinkedIn"
+				iconOnly
 				icon="i-ri-linkedin-line"
+				title="LinkedIn"
+				href="https://linkedin.com/in/amrbashir-dev"
 				target="_blank"
+			/>
+			<NavLink
+				class="hidden md:flex"
+				iconOnly
+				icon="i-ri-mail-line"
+				title="hi@amrbashir.me"
+				href="mailto:hi@amrbashir.me"
 			/>
 
 			<NavLink
-				class="hidden md:flex"
-				href="mailto:hi@amrbashir.me"
-				title="hi@amrbashir.me"
-				icon="i-ri-mail-line"
+				iconOnly
+				href=`${import.meta.env.SITE}/rss.xml`
+				title="RSS"
+				icon="i-ri-rss-line"
 			/>
-
-			<NavLink href=`${import.meta.env.SITE}/rss.xml` title="RSS" icon="i-ri-rss-line" />
 
 			<DarkModeToggle />
 		</div>

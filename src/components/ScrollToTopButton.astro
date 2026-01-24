@@ -1,3 +1,7 @@
+---
+import Button from "./Button.astro";
+---
+
 <script>
 	const scrollToTop: HTMLElement = document.querySelector("#scroll-to-top")!;
 	window.addEventListener("DOMContentLoaded", () => {
@@ -14,15 +18,14 @@
 	});
 </script>
 
-<a
+<Button
+	tag="a"
 	id="scroll-to-top"
 	href="#top"
 	title="Scroll to top"
 	aria-label="Scroll to top"
-	class="fixed bottom-8 right-8
-	       w-8 h-8 rd-2 cursor-pointer decoration-none
-	       hidden justify-center items-center
-	       opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity-400"
+	class={`fixed bottom-8 right-8 p-2 justify-center cursor-pointer hidden
+	       opacity-50 hover:opacity-100 focus-visible:opacity-100 transition-opacity-300`}
 >
 	<span class="i-ri-arrow-up-line"></span>
-</a>
+</Button>

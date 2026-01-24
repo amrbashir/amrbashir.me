@@ -1,5 +1,5 @@
 ---
-import ScrollToTop from "@components/ScrollToTop.astro";
+import ScrollToTopButton from "@components/ScrollToTopButton.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
@@ -36,7 +36,7 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
 		</main>
 
-		<ScrollToTop />
+		<ScrollToTopButton />
 	</body>
 </html>
 
@@ -188,7 +188,7 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 		position: absolute;
 		transform: translateX(-150%);
 		opacity: 0;
-		transition: opacity 300ms ease-in-out;
+		transition: opacity 300 ease-in-out;
 	}
 	a.heading-link:hover::before {
 		opacity: 1;

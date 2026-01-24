@@ -15,7 +15,8 @@
 		"@astrojs/mdx": "^4.3.13",
 		"@astrojs/rss": "^4.0.15",
 		"@astrojs/sitemap": "^3.7.0",
-		"astro": "^5.16.15"
+		"astro": "^5.16.15",
+		"unocss-merge": "^0.8.2"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.6",

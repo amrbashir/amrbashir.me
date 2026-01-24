@@ -1,3 +1,7 @@
+---
+import Button from "./Button.astro";
+---
+
 <script>
 	const darkModeToggle: HTMLElement | null = document.querySelector("#dark-mode-toggle");
 	const metaThemeColorTag = document.querySelector('meta[name="theme-color"]');
@@ -63,22 +67,15 @@
 	changeBgClipRadius(isDark);
 </script>
 
-<div
-	tabindex="0"
-	role="button"
-	id="dark-mode-toggle"
-	title="Toggle color scheme"
-	class="decoration-none cursor-pointer rd-2
-	       flex items-center gap-1
-		   transition-opacity-400 opacity-60 hover:opacity-100"
->
-	<div
-		class="max-w-1.2em max-h-1.2em overflow-hidden children:(block transition-all-400 ease-out dark:translate-y-[-100%])"
+<Button id="dark-mode-toggle" title="Toggle color scheme" class="p-2">
+	<span
+		class="max-w-1.2em max-h-1.2em overflow-hidden
+		       children:(block transition-translate-300 transition-opacity-300 ease-out dark:translate-y-[-100%])"
 	>
 		<span class="i-ri-sun-line"></span>
 		<span class="i-ri-moon-line"> </span>
-	</div>
-</div>
+	</span>
+</Button>
 
 <style>
 	html {
@@ -98,7 +95,7 @@
 		background-color: rgb(var(--bg-color-light));
 
 		clip-path: circle(var(--clip-radius) at var(--clip-x) var(--clip-y));
-		transition: clip-path 400ms ease-out;
+		transition: clip-path 300ms ease-out;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

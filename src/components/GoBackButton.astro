@@ -10,7 +10,7 @@ const idx = (url.endsWith("/") ? url.slice(0, -1) : url).lastIndexOf("/");
 const oneLevelUpUrl = url.slice(0, idx + 1);
 ---
 
-<div>
-	<span class="opacity-50 font-mono"> {">"}</span>
-	<a href={backUrl ?? oneLevelUpUrl} class="opacity-50 hover:opacity-100 font-mono"> cd .. </a>
-</div>
+<button class="*:opacity-50 font-mono">
+	<span> {">"}</span>
+	<a href={backUrl ?? oneLevelUpUrl} class="hover:opacity-100"> cd .. </a>
+</button>
