@@ -3,17 +3,7 @@ import Project from "@components/Project.astro";
 import Separator from "@components/Separator.astro";
 import Layout from "@layouts/Layout.astro";
 
-interface Projects {
-	[key: string]: {
-		name: string;
-		description: string;
-		url: string;
-		icon: string | string[];
-		class?: string;
-	}[];
-}
-
-const projects: Projects = {
+const projects = {
 	Web: [
 		{
 			name: "erp-system",
@@ -67,7 +57,7 @@ const projects: Projects = {
 			description:
 				"A minimal workspace switcher for the Komorebi tiling window manager, seamlessly integrated into Windows 10/11 taskbar",
 			url: "https://github.com/amrbashir/komorebi-switcher",
-			icon: "i-carbon-workspace",
+			icon: "i-myicons-komorebi-switcher",
 		},
 		{
 			name: "hijri-widget",
@@ -75,12 +65,6 @@ const projects: Projects = {
 			url: "https://github.com/amrbashir/hijri-widget",
 			icon: "i-ri-moon-line",
 			class: "scale-x--100",
-		},
-		{
-			name: "wifi-qr",
-			description: "A small Windows utiliy to show a QR code for the stored WiFi connections",
-			url: "https://github.com/amrbashir/wifi-qr",
-			icon: "i-myicons-wifi-qr",
 		},
 	],
 	Miscellaneous: [

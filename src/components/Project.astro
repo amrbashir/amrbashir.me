@@ -5,7 +5,7 @@ interface Props {
 	name: string;
 	description: string;
 	url: string;
-	icon: string | string[];
+	icon: string;
 	class?: string;
 }
 
@@ -14,8 +14,8 @@ const { url, name, description, class: className, icon } = Astro.props;
 
 <Button tag="a" class={className} href={url} target="_blank" title={name}>
 	<!-- Icon -->
-	<div class="flex justify-center opacity-60" class:list={className}>
-		<span class="size-10" class:list={icon}></span>
+	<div class="flex justify-center opacity-60">
+		<span class:list={["size-10", icon]}></span>
 	</div>
 
 	<!--  Title and Description -->
