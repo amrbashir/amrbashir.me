@@ -54,9 +54,6 @@ import Button from "./Button.astro";
 
 	// setup dark mode toggle handlers
 	darkModeToggle?.addEventListener("click", toggleDarkMode);
-	darkModeToggle?.addEventListener("keypress", (e) => {
-		if (e.key === "Enter") toggleDarkMode();
-	});
 
 	// recalculate clip radius on resize
 	window.addEventListener("resize", () => changeBgClipRadius(isDarkMode()));
