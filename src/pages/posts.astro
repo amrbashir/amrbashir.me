@@ -3,25 +3,25 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Post from "@components/Post.astro";
 
-let posts = await getCollection("posts");
-let sortedPosts = posts.sort(
+const posts = await getCollection("posts");
+const sortedPosts = posts.sort(
 	(a, b) =>
 		new Date(b.data.updated || b.data.pubDate).valueOf() -
 		new Date(a.data.updated || a.data.pubDate).valueOf(),
 );
-let groupedPosts = Object.groupBy(sortedPosts, (post) => new Date(post.data.pubDate).getFullYear());
+const groupedPosts = Object.groupBy(sortedPosts, (p) => new Date(p.data.pubDate).getFullYear());
 ---
 
-<Layout title="Blog" description="Amr Bashir's Blog" class="mx-auto">
-	<h1 class="font-800 text-3xl text-center">Blog</h1>
+<Layout title="Blog" description="Amr Bashir's Blog">
+	<h1 class="font-bold text-3xl">Blog</h1>
 
 	<br />
 
 	{
 		Object.entries(groupedPosts).map(([year, posts]) => (
 			<>
-				<h2 class="font-700 text-2xl mt-12 mb-6">{year}</h2>
-				<ul class="flex flex-col gap-6 mx-auto max-w-3xl">
+				<h2>{year}</h2>
+				<ul class="flex flex-col gap-6">
 					{posts?.map(({ data: { slug, title, pubDate } }) => (
 						<Post {pubDate} {slug} {title} />
 					))}

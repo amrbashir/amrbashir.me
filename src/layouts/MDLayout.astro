@@ -1,5 +1,5 @@
 ---
-import Layout from "./Layout.astro";
+import Layout from "@layouts/Layout.astro";
 
 interface Props {
 	frontmatter: {
@@ -13,7 +13,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout {...frontmatter}>
-	<article class="prose slide-enter-content m-auto text-dark/75 dark:text-light/75">
+	<article class="prose slide-enter-content m-auto color-dark/75 dark:color-light/75">
 		<slot />
 	</article>
 </Layout>

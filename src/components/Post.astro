@@ -7,6 +7,17 @@ interface Props {
 }
 
 const { slug, title, pubDate } = Astro.props;
+
+const date = new Date(pubDate);
+const dateNoYear = date.toLocaleDateString("en-us", {
+	month: "long",
+	day: "numeric",
+});
+const fullDate = date.toLocaleDateString("en-us", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
 ---
 
 <li
@@ -14,12 +25,7 @@ const { slug, title, pubDate } = Astro.props;
 >
 	<a class="text-lg" href={`/post/${slug}/`}>{title}</a>
 
-	<time class="text-sm opacity-50" datetime={pubDate.toString()}>
-		{
-			new Date(pubDate).toLocaleDateString("en-us", {
-				month: "short",
-				day: "numeric",
-			})
-		}
+	<time class="text-sm opacity-50" datetime={fullDate}>
+		{dateNoYear}
 	</time>
 </li>

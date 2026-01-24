@@ -1,0 +1,60 @@
+---
+import DarkModeToggle from "@components/DarkModeToggle.astro";
+import Logo from "@public/logo.svg?raw";
+import NavLink from "@components/NavLink.astro";
+import SkipToMainContentButton from "@components/SkipToMainContentButton.astro";
+---
+
+<header class="print:hidden">
+	<nav class="w-full h-20 px-7 overflow-hidden flex justify-between sticky top-0">
+		<!-- Left Content -->
+		<div class="flex items-center">
+			<SkipToMainContentButton />
+
+			<NavLink href="/" title="Home">
+				<Fragment set:html={Logo} />
+			</NavLink>
+		</div>
+
+		<!-- Right Content -->
+		<div class="flex items-center gap-4">
+			<NavLink href="/posts" title="Blog" icon="i-ri-file-text-line"> Blog </NavLink>
+			<NavLink href="/projects" title="Projects" icon="i-ri-lightbulb-line">
+				Projects
+			</NavLink>
+
+			<NavLink
+				class="hidden md:flex"
+				href="https://github.com/amrbashir"
+				title="GitHub"
+				icon="i-ri-github-line"
+				target="_blank"
+			/>
+			<NavLink
+				class="hidden md:flex"
+				href="https://x.com/amrbashir_dev"
+				title="Twitter"
+				icon="i-ri-twitter-x-line"
+				target="_blank"
+			/>
+			<NavLink
+				class="hidden md:flex"
+				href="https://linkedin.com/in/amrbashir-dev"
+				title="LinkedIn"
+				icon="i-ri-linkedin-line"
+				target="_blank"
+			/>
+
+			<NavLink
+				class="hidden md:flex"
+				href="mailto:hi@amrbashir.me"
+				title="hi@amrbashir.me"
+				icon="i-ri-mail-line"
+			/>
+
+			<NavLink href=`${import.meta.env.SITE}/rss.xml` title="RSS" icon="i-ri-rss-line" />
+
+			<DarkModeToggle />
+		</div>
+	</nav>
+</header>

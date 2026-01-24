@@ -32,7 +32,7 @@ const typography = () =>
 		cssExtend: {
 			"h1,h2,h3,h4,h5,h6": {
 				color: "black",
-				"font-weight": "800",
+				"font-weight": "700",
 			},
 			"html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6": {
 				color: "white",
@@ -68,11 +68,6 @@ export default defineConfig({
 		colors: {
 			accent: "#6fa76d",
 		},
-	},
-	shortcuts: {
-		separator: "b-1 b-solid b-dark/10 dark:b-light/10",
-		"btn-link": `decoration-none flex items-center gap-1 rd-2 color-inherit
-					   transition-opacity-400 opacity-60 hover:opacity-100`,
 	},
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 	presets: [presetUno(), icons(), typography()],

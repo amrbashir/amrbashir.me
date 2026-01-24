@@ -14,6 +14,14 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+const date = new Date(post.data.pubDate);
+const fullDate = date.toLocaleDateString("en-us", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+
 const { Content } = await render(post);
 ---
 
@@ -23,15 +31,9 @@ const { Content } = await render(post);
 		backUrl: "/posts/",
 	}}
 >
-	<h1 class="font-800 text-3xl mb-0">{post.data.title}</h1>
-	<time class="text-sm opacity-50! !-mt-6000" datetime={post.data.pubDate.toString()}>
-		{
-			new Date(post.data.pubDate).toLocaleDateString("en-us", {
-				year: "numeric",
-				month: "long",
-				day: "numeric",
-			})
-		}
+	<h1 class="font-bold text-3xl mb-0">{post.data.title}</h1>
+	<time class="text-sm opacity-50! !-mt-6" datetime={fullDate}>
+		{fullDate}
 	</time>
 
 	<Content />

@@ -68,15 +68,17 @@
 	role="button"
 	id="dark-mode-toggle"
 	title="Toggle color scheme"
-	class="btn-link cursor-pointer"
+	class="decoration-none cursor-pointer rd-2
+	       flex items-center gap-1
+		   transition-opacity-400 opacity-60 hover:opacity-100"
 	data-trail-cursor
 	data-trail-cursor-padding
 >
-	<div class="max-w-1.2em max-h-1.2em overflow-hidden">
-		<span class="i-ri-sun-line block transition-all-400 ease-out dark:translate-y-[-100%]"
-		></span>
-		<span class="i-ri-moon-line block transition-all-400 ease-out dark:translate-y-[-100%]">
-		</span>
+	<div
+		class="max-w-1.2em max-h-1.2em overflow-hidden children:(block transition-all-400 ease-out dark:translate-y-[-100%])"
+	>
+		<span class="i-ri-sun-line"></span>
+		<span class="i-ri-moon-line"> </span>
 	</div>
 </div>
 

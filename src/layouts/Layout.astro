@@ -1,13 +1,11 @@
 ---
 import TrailingCursor from "@components/TrailingCursor.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
-import NavBar from "@components/NavBar.astro";
+import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
-import sharp from "sharp";
-import ogTemplateRaw from "@public/og-template.svg?raw";
-
 import "@unocss/reset/tailwind.css";
+import Head from "@components/Head.astro";
 
 interface Props {
 	title?: string;
@@ -16,87 +14,30 @@ interface Props {
 	showFooterGoBack?: boolean;
 	backUrl?: string;
 }
-const { title, class: className, showFooterGoBack, backUrl, description } = Astro.props;
-
-const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
-const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
-const ogImage = `${import.meta.env.SITE}/og/${ogFileName}`;
-
-const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
-const finalDescription = description ?? "Amr Bashir's Portfolio";
-
-if (import.meta.env.PROD) {
-	// breakline every 30 chars
-	// https://github.com/antfu/antfu.me/blob/e1c316863c2cf8d649274b872a3229e971c505b5/vite.config.ts#L247
-	const lines = (title ?? "an open source enthusiast")
-		.split(/(.{0,30})(?:\s|$)/g)
-		.filter(Boolean);
-	const ogTemplate = ogTemplateRaw
-		.replace("{{line1}}", lines[0] ?? "")
-		.replace("{{line2}}", lines[1] ?? "");
-	const ogTemplateBuffer = Buffer.from(ogTemplate);
-	const filePath = `public/og/${ogFileName}`;
-
-	console.log(`\nGenerating ${filePath}\n`);
-	try {
-		await sharp(ogTemplateBuffer).resize(1200, 675).png().toFile(filePath);
-	} catch (e) {
-		console.error("Failed to generate og image", e);
-	}
-}
+const { class: className, showFooterGoBack, backUrl, title, description } = Astro.props;
 ---
 
 <script>
-	// transitions are disabled by default on loading using `preload` class
-	// once the page is loaded i.e dark/light mode have applied
+	// Dark mode transitions are disabled by default on loading using `preload` class on HTML element,
+	// we remove it after DOMContentLoaded so subsequent dark mode transitions would run normally
 	window.addEventListener("DOMContentLoaded", () =>
 		setTimeout(() => document.documentElement.classList.remove("preload"), 100),
 	);
 </script>
 
 <html lang="en" class="preload">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
+	<Head {title} {description} />
 
-		<meta name="author" content="Amr Bashir" />
+	<body class="w-100dvw h-100dvh flex flex-col color-dark dark:color-light">
+		<Header />
 
-		<title>{finalTitle}</title>
-		<meta property="og:title" content={finalTitle} />
-		<meta name="twitter:title" content={finalTitle} />
-		<meta name="description" content={finalDescription} />
-		<meta property="og:description" content={finalDescription} />
-		<meta name="twitter:description" content={finalDescription} />
-		<meta property="og:image" content={ogImage} />
-		<meta name="twitter:image" content={ogImage} />
-		<meta name="twitter:card" content="summary_large_image" />
-
-		<meta name="revisit-after" content="7 days" />
-
-		<meta name="theme-color" content="#050505" />
-
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
-
-	<body class="w-100dvw h-100dvh color-dark dark:color-light flex flex-col">
-		<NavBar />
-
-		<main id="main-content" class="py-10 px-7" class:list={className}>
+		<main id="main-content" class="py-10 px-7 max-w-65ch mx-auto" class:list={className}>
 			<slot />
 
 			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
 		</main>
 
 		<ScrollToTop />
-
 		<TrailingCursor />
 	</body>
 </html>
@@ -155,7 +96,10 @@ if (import.meta.env.PROD) {
 			"Noto Color Emoji";
 	}
 
-	/* https://antfu.me/posts/sliding-enter-animation */
+	/*
+		Sliding enter animation
+	 	Source: https://antfu.me/posts/sliding-enter-animation
+	 */
 	@keyframes slide-enter {
 		0% {
 			opacity: 0;
