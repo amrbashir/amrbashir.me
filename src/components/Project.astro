@@ -14,14 +14,12 @@ const { url, name, description, class: className, icon } = Astro.props;
 	href={url}
 	target="_blank"
 	title={name}
-	class="text-start decoration-none rd-2 p-4
-		 hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100
-		   grid grid-cols-[3.75rem_auto] gap-2 items-center"
-	data-trail-cursor
+	class="flex gap-2 rd-2 p-4
+		   hover:bg-dark/3 dark:hover:bg-light/3 opacity-50 hover:opacity-100"
 >
 	<!-- Icon -->
-	<div class="flex justify-center items-center opacity-60" class:list={className}>
-		<span class="scale-200" class:list={icon}></span>
+	<div class="flex justify-center opacity-60" class:list={className}>
+		<span class="size-10" class:list={icon}></span>
 	</div>
 
 	<!--  Title and Description -->

@@ -106,15 +106,14 @@ const projects: Projects = {
 	<p class="opacity-60 italic text-center">Projects that I created or maintaining</p>
 	<br />
 	<Separator />
-
 	<br />
 
 	{
 		Object.entries(projects).map(([category, projects]) => (
 			<>
-				<h2 class="opacity-60 font-bold italic text-xl text-center">{category}</h2>
+				<h2 class="opacity-50 font-bold italic text-xl text-center">{category}</h2>
 				<br />
-				<div class="max-w-65ch slide-enter-content m-auto grid sm:grid-cols-2">
+				<div class="slide-enter-content m-auto grid sm:grid-cols-2">
 					{projects.map((project) => (
 						<Project {...project} />
 					))}

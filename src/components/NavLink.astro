@@ -12,8 +12,6 @@ const { class: className, icon, ...props } = Astro.props;
 	class={`decoration-none gap-1 rd-2 flex items-center
             transition-opacity-400 opacity-60 hover:opacity-100 ${className ?? ""}`}
 	{...props}
-	data-trail-cursor
-	data-trail-cursor-padding
 >
 	<span class={icon}></span>
 	<span class="lt-md:hidden"> <slot /> </span>
