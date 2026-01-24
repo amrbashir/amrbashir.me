@@ -1,4 +1,6 @@
 ---
+import Button from "./Button.astro";
+
 interface Props {
 	slug: string;
 	title: string;
@@ -20,12 +22,16 @@ const fullDate = date.toLocaleDateString("en-us", {
 });
 ---
 
-<li
-	class="flex flex-col md:flex-row md:items-center gap-2 opacity-75 hover:opacity-100 transition-opacity-300"
->
-	<a class="text-lg" href={`/post/${slug}/`}>{title}</a>
+<li>
+	<ap
+		href={`/post/${slug}/`}
+		{title}
+		class="opacity-50 hover:opacity-100 transition-opacity-300 block my-2"
+	>
+		<span class="color-dark dark:color-light!">{title}</span>
 
-	<time class="text-sm opacity-50" datetime={fullDate}>
-		{dateNoYear}
-	</time>
+		<time class="text-sm text-nowrap opacity-50" datetime={fullDate}>
+			{dateNoYear}
+		</time>
+	</ap>
 </li>

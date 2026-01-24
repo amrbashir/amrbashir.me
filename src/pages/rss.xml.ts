@@ -1,5 +1,6 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
+import { slugFromFilePath } from "../utils";
 
 let posts = await getCollection("posts");
 
@@ -16,7 +17,7 @@ export const GET = () =>
 		site: import.meta.env.SITE,
 		items: posts.map((post) => {
 			return {
-				link: `/post/${post.data.slug}`,
+				link: `/post/${slugFromFilePath(post.filePath || "")}`,
 				title: post.data.title,
 				pubDate: new Date(post.data.pubDate),
 				content: post.body,

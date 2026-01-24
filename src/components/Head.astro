@@ -9,7 +9,6 @@ const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
 const ogImage = `${import.meta.env.SITE}/og/${ogFileName}`;
 
 const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
-const finalDescription = description ?? "Amr Bashir's Portfolio";
 
 // Generate OG image at build time
 if (import.meta.env.PROD) {
@@ -44,9 +43,9 @@ if (import.meta.env.PROD) {
 	<title>{finalTitle}</title>
 	<meta property="og:title" content={finalTitle} />
 	<meta name="twitter:title" content={finalTitle} />
-	<meta name="description" content={finalDescription} />
-	<meta property="og:description" content={finalDescription} />
-	<meta name="twitter:description" content={finalDescription} />
+	<meta name="description" content={description} />
+	<meta property="og:description" content={description} />
+	<meta name="twitter:description" content={description} />
 	<meta property="og:image" content={ogImage} />
 	<meta name="twitter:image" content={ogImage} />
 	<meta name="twitter:card" content="summary_large_image" />
