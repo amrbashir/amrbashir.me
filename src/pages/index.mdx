@@ -3,8 +3,15 @@ layout: "@layouts/MDLayout.astro"
 showFooterGoBack: false
 ---
 import Separator from "@components/Separator.astro";
+import { Image } from 'astro:assets';
 
-<img src="/portrait.webp" alt="portrait" width="150" height="150" style="border-radius: 50%" class="mx-auto"/>
+<Image
+	src="/portrait.webp"
+	alt="portrait"
+	width={150} height={150}
+	class="mx-auto rd-full"
+	loading="eager"
+/>
 
 <br />
 

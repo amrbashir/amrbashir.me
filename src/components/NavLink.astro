@@ -9,6 +9,7 @@ const { class: className, icon, ...props } = Astro.props;
 ---
 
 <a
+	aria-label={props.title}
 	class={`decoration-none gap-1 rd-2 flex items-center
             transition-opacity-400 opacity-60 hover:opacity-100 ${className ?? ""}`}
 	{...props}
