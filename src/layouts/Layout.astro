@@ -27,10 +27,14 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 <html lang="en" class="preload">
 	<Head {title} {description} />
 
-	<body class="w-100dvw h-100dvh flex flex-col font-sans text-gray-700 dark:text-gray-200">
+	<body class="w-100dvw h-100dvh font-sans text-gray-700 dark:text-gray-200">
 		<Header />
 
-		<main id="main-content" class="py-10 px-7" class:list={className}>
+		<main
+			id="main-content"
+			class="py-10 px-7 max-w-prose mx-auto h-100%"
+			class:list={className}
+		>
 			<slot />
 
 			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
