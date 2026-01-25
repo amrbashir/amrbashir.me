@@ -4,7 +4,7 @@ title: "CV"
 description: "Amr Bashir's CV"
 ---
 
-<a class="print:hidden opacity-50! hover:opacity-100!" href="/cv.pdf" download="Amr Bashir - CV">
+<a class="print:hidden opacity-60! hover:opacity-100!" href="/cv.pdf" download="Amr Bashir - CV">
 	<span class="i-ri-arrow-down-line"></span> Download as PDF
 </a>
 

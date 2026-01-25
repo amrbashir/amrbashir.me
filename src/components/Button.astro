@@ -8,7 +8,7 @@ export type Props<Tag extends HTMLTag = "button"> = HTMLAttributes<Tag> & {
 
 export const buttonClasses = `flex items-center gap-2 rd-2 p-4
 							 transition-background-color-300 transition-opacity-300
-		                    hover:bg-dark/5 dark:hover:bg-light/5 opacity-50 hover:opacity-100`;
+		                    hover:bg-dark/5 dark:hover:bg-light/5 opacity-60 hover:opacity-100`;
 
 const { tag = "button", class: className, ...props } = Astro.props;
 const Tag = tag;

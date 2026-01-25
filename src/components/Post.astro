@@ -5,10 +5,11 @@ interface Props {
 	slug: string;
 	title: string;
 	pubDate: Date | string;
+	readTime: number;
 	updated?: Date | string;
 }
 
-const { slug, title, pubDate } = Astro.props;
+const { slug, title, pubDate, readTime } = Astro.props;
 
 const date = new Date(pubDate);
 const dateNoYear = date.toLocaleDateString("en-us", {
@@ -26,12 +27,14 @@ const fullDate = date.toLocaleDateString("en-us", {
 	<a
 		href={`/posts/${slug}/`}
 		{title}
-		class="opacity-50 hover:opacity-100 transition-opacity-300 block my-2"
+		class="opacity-60 hover:opacity-100 transition-opacity-300 flex flex-col md:flex-row my-2 md:gap-4 md:items-center"
 	>
-		<span class="color-dark dark:color-light!">{title}</span>
+		<span class="color-dark dark:color-light">{title}</span>
 
-		<time class="text-sm text-nowrap opacity-50" datetime={fullDate}>
+		<time class="text-sm text-nowrap opacity-60" datetime={fullDate}>
 			{dateNoYear}
+			{"·"}
+			{readTime} min
 		</time>
 	</a>
 </li>

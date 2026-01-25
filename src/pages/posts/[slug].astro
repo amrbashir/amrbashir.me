@@ -15,8 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const { title, pubDate, readTime } = post.data;
 
-const date = new Date(post.data.pubDate);
+const date = new Date(pubDate);
 const fullDate = date.toLocaleDateString("en-us", {
 	year: "numeric",
 	month: "long",
@@ -28,13 +29,15 @@ const { Content } = await render(post);
 
 <MDLayout
 	frontmatter={{
-		title: post.data.title,
+		title,
 		backUrl: "/posts/",
 	}}
 >
-	<h1 class="font-bold text-4xl mb-0">{post.data.title}</h1>
-	<time class="text-sm opacity-50! !-mt-6" datetime={fullDate}>
+	<h1 class="font-bold text-4xl mb-0">{title}</h1>
+	<time class="block text-sm opacity-60! mb-6" datetime={fullDate}>
 		{fullDate}
+		{"·"}
+		{readTime} min
 	</time>
 
 	<Separator />
