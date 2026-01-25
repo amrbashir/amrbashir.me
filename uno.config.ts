@@ -1,67 +1,11 @@
 import {
 	defineConfig,
-	presetUno,
-	transformerVariantGroup,
-	presetTypography,
 	transformerDirectives,
 	presetIcons,
+	presetWind4,
+	presetTypography,
 } from "unocss";
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders";
-
-const icons = () =>
-	presetIcons({
-		extraProperties: {
-			display: "inline-block",
-			height: "1.2em",
-			width: "1.2em",
-			"vertical-align": "text-bottom",
-		},
-		/* prettier-ignore */
-		collections: {
-			myicons: FileSystemIconLoader("./src/assets/icons"),
-			devicon: () => import("@iconify-json/devicon").then((i) => i.default as any),
-			carbon: () => import("@iconify-json/carbon").then((i) => i.default as any),
-			ri: () => import("@iconify-json/ri").then((i) => i.default as any),
-			"simple-icons": () => import("@iconify-json/simple-icons").then((i) => i.default as any),
-			"skill-icons": () => import("@iconify-json/skill-icons").then((i) => i.default as any),
-		},
-	});
-
-const typography = () =>
-	presetTypography({
-		cssExtend: {
-			"h1,h2,h3,h4,h5,h6": {
-				color: "black",
-				"font-weight": "700",
-			},
-			"html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6": {
-				color: "white",
-			},
-			strong: {
-				color: "black",
-			},
-			"html.dark strong": {
-				color: "white",
-			},
-			a: {
-				color: "black",
-				"text-decoration": "none",
-				transition: "border-bottom-color 300ms ease-in-out",
-				"border-bottom": "0.5px solid",
-				"border-bottom-color": "#55555542",
-			},
-			"a:hover": {
-				"border-bottom-color": "#000",
-			},
-			"html.dark a": {
-				color: "white",
-				"border-bottom-color": "#cdcdcd42",
-			},
-			"html.dark a:hover": {
-				"border-bottom-color": "#fff",
-			},
-		},
-	});
 
 export default defineConfig({
 	theme: {
@@ -69,6 +13,25 @@ export default defineConfig({
 			accent: "#6fa76d",
 		},
 	},
-	transformers: [transformerVariantGroup(), transformerDirectives()],
-	presets: [presetUno(), icons(), typography()],
+	transformers: [transformerDirectives()],
+	presets: [
+		presetWind4(),
+		presetTypography(),
+		presetIcons({
+			extraProperties: {
+				display: "inline-block",
+				height: "1.2em",
+				width: "1.2em",
+				"vertical-align": "text-bottom",
+			},
+			/* prettier-ignore */
+			collections: {
+			myicons: FileSystemIconLoader("./src/assets/icons"),
+			devicon: () => import("@iconify-json/devicon").then((i) => i.default as any),
+			ri: () => import("@iconify-json/ri").then((i) => i.default as any),
+			"simple-icons": () => import("@iconify-json/simple-icons").then((i) => i.default as any),
+			"skill-icons": () => import("@iconify-json/skill-icons").then((i) => i.default as any),
+		},
+		}),
+	],
 });

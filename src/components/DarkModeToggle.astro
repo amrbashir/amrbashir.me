@@ -67,7 +67,7 @@ import Button from "./Button.astro";
 <Button id="dark-mode-toggle" title="Toggle color scheme" class="p-2">
 	<span
 		class="max-w-1.2em max-h-1.2em overflow-hidden
-		       children:(block transition-translate-300 transition-opacity-300 ease-out dark:translate-y-[-100%])"
+		       *:block *:transition-transform-300 *:transition-opacity-300 *:ease-out *:dark:translate-y-[-100%]"
 	>
 		<span class="i-ri-sun-line"></span>
 		<span class="i-ri-moon-line"> </span>
@@ -82,7 +82,9 @@ import Button from "./Button.astro";
 	}
 
 	html::before {
-		@apply content-[""] w-full h-full fixed top-0 left-0 z--999;
+		content: "";
+
+		@apply w-full h-full fixed top-0 left-0 z--999;
 		@apply transition-clip-path-300 ease-out;
 
 		background-color: rgb(var(--bg-color-light));

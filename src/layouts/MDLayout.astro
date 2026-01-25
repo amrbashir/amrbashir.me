@@ -13,7 +13,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout {...frontmatter}>
-	<article class="prose slide-enter-content mx-auto color-dark/75 dark:color-light/75">
+	<article class="prose dark:prose-invert slide-enter-content mx-auto">
 		<slot />
 	</article>
 </Layout>
@@ -22,6 +22,21 @@ const { frontmatter } = Astro.props;
 	/* Style giscus discussions */
 	.giscus-frame {
 		@apply outline-none my-8;
+	}
+
+	/* Add underline animation for prose links */
+	.prose a {
+		@apply decoration-none transition-[border]-300 ease-in-out;
+		@apply border-b-0.5 border-b-solid border-b-black/25;
+	}
+	.prose a:hover {
+		@apply border-b-black;
+	}
+	html.dark .prose a {
+		@apply border-b-white/25;
+	}
+	html.dark .prose a:hover {
+		@apply border-b-white;
 	}
 
 	/* Code copy button styles */
