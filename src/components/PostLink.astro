@@ -1,23 +1,15 @@
 ---
-import Button from "./Button.astro";
-
 interface Props {
 	slug: string;
 	title: string;
 	pubDate: Date | string;
-	readTime: number;
-	updated?: Date | string;
+	minutesRead: string;
 }
 
-const { slug, title, pubDate, readTime } = Astro.props;
+const { slug, title, pubDate, minutesRead } = Astro.props;
 
 const date = new Date(pubDate);
 const dateNoYear = date.toLocaleDateString("en-us", {
-	month: "long",
-	day: "numeric",
-});
-const fullDate = date.toLocaleDateString("en-us", {
-	year: "numeric",
 	month: "long",
 	day: "numeric",
 });
@@ -37,7 +29,7 @@ const fullDate = date.toLocaleDateString("en-us", {
 				{dateNoYear}
 			</span>
 			<span>
-				· {readTime} min
+				· {minutesRead}
 			</span>
 		</div>
 	</a>

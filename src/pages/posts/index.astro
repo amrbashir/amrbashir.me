@@ -1,15 +1,25 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
-import Post from "@components/Post.astro";
+import PostLink from "@components/PostLink.astro";
 
 const posts = await getCollection("posts");
 const sortedPosts = posts.sort(
-	(a, b) =>
-		new Date(b.data.updated || b.data.pubDate).valueOf() -
-		new Date(a.data.updated || a.data.pubDate).valueOf(),
+	(a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
 );
-const groupedPosts = Object.groupBy(sortedPosts, (p) => new Date(p.data.pubDate).getFullYear());
+const postsWithMinutesRead = sortedPosts.map((post) => {
+	return {
+		...post,
+		data: {
+			...post.data,
+			// @ts-expect-error frontmatter.minutesRead is added by remarkReadingTime plugin in astro.config.mjs
+			minutesRead: post.rendered?.metadata?.frontmatter?.minutesRead || 0,
+		},
+	};
+});
+const groupedPosts = Object.groupBy(postsWithMinutesRead, (p) =>
+	new Date(p.data.pubDate).getFullYear(),
+);
 ---
 
 <Layout title="Blog" description="Amr Bashir's Blog" class="max-w-prose mx-auto">
@@ -24,7 +34,7 @@ const groupedPosts = Object.groupBy(sortedPosts, (p) => new Date(p.data.pubDate)
 				<br />
 				<ul class="flex flex-col gap-4">
 					{posts?.map(({ data, id }) => (
-						<Post slug={id} {...data} />
+						<PostLink slug={id} {...data} />
 					))}
 				</ul>
 			</>
