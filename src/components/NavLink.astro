@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<"a"> {
 const { class: className, icon, title, iconOnly = false, ...props } = Astro.props;
 ---
 
-<Button tag="a" {...props} class:list={["p-2", className]} title={title}>
+<Button tag="a" {...props} class:list={["p-2", className]} title={title} aria-label={title}>
 	<span class={icon}></span>
 	{!iconOnly && <span class="hidden md:inline">{title}</span>}
 </Button>
