@@ -6,7 +6,7 @@ const { title, description } = Astro.props;
 
 const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
 const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
-const ogImage = `${import.meta.env.SITE}/og/${ogFileName}`;
+const ogImage = `${Astro.site}/og/${ogFileName}`;
 
 const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
 
@@ -55,6 +55,12 @@ if (import.meta.env.PROD) {
 	<meta name="theme-color" content="#050505" />
 
 	<link rel="sitemap" href="/sitemap-index.xml" />
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="Amr Bashir's Blog RSS Feed"
+		href={new URL("rss.xml", Astro.site)}
+	/>
 
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 

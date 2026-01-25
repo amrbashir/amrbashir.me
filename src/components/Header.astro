@@ -59,12 +59,7 @@ import SkipToMainContentButton from "@components/SkipToMainContentButton.astro";
 				href="mailto:hi@amrbashir.me"
 			/>
 
-			<NavLink
-				iconOnly
-				href=`${import.meta.env.SITE}/rss.xml`
-				title="RSS"
-				icon="i-ri-rss-line"
-			/>
+			<NavLink iconOnly href=`${Astro.site}/rss.xml` title="RSS" icon="i-ri-rss-line" />
 
 			<DarkModeToggle />
 		</div>
