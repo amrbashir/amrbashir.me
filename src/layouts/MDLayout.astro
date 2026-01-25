@@ -75,26 +75,16 @@ const { frontmatter } = Astro.props;
 		}
 
 		& .ready {
-			mask: url(/icons/copy.svg) no-repeat;
+			@apply bg-current! i-myicons-copy;
 		}
 
 		& .success {
-			@apply opacity-0;
-			mask: url(/icons/copy-success.svg) no-repeat;
-		}
-
-		& .ready,
-		& .success {
-			@apply inline-block v-text-bottom;
-			@apply bg-current h-1.2em w-1.2em transition-opacity-300;
-
-			-webkit-mask-size: 100% 100%;
-			mask-size: 100% 100%;
+			@apply opacity-0 bg-green-300! i-myicons-copy-success;
 		}
 
 		&.copied {
 			& .success {
-				@apply opacity-60 color-green-300;
+				@apply opacity-60;
 			}
 
 			& .ready {
