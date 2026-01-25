@@ -39,6 +39,24 @@ const { frontmatter } = Astro.props;
 		@apply border-b-white;
 	}
 
+	/* Style inline code */
+	.prose code {
+		color: var(--fg-deep);
+		font-weight: normal;
+		background-color: #aaaaaa18;
+		border-radius: 0.25rem;
+		padding: 0.2em;
+	}
+	.prose code::before,
+	.prose code::after {
+		content: "";
+	}
+
+	.prose pre code {
+		background-color: transparent;
+		padding: 0;
+	}
+
 	/* Code copy button styles */
 	pre:has(code) {
 		@apply relative;
