@@ -30,7 +30,7 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 	<body class="w-100dvw h-100dvh flex flex-col color-dark dark:color-light">
 		<Header />
 
-		<main id="main-content" class="py-10 px-7 max-w-65ch mx-auto" class:list={className}>
+		<main id="main-content" class="py-10 px-7 max-w-prose mx-auto" class:list={className}>
 			<slot />
 
 			<Footer showFooterGoBack={showFooterGoBack} backUrl={backUrl} />
