@@ -4,8 +4,10 @@ import {
 	presetIcons,
 	presetWind4,
 	presetTypography,
+	presetWebFonts,
 } from "unocss";
 import { FileSystemIconLoader } from "@iconify/utils/lib/loader/node-loaders";
+import { createLocalFontProcessor } from "@unocss/preset-web-fonts/local";
 
 export default defineConfig({
 	theme: {
@@ -17,6 +19,15 @@ export default defineConfig({
 	presets: [
 		presetWind4(),
 		presetTypography(),
+		presetWebFonts({
+			fonts: {
+				sans: "Inter",
+				mono: "DM Mono",
+				condensed: "Roboto Condensed",
+				wisper: "Bad Script",
+			},
+			processors: createLocalFontProcessor(),
+		}),
 		presetIcons({
 			extraProperties: {
 				display: "inline-block",
