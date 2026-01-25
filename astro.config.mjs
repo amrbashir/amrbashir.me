@@ -1,10 +1,10 @@
 import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
 import mdx from "@astrojs/mdx";
-import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
 import { addCopyButton } from "shiki-transformer-copy-button";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,17 +20,6 @@ export default defineConfig({
 				}),
 			],
 		},
-		rehypePlugins: [
-			rehypeSlug,
-			[
-				rehypeAutolinkHeadings,
-				{
-					behavior: "wrap",
-					properties: {
-						class: "not-prose heading-link",
-					},
-				},
-			],
-		],
+		rehypePlugins: [rehypeHeadingIds, rehypeAutolinkHeadings],
 	},
 });
