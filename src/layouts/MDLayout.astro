@@ -17,3 +17,63 @@ const { frontmatter } = Astro.props;
 		<slot />
 	</article>
 </Layout>
+
+<style is:global>
+	pre:has(code) {
+		position: relative;
+	}
+
+	pre button.copy {
+		position: absolute;
+		right: 16px;
+		top: 16px;
+		height: 28px;
+		width: 28px;
+		padding: 0;
+
+		& span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			height: 100%;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		& .ready {
+			mask: url(/icons/copy.svg) no-repeat;
+		}
+
+		& .success {
+			opacity: 0;
+			mask: url(/icons/copy-success.svg) no-repeat;
+		}
+
+		& .ready,
+		& .success {
+			display: inline-block;
+			-webkit-mask-size: 100% 100%;
+			mask-size: 100% 100%;
+			background-color: currentColor;
+			color: inherit;
+			height: 1.2em;
+			width: 1.2em;
+			vertical-align: text-bottom;
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		&.copied {
+			& .success {
+				opacity: 1;
+			}
+
+			& .ready {
+				opacity: 0;
+			}
+		}
+	}
+</style>

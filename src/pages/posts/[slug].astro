@@ -1,17 +1,14 @@
 ---
 import { getCollection, render } from "astro:content";
 import MDLayout from "@layouts/MDLayout.astro";
-import { slugFromFilePath } from "../../utils";
 import Separator from "@components/Separator.astro";
 
 export async function getStaticPaths() {
 	let posts = await getCollection("posts");
 
 	return posts.map((post) => {
-		const slug = slugFromFilePath(post.filePath || "");
-
 		return {
-			params: { slug },
+			params: { slug: post.id },
 			props: { post },
 		};
 	});
@@ -35,7 +32,7 @@ const { Content } = await render(post);
 		backUrl: "/posts/",
 	}}
 >
-	<h1 class="font-bold text-3xl mb-0">{post.data.title}</h1>
+	<h1 class="font-bold text-4xl mb-0">{post.data.title}</h1>
 	<time class="text-sm opacity-50! !-mt-6" datetime={fullDate}>
 		{fullDate}
 	</time>

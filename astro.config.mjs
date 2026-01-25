@@ -4,6 +4,7 @@ import mdx from "@astrojs/mdx";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import sitemap from "@astrojs/sitemap";
+import { addCopyButton } from "shiki-transformer-copy-button";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,14 @@ export default defineConfig({
 	base: "/",
 	integrations: [UnoCSS(), mdx(), sitemap()],
 	markdown: {
+		shikiConfig: {
+			theme: "vitesse-dark",
+			transformers: [
+				addCopyButton({
+					toggle: 2000,
+				}),
+			],
+		},
 		rehypePlugins: [
 			rehypeSlug,
 			[
