@@ -27,14 +27,18 @@ const fullDate = date.toLocaleDateString("en-us", {
 	<a
 		href={`/posts/${slug}/`}
 		{title}
-		class="opacity-60 hover:opacity-100 transition-opacity-300 flex flex-col md:flex-row my-2 md:gap-4 md:items-center"
+		class="text-lg flex flex-col md:flex-row md:gap-4 md:items-center
+		       opacity-60 hover:opacity-100 transition-opacity-300"
 	>
-		<span class="color-dark dark:color-light">{title}</span>
+		<span>{title}</span>
 
-		<time class="text-sm text-nowrap opacity-60" datetime={fullDate}>
-			{dateNoYear}
-			{"·"}
-			{readTime} min
-		</time>
+		<div class="text-sm text-nowrap opacity-60">
+			<span>
+				{dateNoYear}
+			</span>
+			<span>
+				· {readTime} min
+			</span>
+		</div>
 	</a>
 </li>

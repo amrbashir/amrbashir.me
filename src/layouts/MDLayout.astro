@@ -13,7 +13,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout {...frontmatter}>
-	<article class="prose slide-enter-content m-auto color-dark/75 dark:color-light/75">
+	<article class="prose slide-enter-content mx-auto color-dark/75 dark:color-light/75">
 		<slot />
 	</article>
 </Layout>
@@ -51,7 +51,7 @@ const { frontmatter } = Astro.props;
 		& .ready,
 		& .success {
 			@apply inline-block v-text-bottom;
-			@apply bg-current color-inherit h-1.2em w-1.2em transition-opacity-300;
+			@apply bg-current h-1.2em w-1.2em transition-opacity-300;
 
 			-webkit-mask-size: 100% 100%;
 			mask-size: 100% 100%;

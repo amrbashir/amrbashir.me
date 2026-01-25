@@ -177,16 +177,4 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 			--stagger: 20 !important;
 		}
 	}
-
-	/* Show (#) before headings (h1, h2) */
-	a.heading-link::before {
-		content: "#";
-		position: absolute;
-		transform: translateX(-150%);
-		opacity: 0;
-		transition: opacity 300 ease-in-out;
-	}
-	a.heading-link:hover::before {
-		opacity: 1;
-	}
 </style>

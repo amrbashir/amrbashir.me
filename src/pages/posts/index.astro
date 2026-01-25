@@ -20,9 +20,9 @@ const groupedPosts = Object.groupBy(sortedPosts, (p) => new Date(p.data.pubDate)
 	{
 		Object.entries(groupedPosts).map(([year, posts]) => (
 			<>
-				<h2 class="text-3xl font-bold opacity-75">{year}</h2>
+				<h2 class="text-3xl font-bold">{year}</h2>
 				<br />
-				<ul class="w-prose flex flex-col gap-2">
+				<ul class="w-prose flex flex-col gap-4">
 					{posts?.map(({ data, id }) => (
 						<Post slug={id} {...data} />
 					))}
