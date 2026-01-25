@@ -18,30 +18,20 @@ const { frontmatter } = Astro.props;
 	</article>
 </Layout>
 
+<!-- Copy button styles -->
 <style is:global>
 	pre:has(code) {
 		position: relative;
 	}
 
 	pre button.copy {
-		position: absolute;
-		right: 16px;
-		top: 16px;
-		height: 28px;
-		width: 28px;
-		padding: 0;
+		@apply absolute right-2 top-2;
+		@apply w-8 h-8 rd-2 p-4;
+		@apply hover:bg-dark/5 dark:hover:bg-light/5;
 
 		& span {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			height: 100%;
-			width: 100%;
-			aspect-ratio: 1 / 1;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
+			@apply absolute top-1/2 left-1/2 translate--50%;
+			@apply w-full h-full aspect-ratio-square;
 		}
 
 		& .ready {
@@ -49,30 +39,26 @@ const { frontmatter } = Astro.props;
 		}
 
 		& .success {
-			opacity: 0;
+			@apply opacity-0;
 			mask: url(/icons/copy-success.svg) no-repeat;
 		}
 
 		& .ready,
 		& .success {
-			display: inline-block;
+			@apply inline-block v-text-bottom;
+			@apply bg-current color-inherit h-1.2em w-1.2em transition-opacity-300;
+
 			-webkit-mask-size: 100% 100%;
 			mask-size: 100% 100%;
-			background-color: currentColor;
-			color: inherit;
-			height: 1.2em;
-			width: 1.2em;
-			vertical-align: text-bottom;
-			transition: opacity 0.3s ease-in-out;
 		}
 
 		&.copied {
 			& .success {
-				opacity: 1;
+				@apply opacity-100;
 			}
 
 			& .ready {
-				opacity: 0;
+				@apply opacity-0;
 			}
 		}
 	}
