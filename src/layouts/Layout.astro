@@ -53,18 +53,9 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 		--bg-color-inverse: var(--bg-color-light);
 	}
 
-	/* Focus outline for accessibility */
+	/* Default focus outline for accessibility */
 	*:focus-visible {
-		outline-color: currentColor;
-		outline-style: solid;
-		outline-width: 0.1rem;
-		outline-offset: 0.2rem;
-	}
-
-	/* Style giscus discussions */
-	.giscus-frame {
-		outline: none;
-		margin: 2rem 0;
+		@apply outline-current outline-solid outline-width-2 outline-offset-2;
 	}
 
 	/* Disable transitions until page is loaded */
@@ -74,13 +65,12 @@ const { class: className, showFooterGoBack, backUrl, title, description } = Astr
 	html.preload *::after,
 	html.preload::before,
 	html.preload *::before {
-		transition: none !important;
+		@apply transition-none!;
 	}
 
 	html {
-		overflow-x: hidden;
-		overflow-y: scroll;
-		scroll-behavior: smooth;
+		@apply overflow-x-hidden overflow-y-scroll scroll-smooth;
+
 		background-color: rgb(var(--bg-color-dark));
 		font-family:
 			Inter,

@@ -18,10 +18,15 @@ const { frontmatter } = Astro.props;
 	</article>
 </Layout>
 
-<!-- Code copy button styles -->
 <style is:global>
+	/* Style giscus discussions */
+	.giscus-frame {
+		@apply outline-none my-8;
+	}
+
+	/* Code copy button styles */
 	pre:has(code) {
-		position: relative;
+		@apply relative;
 	}
 
 	pre button.copy {
