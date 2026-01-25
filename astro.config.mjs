@@ -13,7 +13,10 @@ export default defineConfig({
 	integrations: [UnoCSS(), mdx(), sitemap()],
 	markdown: {
 		shikiConfig: {
-			theme: "vitesse-dark",
+			themes: {
+				dark: "vitesse-dark",
+				light: "vitesse-light",
+			},
 			transformers: [
 				addCopyButton({
 					toggle: 2000,

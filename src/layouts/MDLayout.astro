@@ -19,9 +19,11 @@ const { frontmatter } = Astro.props;
 </Layout>
 
 <style is:global>
-	/* Style giscus discussions */
-	.giscus-frame {
-		@apply outline-none my-8;
+	/* Shiki dark mode styles */
+	html.dark .astro-code,
+	html.dark .astro-code span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
 	}
 
 	/* Add underline animation for prose links */
@@ -99,5 +101,10 @@ const { frontmatter } = Astro.props;
 				@apply opacity-0;
 			}
 		}
+	}
+
+	/* Style giscus discussions */
+	.giscus-frame {
+		@apply outline-none my-8;
 	}
 </style>
