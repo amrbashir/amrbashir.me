@@ -1,37 +1,18 @@
 ---
-import sharp from "sharp";
-import ogTemplateRaw from "@public/og-template.svg?raw";
+import { generateOgImage } from "../utils/generate-og.ts";
 
 const { title, description } = Astro.props;
-
-const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
-const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
-const ogImage = `${Astro.site}/og/${ogFileName}`;
 
 const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
 const defaultDescription = "Amr Bashir's portfolio and blog about programming and computers.";
 const finalDescription = description ?? defaultDescription;
 
 // Generate OG image at build time
+const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
+const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
+const ogImageUrl = `${Astro.site}/og/${ogFileName}`;
 if (import.meta.env.PROD) {
-	// breakline every 30 chars
-	// https://github.com/antfu/antfu.me/blob/e1c316863c2cf8d649274b872a3229e971c505b5/vite.config.ts#L247
-	const lines = (title ?? "an open source enthusiast")
-		.split(/(.{0,30})(?:\s|$)/g)
-		.filter(Boolean);
-	const ogTemplate = ogTemplateRaw
-		.replace("{{line1}}", lines[0] ?? "")
-		.replace("{{line2}}", lines[1] ?? "");
-	const ogTemplateBuffer = Buffer.from(ogTemplate);
-	const filePath = `public/og/${ogFileName}`;
-
-	console.log(`\nGenerating ${filePath}\n`);
-
-	try {
-		await sharp(ogTemplateBuffer).resize(1200, 675).png().toFile(filePath);
-	} catch (e) {
-		console.error("Failed to generate og image", e);
-	}
+	await generateOgImage(title, ogFileName);
 }
 ---
 
@@ -48,8 +29,8 @@ if (import.meta.env.PROD) {
 	<meta name="description" content={finalDescription} />
 	<meta property="og:description" content={finalDescription} />
 	<meta name="twitter:description" content={finalDescription} />
-	<meta property="og:image" content={ogImage} />
-	<meta name="twitter:image" content={ogImage} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta name="twitter:image" content={ogImageUrl} />
 	<meta name="twitter:card" content="summary_large_image" />
 
 	<meta name="revisit-after" content="7 days" />
