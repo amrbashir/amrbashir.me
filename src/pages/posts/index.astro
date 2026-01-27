@@ -5,7 +5,7 @@ import PostLink from "@components/PostLink.astro";
 
 const posts = await getCollection("posts");
 const sortedPosts = posts.sort(
-	(a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+	(a, b) => new Date(b.data.published).valueOf() - new Date(a.data.published).valueOf(),
 );
 const postsWithMinutesRead = sortedPosts.map((post) => {
 	return {
@@ -18,7 +18,7 @@ const postsWithMinutesRead = sortedPosts.map((post) => {
 	};
 });
 const groupedPosts = Object.groupBy(postsWithMinutesRead, (p) =>
-	new Date(p.data.pubDate).getFullYear(),
+	new Date(p.data.published).getFullYear(),
 );
 ---
 

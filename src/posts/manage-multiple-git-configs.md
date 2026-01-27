@@ -1,6 +1,6 @@
 ---
 title: Managing multiple Git Configurations
-pubDate: 2026-01-25
+published: 2026-01-25
 ---
 
 Managing multiple Git configurations is essential for developers juggling work and personal projects

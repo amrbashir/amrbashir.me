@@ -2,13 +2,13 @@
 interface Props {
 	slug: string;
 	title: string;
-	pubDate: Date | string;
+	published: Date | string;
 	minutesRead: string;
 }
 
-const { slug, title, pubDate, minutesRead } = Astro.props;
+const { slug, title, published, minutesRead } = Astro.props;
 
-const date = new Date(pubDate);
+const date = new Date(published);
 const dateNoYear = date.toLocaleDateString("en-us", {
 	month: "long",
 	day: "numeric",

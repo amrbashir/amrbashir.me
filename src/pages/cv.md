@@ -32,7 +32,7 @@ Passionate about customizing systems and exploring new technologies, continually
 
 **CrabNebula** _(Mar 2025 - Apr 2025)_ — Windows Software Engineer, Freelance
 
-- pubDate Windows features to Tauri app
+- published Windows features to Tauri app
 - Interfaced with Microsoft Excel via COM APIs
 - Integrated app as OS-wide sidebar
 
