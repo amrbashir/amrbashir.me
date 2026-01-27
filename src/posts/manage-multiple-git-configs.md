@@ -43,7 +43,7 @@ This is perfect for my use case, and the idea is simple:
 2. If found, merge it with the global Git configuration for the current session using `GIT_CONFIG_GLOBAL`.
 3. If no `.gitconfig` is found, revert to the default global configuration.
 
-And I just did that for both `Zsh` and `PowerShell` which are the shells I use the most.
+And I just did that for `Bash`, `Zsh` and `PowerShell` which are the shells I use the most.
 
 <details data-group="shell-config" open>
 <summary>Bash</summary>
