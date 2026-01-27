@@ -16,6 +16,27 @@ const { frontmatter } = Astro.props;
 	<article class="prose dark:prose-invert slide-enter-content">
 		<slot />
 	</article>
+
+	<script>
+		// find all <details> elements and add toggle functionality
+		// on click of the summary element, hide all other details elements within the same
+		// group (i.e., with the same data-group attribute)
+		const detailsElements = document.querySelectorAll("details[data-group]");
+		detailsElements.forEach((currDetailsEl) => {
+			const summary = currDetailsEl.querySelector("summary");
+			const group = currDetailsEl.getAttribute("data-group");
+
+			summary?.addEventListener("click", () => {
+				for (const el of detailsElements) {
+					if (el === currDetailsEl) continue;
+
+					if (el.getAttribute("data-group") === group) {
+						el.removeAttribute("open");
+					}
+				}
+			});
+		});
+	</script>
 </Layout>
 
 <style is:global>
