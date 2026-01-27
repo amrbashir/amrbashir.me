@@ -39,6 +39,7 @@ Popularized by tools like [direnv](https://direnv.net/), [asdf](https://asdf-vm.
 using `cd` hooks allows you to run custom scripts whenever you change directories.
 
 This is perfect for my use case, and the idea is simple:
+
 1. When changing directories, search upwards in the directory tree for the nearest `.gitconfig` file.
 2. If found, merge it with the global Git configuration for the current session using `GIT_CONFIG_GLOBAL`.
 3. If no `.gitconfig` is found, revert to the default global configuration.
