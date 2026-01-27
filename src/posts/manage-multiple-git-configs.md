@@ -10,7 +10,7 @@ There are several strategies to manage this, I will outline two of them here.
 
 ## Using Conditional Includes in Git Configuration
 
-For the past few years, a [collegue](https://github.com/chippers) of mine introduced me to the concept of conditional includes in Git
+For the past few years, a [colleague](https://github.com/chippers) of mine introduced me to the concept of conditional includes in Git
 configuration.
 
 ```ini
