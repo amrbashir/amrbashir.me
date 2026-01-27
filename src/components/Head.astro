@@ -9,6 +9,8 @@ const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
 const ogImage = `${Astro.site}/og/${ogFileName}`;
 
 const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
+const defaultDescription = "Amr Bashir's portfolio and blog about programming and computers.";
+const finalDescription = description ?? defaultDescription;
 
 // Generate OG image at build time
 if (import.meta.env.PROD) {
@@ -43,9 +45,9 @@ if (import.meta.env.PROD) {
 	<title>{finalTitle}</title>
 	<meta property="og:title" content={finalTitle} />
 	<meta name="twitter:title" content={finalTitle} />
-	<meta name="description" content={description} />
-	<meta property="og:description" content={description} />
-	<meta name="twitter:description" content={description} />
+	<meta name="description" content={finalDescription} />
+	<meta property="og:description" content={finalDescription} />
+	<meta name="twitter:description" content={finalDescription} />
 	<meta property="og:image" content={ogImage} />
 	<meta name="twitter:image" content={ogImage} />
 	<meta name="twitter:card" content="summary_large_image" />
@@ -58,7 +60,7 @@ if (import.meta.env.PROD) {
 	<link
 		rel="alternate"
 		type="application/rss+xml"
-		title="Amr Bashir's Blog RSS Feed"
+		title="Amr Bashir's Blog"
 		href={new URL("rss.xml", Astro.site)}
 	/>
 
