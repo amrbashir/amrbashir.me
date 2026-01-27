@@ -45,10 +45,64 @@ This is perfect for my use case, and the idea is simple:
 
 And I just did that for both `Zsh` and `PowerShell` which are the shells I use the most.
 
-<details open>
-<summary>Zsh</summary>
+<details data-group="shell-config" open>
+<summary>Bash</summary>
 
-`~/.zshrc`
+```bash
+merge_nearest_gitconfig() {
+    # Reset any previous temporary git config
+	# so if we cd out of a project with a .gitconfig we go back to normal
+    if [[ -n "$GIT_CONFIG_GLOBAL" ]]; then
+        rm -f "$GIT_CONFIG_GLOBAL" 2>/dev/null
+        unset GIT_CONFIG_GLOBAL
+    fi
+
+    local current_dir="$PWD"
+    local nearest_gitconfig=""
+
+    # Find the nearest .gitconfig file upwards in the directory tree
+    while [[ -n "$current_dir" ]]; do
+        local gitconfig_path="$current_dir/.gitconfig"
+        if [[ -f "$gitconfig_path" ]]; then
+            nearest_gitconfig="$gitconfig_path"
+            break
+        fi
+
+        # Move up one directory
+        current_dir="${current_dir%/*}"
+    done
+
+    # if the found .gitconfig is not the same as user's global config, merge it
+    if [[ -n "$nearest_gitconfig" && "$nearest_gitconfig" != "$HOME/.gitconfig" ]]; then
+        # Create a temporary config file with the user's global config ~/.gitconfig
+        local temp_config=$(mktemp)
+        cat "$HOME/.gitconfig" > "$temp_config"
+
+        # Append an include directive for the nearest .gitconfig
+        echo -e "\n[include]\n    path = $nearest_gitconfig" >> "$temp_config"
+
+        # Point Git to this merged config for the session
+        export GIT_CONFIG_GLOBAL="$temp_config"
+        echo "Merged git config from \e[36m$nearest_gitconfig\e[0m into current session."
+    fi
+
+}
+
+# Function to change directory and immediately merge neatest git config
+_cd_with_nearest_git() {
+	\cd "$@" || return $?
+	merge_nearest_gitconfig
+}
+
+
+alias cd='_cd_with_nearest_git'  # Override cd to our custom function
+merge_nearest_gitconfig          # Run it once for the initial directory
+```
+
+</details>
+
+<details data-group="shell-config">
+<summary>Zsh</summary>
 
 ```zsh
 merge_nearest_gitconfig() {
@@ -97,10 +151,8 @@ merge_nearest_gitconfig                    # Run it once for the initial directo
 
 </details>
 
-<details>
+<details data-group="shell-config">
 <summary>PowerShell</summary>
-
-`~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`
 
 ```powershell
 Function Merge-NearestGitConfig {
@@ -144,14 +196,14 @@ Function Merge-NearestGitConfig {
 }
 
 # Function to change directory and immediately merge neatest git config
-Function CdWithGit {
+Function __cd_with_nearest_git {
 	Set-Location @args
 	Merge-NearestGitConfig
 }
 
-Remove-Alias cd -ErrorAction SilentlyContinue # Remove existing cd
-Set-Alias cd CdWithGit -Scope Global -Force   # Override cd to our custom function
-Merge-NearestGitConfig                        # Run it once for the initial directory
+Remove-Alias cd -ErrorAction SilentlyContinue             # Remove existing cd
+Set-Alias cd __cd_with_nearest_git -Scope Global -Force   # Override cd to our custom function
+Merge-NearestGitConfig                                    # Run it once for the initial directory
 ```
 
 </details>
