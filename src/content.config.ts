@@ -9,6 +9,7 @@ const posts = defineCollection({
 		title: z.string(),
 		published: z.union([z.string(), z.date()]),
 		updated: z.union([z.string(), z.date()]).optional(),
+		categories: z.array(z.string()).optional(),
 	}),
 });
 

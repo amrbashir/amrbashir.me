@@ -30,14 +30,18 @@ export async function generateFeed(context: APIContext) {
 		favicon: new URL("/favicon.svg", site).toString(),
 		updated: lastUpdated,
 		feedLinks: {
-			rss: new URL("/rss.xml", site).toString(),
-			atom: new URL("/feed.xml", site).toString(),
+			rss: "/rss.xml",
+			atom: "/index.xml",
 		},
 		author: {
 			name: "Amr Bashir",
 			link: site,
 		},
 	});
+
+	feed.addCategory("programming");
+	feed.addCategory("computers");
+	feed.addCategory("technology");
 
 	for (const post of posts) {
 		const url = new URL(`/posts/${post.id}`, site).toString();
@@ -50,6 +54,7 @@ export async function generateFeed(context: APIContext) {
 			link: url,
 			published: publishedDate,
 			date: updatedDate || publishedDate,
+			category: post.data.categories?.map((category) => ({ name: category })) || [],
 			content: sanitizeHtml(parser.render(post.body ?? ""), {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
 			}),
