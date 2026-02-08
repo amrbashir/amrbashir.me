@@ -19,7 +19,7 @@ Passionate about customizing systems and exploring new technologies, continually
 ## Contact Information
 
 - **Website:** [amrbashir.me](https://amrbashir.me)
-- **E-mail:** [contact@amrbashir.me](mailto:contact@amrbashir.me)
+- **E-mail:** [amr@amrbashir.me](mailto:amr@amrbashir.me)
 - **Location:** Tanta, Egypt
 
 ## Work Experience
