@@ -28,7 +28,7 @@
 		"@unocss/reset": "^66.6.0",
 		"astro": "^5.16.15",
 		"feed": "^5.0.0",
-		"markdown-it": "^14.1.0",
+		"markdown-it": "^14.1.1",
 		"mdast-util-to-string": "^4.0.0",
 		"prettier": "^3.8.1",
 		"prettier-plugin-astro": "^0.14.1",
