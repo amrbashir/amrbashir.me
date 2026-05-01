@@ -114,6 +114,7 @@ Fullstack Software Engineer with 4+ years of experience building cross-platform 
 
 - Contributed to Zephyr Agency, a Tauri-based collaborative AI development app built on the Chromium Embedded Framework (CEF) runtime.
 - Built Windows sandboxing for agents for untrusted code execution: a sandbox DLL with syscall hooks, and violation reporting.
+- Contributed to and improved the plugin (mini-apps) architecture for better extensibility and isolation.
 - Helped implement CEF runtime support in upstream #link("https://tauri.app")[Tauri]: feature work, public APIs, and cross-platform stability fixes across Windows and macOS.
 - Polished native window UX on Windows and macOS: transparency, macOS corner radius, custom titlebar with drag regions, hide-to-tray/dock.
 
