@@ -108,6 +108,15 @@ Fullstack Software Engineer with 4+ years of experience building cross-platform 
 
 == Work Experience
 
+=== Software Engineer (Freelance) - #link("https://www.zephyr-cloud.io/")[Zephyr Cloud]
+
+#text(style: "italic", size: 9.5pt)[November 2025 - Present | Remote]
+
+- Contributed to Zephyr Agency, a Tauri-based collaborative AI development app built on the Chromium Embedded Framework (CEF) runtime.
+- Built Windows sandboxing for agents for untrusted code execution: a sandbox DLL with syscall hooks, and violation reporting.
+- Helped implement CEF runtime support in upstream #link("https://tauri.app")[Tauri]: feature work, public APIs, and cross-platform stability fixes across Windows and macOS.
+- Polished native window UX on Windows and macOS: transparency, macOS corner radius, custom titlebar with drag regions, hide-to-tray/dock.
+
 === Fullstack Engineer (Freelance) - ERP System for Local Retail Store
 
 #text(style: "italic", size: 9.5pt)[June 2025 - July 2025 | Egypt]
@@ -117,7 +126,7 @@ Fullstack Software Engineer with 4+ years of experience building cross-platform 
 - Implemented React frontend with Vite, TanStack Router, TanStack Query, and i18next for Arabic/English localization.
 - Delivered production-ready system end-to-end as sole engineer.
 
-=== Windows Software Engineer (Freelance) - CrabNebula
+=== Windows Software Engineer (Freelance) - #link("https://github.com/lyfegame/")[Altera]
 
 #text(style: "italic", size: 9.5pt)[March 2025 - April 2025 | Remote]
 
@@ -125,12 +134,12 @@ Fullstack Software Engineer with 4+ years of experience building cross-platform 
 - Integrated app with Microsoft Excel through the COM API for live spreadsheet interop.
 - Improved native Windows UX by leveraging Win32 APIs for shell integration.
 
-=== R&D Software Engineer - CrabNebula
+=== R&D Software Engineer - #link("https://crabnebula.dev/")[CrabNebula]
 
 #text(style: "italic", size: 9.5pt)[November 2022 - November 2024 | Remote]
 
 - Maintained and extended the #link("https://tauri.app")[Tauri] project (90,000+ GitHub stars), focusing on performance, stability, and cross-platform parity across Windows, Linux (X11/GTK), and macOS.
-- Architected and developed a scalable cloud platform using Rust (Axum, Rspc), MongoDB, and SolidJS, implementing both backend endpoints and frontend UI.
+- Contributed to a cloud platform built with Rust (Axum, Rspc), MongoDB, and SolidJS, implementing backend endpoints and frontend UI.
 - Integrated user management and authorization using the Ory suite (Kratos, Hydra, Keto) for SSO, OAuth2, and fine-grained permissions.
 - Collaborated with a distributed engineering team via async code review and design discussions.
 
