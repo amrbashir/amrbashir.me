@@ -1,0 +1,36 @@
+---
+import MDLayout from "@layouts/MDLayout.astro";
+import { buildCv } from "../../utils/build-cv.ts";
+
+// Compile _cv.typ at render time (writes public/cv.pdf, returns full HTML doc).
+const rawCvHtml = await buildCv();
+
+// Extract <body> contents from the Typst-generated HTML document.
+const body = rawCvHtml.match(/<body[^>]*>([\s\S]*)<\/body>/)?.[1].trim() ?? "";
+
+// Typst HTML reserves <h1> for the document title and starts body headings at h2.
+// Shift levels up by 1 so the CV gets a proper <h1> and section headings line up
+// with the site's prose styles.
+const cvBody = body.replace(
+	/<(\/?)h([1-5])\b/g,
+	(_, slash, n) => `<${slash}h${Math.max(1, parseInt(n) - 1)}`,
+);
+
+const frontmatter = {
+	title: "CV",
+	description: "Amr Bashir's CV - Fullstack Software Engineer",
+};
+---
+
+<MDLayout frontmatter={frontmatter}>
+	<img
+		src="/portrait.webp"
+		alt="portrait"
+		width="150"
+		height="150"
+		style="border-radius: 50%; float: right;"
+		class="print:hidden ml-2px"
+	/>
+
+	<Fragment set:html={cvBody} />
+</MDLayout>
