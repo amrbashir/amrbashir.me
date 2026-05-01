@@ -20,6 +20,8 @@ const ROOT = resolve(import.meta.dirname, "../..");
 const MAIN = resolve(ROOT, "src/pages/cv/cv.typ");
 const PDF_OUT = resolve(ROOT, "public/cv.pdf");
 const PDF_PARENT = dirname(PDF_OUT);
+const DIST_PDF_OUT = resolve(ROOT, "dist/cv.pdf");
+const DIST_PDF_PARENT = dirname(DIST_PDF_OUT);
 
 // Reuse a single compiler across calls — its global cache makes repeat compiles fast
 // (matters in dev where frontmatter reruns on every request to /cv).
@@ -51,10 +53,20 @@ export async function buildCv(): Promise<string> {
 	const pdfDoc = compiler.compile({ mainFilePath: MAIN });
 	reportDiagnostics(pdfDoc, "PDF compile");
 
-	// Write the PDF output to public/cv.pdf
+	// Write the PDF output to public/cv.pdf so the dev server serves it.
 	const pdfBuf = compiler.pdf(pdfDoc.result!);
+	const pdfBytes = new Uint8Array(pdfBuf);
 	mkdirSync(PDF_PARENT, { recursive: true });
-	writeFileSync(PDF_OUT, new Uint8Array(pdfBuf));
+	writeFileSync(PDF_OUT, pdfBytes);
+
+	// During `astro build` the public/→dist/ copy has already finished by the
+	// time frontmatter runs, so writes to public/ don't end up in dist/. Mirror
+	// the PDF straight into dist/ so the build artifact (and the Cloudflare
+	// deploy) contains it. Skip in dev (no dist/ to populate).
+	if (process.env.NODE_ENV === "production") {
+		mkdirSync(DIST_PDF_PARENT, { recursive: true });
+		writeFileSync(DIST_PDF_OUT, pdfBytes);
+	}
 
 	// Compile the HTML output for use in the /cv page.
 	const htmlRes = compiler.tryHtml({
