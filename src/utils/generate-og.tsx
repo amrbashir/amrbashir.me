@@ -159,14 +159,14 @@ function Topbar() {
 				alignItems: "baseline",
 			}}
 		>
-			<div style={{ display: "flex", fontSize: 16, color: PALETTE.fg, fontWeight: 600 }}>
+			<div style={{ display: "flex", fontSize: 26, color: PALETTE.fg, fontWeight: 600 }}>
 				{AUTHOR}
 				<span style={{ color: PALETTE.muted, fontWeight: 400 }}>
 					{"  · " + AUTHOR_ROLE.toLowerCase()}
 				</span>
 			</div>
 			<div
-				style={{ fontSize: 13, color: PALETTE.muted }}
+				style={{ fontSize: 22, color: PALETTE.muted }}
 			>{`${AUTHOR_LOCATION}  · ${AUTHOR_TIMEZONE}`}</div>
 		</div>
 	);
@@ -228,13 +228,13 @@ function BottomBar() {
 		<div
 			style={{
 				display: "flex",
-				borderTop: `1px solid ${PALETTE.rule}`,
-				paddingTop: 18,
+				borderTop: `1px solid ${PALETTE.faint}`,
+				paddingTop: 22,
 				justifyContent: "space-between",
 			}}
 		>
-			<div style={{ fontSize: 14, color: PALETTE.fg, fontWeight: 600 }}>{SITE_HOST}</div>
-			<div style={{ fontSize: 14, color: PALETTE.muted }}>{COPYRIGHT}</div>
+			<div style={{ fontSize: 22, color: PALETTE.fg, fontWeight: 600 }}>{SITE_HOST}</div>
+			<div style={{ fontSize: 22, color: PALETTE.muted }}>{COPYRIGHT}</div>
 		</div>
 	);
 }
