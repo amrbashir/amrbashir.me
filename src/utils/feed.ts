@@ -3,10 +3,18 @@ import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
+import {
+	AUTHOR,
+	DEFAULT_DESCRIPTION,
+	FAVICON_PATH,
+	FEED_ATOM_PATH,
+	FEED_RSS_PATH,
+	SITE_URL,
+} from "./constants";
 const parser = new MarkdownIt();
 
 export async function generateFeed(context: APIContext) {
-	const site = context.site?.toString() || "https://amrbashir.me";
+	const site = context.site?.toString() || SITE_URL;
 
 	let posts = await getCollection("posts");
 	posts = posts.sort(
@@ -22,19 +30,19 @@ export async function generateFeed(context: APIContext) {
 	}, new Date(0));
 
 	const feed = new Feed({
-		title: "Amr Bashir",
-		description: "Amr Bashir's blog about programming and computers.",
+		title: AUTHOR,
+		description: DEFAULT_DESCRIPTION,
 		id: site,
 		link: site,
 		language: "en",
-		favicon: new URL("/favicon.svg", site).toString(),
+		favicon: new URL(FAVICON_PATH, site).toString(),
 		updated: lastUpdated,
 		feedLinks: {
-			rss: "/rss.xml",
-			atom: "/index.xml",
+			rss: FEED_RSS_PATH,
+			atom: FEED_ATOM_PATH,
 		},
 		author: {
-			name: "Amr Bashir",
+			name: AUTHOR,
 			link: site,
 		},
 	});

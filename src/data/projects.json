@@ -1,0 +1,91 @@
+[
+	{
+		"name": "tauri",
+		"url": "https://github.com/tauri-apps/tauri",
+		"tags": ["rust", "cross-platform"],
+		"homeShort": "A toolkit for building smaller, faster, more secure desktop and mobile applications with a web frontend. Maintained across Windows, Linux, and macOS — plus a small constellation of supporting libraries.",
+		"role": "Working-group member · since 2021",
+		"cvHighlight": "Core working-group member and maintainer since 2021. Cross-platform app framework (Rust + web frontend), 90K+ stars. Contributed APIs, Windows internals, and build tooling.",
+		"cvFeatured": true
+	},
+	{
+		"name": "muda",
+		"url": "https://github.com/tauri-apps/muda",
+		"tags": ["rust", "tauri"],
+		"homeShort": "Menu utilities for desktop applications, in Rust.",
+		"cvHighlight": "Author/maintainer. Cross-platform menu utilities for Rust desktop apps.",
+		"cvFeatured": true
+	},
+	{
+		"name": "tray-icon",
+		"url": "https://github.com/tauri-apps/tray-icon",
+		"tags": ["rust", "tauri"],
+		"homeShort": "Tray icons for desktop applications, in Rust.",
+		"cvHighlight": "Author/maintainer. Cross-platform tray icon library for Rust desktop apps.",
+		"cvFeatured": true
+	},
+	{
+		"name": "create-tauri-app",
+		"url": "https://github.com/tauri-apps/create-tauri-app",
+		"tags": ["node", "scaffolding"],
+		"homeShort": "Rapidly scaffold out a new Tauri app project.",
+		"cvHighlight": null,
+		"cvFeatured": false
+	},
+	{
+		"name": "vite-plugin-tauri",
+		"url": "https://github.com/amrbashir/vite-plugin-tauri",
+		"tags": ["vite", "tauri"],
+		"homeShort": "Tauri integration for any Vite-based project.",
+		"cvHighlight": "Vite plugin for seamless Tauri integration in web projects.",
+		"cvFeatured": true
+	},
+	{
+		"name": "komorebi-switcher",
+		"url": "https://github.com/amrbashir/komorebi-switcher",
+		"tags": ["windows", "rust"],
+		"homeShort": "A minimal workspace switcher for the Komorebi tiling window manager, pinned into the Windows 10/11 taskbar.",
+		"cvHighlight": "Workspace switcher for the Komorebi tiling window manager, integrated into the Windows 10/11 taskbar.",
+		"cvFeatured": true
+	},
+	{
+		"name": "nvim-docs-view",
+		"url": "https://github.com/amrbashir/nvim-docs-view",
+		"tags": ["neovim", "lsp", "lua"],
+		"homeShort": "A Neovim plugin to display LSP hover documentation in a side panel.",
+		"cvHighlight": "Neovim plugin rendering LSP hover documentation in a side panel.",
+		"cvFeatured": true
+	},
+	{
+		"name": "hijri-widget",
+		"url": "https://github.com/amrbashir/hijri-widget",
+		"tags": ["android", "kotlin"],
+		"homeShort": "A minimal Android widget for displaying the Hijri date.",
+		"cvHighlight": "Native Android widget for Hijri date display; 2,000+ active users.",
+		"cvFeatured": true
+	},
+	{
+		"name": "erp-system",
+		"url": "https://erp-system.amrbashir.me",
+		"tags": ["react", "postgres"],
+		"homeShort": "An ERP system for a local store. Inventory, invoicing, transactions. Built in public.",
+		"cvHighlight": null,
+		"cvFeatured": false
+	},
+	{
+		"name": "nsis-plugin-rs",
+		"url": "https://github.com/amrbashir/nsis-plugin-rs",
+		"tags": ["rust", "nsis", "windows"],
+		"homeShort": "A template for writing an NSIS DLL plugin, in Rust.",
+		"cvHighlight": null,
+		"cvFeatured": false
+	},
+	{
+		"name": "amrbashir.me",
+		"url": "https://github.com/amrbashir/amrbashir.me",
+		"tags": ["astro", "this site"],
+		"homeShort": "The site you are reading. Open-source, perpetually under revision.",
+		"cvHighlight": "Personal website built with Astro.",
+		"cvFeatured": true
+	}
+]

@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"section"> {
+	title: string;
+	subtitle?: string;
+}
+const { title, subtitle, ...props } = Astro.props;
+---
+
+<section {...props}>
+	<h2 class="py-2 border-b border-rule mb-3 flex justify-between">
+		<span class="text-muted text-sm">{title}</span>
+		{subtitle && <span class="text-faint text-xs">{subtitle}</span>}
+		<slot name="actions" />
+	</h2>
+	<slot />
+</section>

@@ -1,26 +1,18 @@
 ---
-import Button from "./Button.astro";
+import type projects from "@data/projects.json";
 
-interface Props {
-	name: string;
-	description: string;
-	url: string;
-	icon: string;
-	class?: string;
-}
+type Props = (typeof projects)[number];
 
-const { url, name, description, class: className, icon } = Astro.props;
+const { name, tags, url, homeShort } = Astro.props;
 ---
 
-<Button tag="a" class={className} href={url} target="_blank" title={name}>
-	<!-- Icon -->
-	<div class="flex justify-center opacity-60">
-		<span class:list={["size-10", icon]}></span>
-	</div>
-
-	<!--  Title and Description -->
-	<div>
-		<div class="text-xl">{name}</div>
-		<div class="opacity-60 text-sm">{description}</div>
-	</div>
-</Button>
+<li
+	class="border-b border-rule last:border-0 py-4 grid grid-cols-[auto_1fr_auto] gap-4 items-center"
+>
+	<h3 class="text-sm">{name}</h3>
+	<p class="text-xs text-faint">{tags.join(" · ")}</p>
+	<a href={url} class="text-xs" target="_blank" rel="noopener">
+		github <span class="i-ri-arrow-right-line size-3"></span>
+	</a>
+	<p class="text-xs text-muted col-span-2">{homeShort}</p>
+</li>

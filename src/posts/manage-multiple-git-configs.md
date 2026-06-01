@@ -1,6 +1,5 @@
 ---
 title: Managing multiple Git configurations, without forgetting which one you're using
-description: "One machine. A work identity, a personal identity, the occasional client. `includeIf` lets Git pick the right one for you — based on where the repo lives on disk — and quietly retires the ritual of remembering."
 published: 2026-01-25
 categories: [git, tools]
 ---
@@ -21,7 +20,7 @@ Most developers end up with at least two Git identities: a personal one for hobb
 
 The right shape is to let Git figure it out from the filesystem layout you already have. Work repos live under `~/work/`. Personal repos live under `~/code/`. That's already the signal -- Git just needs to read it.
 
-> The right config is the one you can *forget* the day after you write it.
+> The right config is the one you can _forget_ the day after you write it.
 
 ## Using `includeIf`
 
@@ -35,8 +34,7 @@ A [colleague](https://github.com/chippers) of mine introduced me to conditional 
 
 Now create one config file per identity. Keep them next to your top-level `.gitconfig` so they're easy to find later:
 
-```ini
-# ~/.gitconfig-work
+```ini title="~/.gitconfig-work"
 [user]
     name        = Your Name
     email       = you@example-corp.com
@@ -47,8 +45,7 @@ Now create one config file per identity. Keep them next to your top-level `.gitc
 
 Then wire them into the root config with `includeIf`. The `gitdir:` prefix matches against the absolute path of the repo's working tree, with shell-style wildcards. The trailing slash matters -- it's what tells Git to match any descendant.
 
-```ini
-# ~/.gitconfig
+```ini title="~/.gitconfig"
 [user]
     name  = Your Name
     email = personal@email.com         # the default
@@ -84,7 +81,7 @@ A few rough edges worth being aware of, in roughly decreasing order of how much 
 
 ### A note on signing
 
-Once you have per-directory identities, GPG/SSH commit signing becomes basically free: put the `signingkey` and `gpgsign = true` lines in each per-identity file, and Git signs commits with the right key automatically. Pair that with your Git host's *vigilant mode* (GitHub) or the equivalent and unsigned commits in those repos start to look suspicious by default -- which is the goal.
+Once you have per-directory identities, GPG/SSH commit signing becomes basically free: put the `signingkey` and `gpgsign = true` lines in each per-identity file, and Git signs commits with the right key automatically. Pair that with your Git host's _vigilant mode_ (GitHub) or the equivalent and unsigned commits in those repos start to look suspicious by default -- which is the goal.
 
 This approach is solid, battle-tested, and lands cleanly for most setups.
 
@@ -105,7 +102,7 @@ And I just did that for `Bash`, `Zsh` and `PowerShell` which are the shells I us
 <details data-group="shell-config" open>
 <summary>Bash</summary>
 
-```bash
+```bash title="~/.bashrc"
 merge_nearest_gitconfig() {
     # Reset any previous temporary git config
 	# so if we cd out of a project with a .gitconfig we go back to normal
@@ -161,7 +158,7 @@ merge_nearest_gitconfig          # Run it once for the initial directory
 <details data-group="shell-config">
 <summary>Zsh</summary>
 
-```zsh
+```zsh title="~/.zshrc"
 merge_nearest_gitconfig() {
     # Reset any previous temporary git config
 	# so if we cd out of a project with a .gitconfig we go back to normal
@@ -211,7 +208,7 @@ merge_nearest_gitconfig                    # Run it once for the initial directo
 <details data-group="shell-config">
 <summary>PowerShell</summary>
 
-```powershell
+```powershell title="~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 Function Merge-NearestGitConfig {
     # Reset any previous temporary git config
     if ($Env:GIT_CONFIG_GLOBAL) {

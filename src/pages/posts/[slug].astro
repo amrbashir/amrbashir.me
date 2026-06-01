@@ -1,68 +1,28 @@
 ---
 import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
 import MDLayout from "@layouts/MDLayout.astro";
-import Separator from "@components/Separator.astro";
 
-export async function getStaticPaths() {
-	let posts = await getCollection("posts");
-
-	return posts.map((post) => {
-		return {
-			params: { slug: post.id },
-			props: { post },
-		};
-	});
-}
+export const getStaticPaths = (async () => {
+	const posts = await getCollection("posts");
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
-
-const date = new Date(post.data.published);
-const fullDate = date.toLocaleDateString("en-us", {
-	year: "numeric",
-	month: "long",
-	day: "numeric",
-});
-
 const { Content, remarkPluginFrontmatter } = await render(post);
+const minutes = Math.round(remarkPluginFrontmatter.minutes || 0);
 ---
 
 <MDLayout
-	frontmatter={{
-		title: post.data.title,
-		backUrl: "/posts/",
-	}}
+	title={post.data.title}
+	description={post.data.description}
+	minutes={minutes}
+	published={post.data.published}
+	updated={post.data.updated}
+	categories={post.data.categories}
 >
-	<h1 class="font-bold text-4xl mb-1">{post.data.title}</h1>
-	<div class="opacity-60! mb-6">
-		<span>
-			{fullDate}
-		</span>
-		<span>
-			· {remarkPluginFrontmatter.minutesRead}
-		</span>
-	</div>
-
-	<Separator />
-
 	<Content />
-
-	<Separator />
-
-	<script
-		is:inline
-		src="https://giscus.app/client.js"
-		data-repo="amrbashir/amrbashir.me"
-		data-repo-id="R_kgDOMKJUBw"
-		data-category="Announcements"
-		data-category-id="DIC_kwDOMKJUB84C1YXr"
-		data-mapping="title"
-		data-strict="1"
-		data-reactions-enabled="1"
-		data-emit-metadata="0"
-		data-input-position="top"
-		data-theme="transparent_dark"
-		data-lang="en"
-		data-loading="lazy"
-		crossorigin="anonymous"
-		async></script>
 </MDLayout>

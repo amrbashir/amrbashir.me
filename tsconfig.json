@@ -1,11 +1,15 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"compilerOptions": {
+		"resolveJsonModule": true,
 		"paths": {
 			"@components/*": ["./src/components/*"],
 			"@layouts/*": ["./src/layouts/*"],
+			"@data/*": ["./src/data/*"],
+			"@utils/*": ["./src/utils/*"],
 			"@assets/*": ["./src/assets/*"],
-			"@public/*": ["./public/*"]
+			"@public/*": ["./public/*"],
+			"@/*": ["./src/*"]
 		}
 	}
 }

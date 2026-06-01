@@ -1,0 +1,61 @@
+---
+export function themeInit() {
+	const stored = localStorage.getItem("theme");
+	const theme =
+		stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+	const isDark =
+		theme === "dark" ||
+		(theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+	document.documentElement.dataset.theme = theme;
+	document.documentElement.classList.toggle("dark", isDark);
+}
+
+const iconClass =
+	"[grid-area:1/1] size-4 opacity-0 scale-50 -rotate-90 transition-all duration-300 ease-out";
+---
+
+<button
+	type="button"
+	class="theme-toggle grid place-items-center bg-transparent border-none cursor-pointer hover:text-accent transition-colors duration-200"
+	aria-label="Toggle theme"
+	title="Toggle theme"
+>
+	<span
+		class={`i-ri:computer-line ${iconClass} [[data-theme=system]_&]:opacity-100 [[data-theme=system]_&]:scale-100 [[data-theme=system]_&]:rotate-0`}
+		aria-hidden="true"></span>
+	<span
+		class={`i-ri:sun-line ${iconClass} [[data-theme=light]_&]:opacity-100 [[data-theme=light]_&]:scale-100 [[data-theme=light]_&]:rotate-0`}
+		aria-hidden="true"></span>
+	<span
+		class={`i-ri:moon-line ${iconClass} [[data-theme=dark]_&]:opacity-100 [[data-theme=dark]_&]:scale-100 [[data-theme=dark]_&]:rotate-0`}
+		aria-hidden="true"></span>
+</button>
+
+<script>
+	type Theme = "system" | "light" | "dark";
+	const order: Theme[] = ["system", "light", "dark"];
+
+	function isDark(theme: Theme): boolean {
+		return (
+			theme === "dark" ||
+			(theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+		);
+	}
+
+	function applyTheme(theme: Theme) {
+		document.documentElement.dataset.theme = theme;
+		document.documentElement.classList.toggle("dark", isDark(theme));
+	}
+
+	document.querySelector<HTMLButtonElement>(".theme-toggle")?.addEventListener("click", () => {
+		const current = (document.documentElement.dataset.theme ?? "system") as Theme;
+		const next = order[(order.indexOf(current) + 1) % order.length];
+		localStorage.setItem("theme", next);
+		applyTheme(next);
+	});
+
+	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+		const stored = localStorage.getItem("theme");
+		if (stored === "system" || stored === null) applyTheme("system");
+	});
+</script>

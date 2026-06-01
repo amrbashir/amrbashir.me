@@ -1,0 +1,35 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const segments = Astro.url.pathname
+	.split("/")
+	.filter(Boolean)
+	.map((s) => s.trim());
+
+const crumbs = segments.map((segment, i) => ({
+	label: segment,
+	href: "/" + segments.slice(0, i + 1).join("/"),
+	isLast: i === segments.length - 1,
+}));
+---
+
+<nav class="text-xs text-muted" class:list={[className]} aria-label="Breadcrumbs">
+	<a href="/">~</a>
+
+	{
+		crumbs.map((crumb) => (
+			<>
+				<span class="text-faint">/</span>
+				{crumb.isLast ? (
+					<span class="text-fg">{crumb.label}</span>
+				) : (
+					<a href={crumb.href}>{crumb.label}</a>
+				)}
+			</>
+		))
+	}
+</nav>

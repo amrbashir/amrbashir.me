@@ -1,0 +1,94 @@
+---
+import Layout from "@layouts/Layout.astro";
+import projects from "@data/projects.json";
+import Section from "@components/Section.astro";
+import Project from "@components/Project.astro";
+import { getSortedPosts } from "@utils/posts";
+import Post from "@components/Post.astro";
+import DraftPost from "@components/DraftPost.astro";
+import profile from "@data/profile.json";
+
+const posts = await getSortedPosts();
+const recentPosts = posts.slice(0, 5);
+const links = profile.links.filter((link) => link.homeLabel);
+const allLinks = [
+	...links,
+	{
+		label: "/feed.xml",
+		href: "/rss.xml",
+		homeLabel: "rss",
+	},
+];
+---
+
+<Layout class="flex flex-col gap-10">
+	<section class="prose prose-sm dark:prose-invert">
+		<p>
+			I'm Amr. I write software for a living — backends, frontends, and the parts in between.
+			Since 2021 I've been a working-group member and maintainer of Tauri, the Rust framework
+			for building small, fast, secure desktop and mobile apps.
+		</p>
+		<p>
+			When I'm not on a keyboard I tinker with my operating system, configure my browser, rice
+			up my terminal, or flash a new Android ROM.
+		</p>
+		<p>
+			Outside of programming, I'm passionate about gaming (a love that started in childhood)
+			and playing football (the kind you play with your foot!) and lately I've been learning
+			to solder. Not very well, yet.
+		</p>
+	</section>
+
+	<Section id="projects" title="projects" subtitle="open-source · all of it">
+		<ul>
+			{projects.map((project) => <Project {...project} />)}
+		</ul>
+	</Section>
+
+	<Section id="posts" title="posts">
+		<a slot="actions" href="/posts" class="text-xs">
+			read more
+			<span class="i-ri-arrow-right-line"></span>
+		</a>
+
+		<ul>
+			{recentPosts.map((post) => <Post {...post} />)}
+			{posts.length < 5 && <DraftPost />}
+		</ul>
+	</Section>
+
+	<Section id="toolbox" title="toolbox" subtitle="what I reach for">
+		<dl class="grid grid-cols-[auto_1fr] gap-4">
+			{
+				profile.toolbox.map((item) => (
+					<>
+						<dt class="text-xs">{item.category}</dt>
+						<dd class="text-xs text-muted">{item.tools.join(", ")}</dd>
+					</>
+				))
+			}
+		</dl>
+	</Section>
+
+	<Section id="elsewhere" title="elsewhere" subtitle="say hi">
+		<dl class="grid grid-cols-[auto_1fr] gap-4">
+			{
+				allLinks.map((link) => (
+					<>
+						<dt class="text-xs text-muted">{link.homeLabel}</dt>
+						<dd class="text-xs">
+							<a
+								href={link.href}
+								class="w-fit flex items-center gap-2 text-sm"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{link.label}
+							</a>
+						</dd>
+					</>
+				))
+			}
+		</dl>
+	</Section>
+</Layout>

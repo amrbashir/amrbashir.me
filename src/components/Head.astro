@@ -1,18 +1,37 @@
 ---
-import { generateOgImage } from "../utils/generate-og.ts";
+import { slugify } from "@utils/slug";
+import { generateOgImage } from "@utils/generate-og.tsx";
+import { themeInit } from "@components/ThemeToggle.astro";
+import {
+	AUTHOR,
+	BLOG_TITLE,
+	DEFAULT_DESCRIPTION,
+	FAVICON_PATH,
+	FEED_RSS_PATH,
+	THEME_COLOR_LIGHT,
+} from "@utils/constants";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
 
 const { title, description } = Astro.props;
 
-const finalTitle = `${title ? title + " - " : ""}Amr Bashir`;
-const defaultDescription = "Amr Bashir's portfolio and blog about programming and computers.";
-const finalDescription = description ?? defaultDescription;
+const finalTitle = `${title ? title + " - " : ""}${AUTHOR}`;
+const finalDescription = description ?? DEFAULT_DESCRIPTION;
 
-// Generate OG image at build time
-const sluggifiedTitle = title?.replace(" ", "-").toLowerCase();
-const ogFileName = `${sluggifiedTitle ?? "og"}.png`;
+// Generate OG image at build time.
+// Filename + rendered title derive from the route path, except blog posts which use the post title.
+const ogFileName = `${title ? slugify(title) : "og"}.png`;
+const ogFilePath = `public/og/${ogFileName}`;
 const ogImageUrl = new URL(`/og/${ogFileName}`, Astro.site);
 if (import.meta.env.PROD) {
-	await generateOgImage(title, ogFileName);
+	await generateOgImage({
+		title,
+		filePath: ogFilePath,
+		pathname: Astro.url.pathname,
+	});
 }
 ---
 
@@ -21,7 +40,9 @@ if (import.meta.env.PROD) {
 	<meta name="viewport" content="width=device-width" />
 	<meta name="generator" content={Astro.generator} />
 
-	<meta name="author" content="Amr Bashir" />
+	<script is:inline set:html={`(${themeInit.toString()})();`} />
+
+	<meta name="author" content={AUTHOR} />
 
 	<title>{finalTitle}</title>
 	<meta property="og:title" content={finalTitle} />
@@ -35,22 +56,22 @@ if (import.meta.env.PROD) {
 
 	<meta name="revisit-after" content="7 days" />
 
-	<meta name="theme-color" content="#050505" />
+	<meta name="theme-color" content={THEME_COLOR_LIGHT} />
 
 	<link rel="sitemap" href="/sitemap-index.xml" />
 	<link
 		rel="alternate"
 		type="application/rss+xml"
-		title="Amr Bashir's Blog"
-		href={new URL("rss.xml", Astro.site)}
+		title={BLOG_TITLE}
+		href={new URL(FEED_RSS_PATH, Astro.site)}
 	/>
 
 	<link
 		rel="alternate"
 		type="application/atom+xml"
-		title="Amr Bashir's Blog"
+		title={BLOG_TITLE}
 		href={new URL("feed.xml", Astro.site)}
 	/>
 
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="icon" type="image/svg+xml" href={FAVICON_PATH} />
 </head>

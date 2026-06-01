@@ -1,0 +1,206 @@
+{
+	"name": "Amr Bashir",
+	"tagline": "Software, in Public",
+	"cvTagline": "Fullstack Software Engineer | Rust, TypeScript, Cross-Platform Desktop",
+	"summary": "Fullstack Software Engineer with 4+ years of experience building cross-platform desktop, web, and mobile applications. Core maintainer of Tauri, an open-source app framework with 90K+ GitHub stars used by thousands of production apps. Specialized in Rust, TypeScript, and native OS integrations (Win32, GTK, X11). Proven track record shipping production software end-to-end, from systems-level APIs to React/SolidJS frontends.",
+	"role": "Fullstack Engineer · Cross-Platform Desktop",
+	"coreStack": "Rust · TypeScript · Tauri · Open Source",
+	"location": "Tanta, Egypt",
+	"timezone": "UTC+02",
+	"website": "https://amrbashir.me",
+	"languages": [
+		{ "name": "Arabic", "level": "Native" },
+		{ "name": "English", "level": "Fluent" }
+	],
+	"links": [
+		{
+			"href": "mailto:hi@amrbashir.me",
+			"homeLabel": "email",
+			"label": "hi@amrbashir.me"
+		},
+		{
+			"href": "https://amrbashir.me",
+			"label": "amrbashir.me"
+		},
+		{
+			"href": "https://github.com/amrbashir",
+			"homeLabel": "github",
+			"label": "github.com/amrbashir"
+		},
+		{
+			"href": "https://x.com/amrbashir_dev",
+			"homeLabel": "x / twitter",
+			"label": "x.com/amrbashir_dev"
+		},
+		{
+			"href": "https://linkedin.com/in/amrbashir-dev",
+			"homeLabel": "linkedin",
+			"label": "linkedin.com/in/amrbashir-dev"
+		}
+	],
+	"cvKeywords": [
+		"Software Engineer",
+		"Fullstack",
+		"Rust",
+		"TypeScript",
+		"JavaScript",
+		"React",
+		"Tauri",
+		"Node.js",
+		"PostgreSQL",
+		"Cross-Platform",
+		"Desktop",
+		"Open Source",
+		"Remote"
+	],
+	"toolbox": [
+		{
+			"category": "Languages",
+			"tools": [
+				"Rust",
+				"TypeScript",
+				"JavaScript",
+				"Kotlin",
+				"C",
+				"C++",
+				"Python",
+				"Dart",
+				"Bash",
+				"PowerShell"
+			]
+		},
+		{
+			"category": "Backend",
+			"tools": [
+				"Node.js",
+				"Express.js",
+				"NestJS",
+				"tRPC",
+				"Axum",
+				"Rspc",
+				"Prisma",
+				"PostgreSQL",
+				"MongoDB",
+				"SQLite",
+				"REST",
+				"Docker",
+				"Deno",
+				"Cloudflare Workers"
+			]
+		},
+		{
+			"category": "Frontend",
+			"tools": [
+				"React",
+				"Vue.js",
+				"SolidJS",
+				"Astro",
+				"Vite",
+				"TanStack Router",
+				"TanStack Query",
+				"HTML",
+				"CSS",
+				"i18next"
+			]
+		},
+		{
+			"category": "Desktop",
+			"tools": ["Tauri", "Electron", "Win32 API", "COM", "GTK", "X11"]
+		},
+		{
+			"category": "Mobile",
+			"tools": ["Kotlin", "Jetpack Compose", "Flutter", "Dart"]
+		},
+		{
+			"category": "Misc.",
+			"tools": ["Git", "CI/CD", "GitHub Actions", "Ory Kratos", "Ory Hydra", "Ory Keto"]
+		}
+	],
+	"roles": [
+		{
+			"type": "Freelance",
+			"start": "2025-11",
+			"end": null,
+			"title": "Software Engineer",
+			"company": "Zephyr Cloud",
+			"companyUrl": "https://www.zephyr-cloud.io/",
+			"location": "Remote",
+			"short": "Tauri-based collaborative AI development app with CEF runtime. Windows sandboxing for untrusted code via syscall hooks. Plugin architecture and native UX on Windows and macOS.",
+			"bullets": [
+				"Contributed to Zephyr Agency, a Tauri-based collaborative AI development app built on the Chromium Embedded Framework (CEF) runtime.",
+				"Built Windows sandboxing for agents for untrusted code execution: a sandbox DLL with syscall hooks, and violation reporting.",
+				"Contributed to and improved the plugin (mini-apps) architecture for better extensibility and isolation.",
+				"Helped implement CEF runtime support in upstream Tauri: feature work, public APIs, and cross-platform stability fixes across Windows and macOS.",
+				"Polished native window UX on Windows and macOS: transparency, macOS corner radius, custom titlebar with drag regions, hide-to-tray/dock."
+			]
+		},
+		{
+			"type": "Freelance",
+			"start": "2025-06",
+			"end": "2025-07",
+			"title": "Fullstack Engineer · ERP System",
+			"location": "Egypt",
+			"short": "Designed and delivered a complete ERP — inventory, invoicing, transactions. tRPC + Postgres + Prisma backend, React frontend with i18n.",
+			"bullets": [
+				"Designed and shipped a full ERP system covering inventory, invoicing, customer records, and transactions for a local retail business.",
+				"Built a type-safe backend with tRPC, PostgreSQL, and Prisma; modeled multi-entity schema with referential integrity.",
+				"Implemented React frontend with Vite, TanStack Router, TanStack Query, and i18next for Arabic/English localization.",
+				"Delivered production-ready system end-to-end as sole engineer."
+			]
+		},
+		{
+			"type": "Freelance",
+			"start": "2025-03",
+			"end": "2025-04",
+			"title": "Windows Software Engineer",
+			"company": "Altera",
+			"companyUrl": "https://github.com/lyfegame/",
+			"location": "Remote",
+			"short": "Windows-specific features for a Tauri desktop app, including sidebar integration and a COM-API bridge to Microsoft Excel.",
+			"bullets": [
+				"Shipped Windows-specific features for a Tauri-based desktop app, including OS-wide sidebar integration.",
+				"Integrated app with Microsoft Excel through the COM API for live spreadsheet interop.",
+				"Improved native Windows UX by leveraging Win32 APIs for shell integration."
+			]
+		},
+		{
+			"type": "Full-time",
+			"start": "2022-11",
+			"end": "2024-11",
+			"title": "R&D Software Engineer",
+			"company": "CrabNebula",
+			"companyUrl": "https://crabnebula.dev/",
+			"location": "Remote",
+			"short": "Maintained Tauri across Windows, Linux, and macOS. Built a cloud platform on Axum, Rspc, MongoDB, SolidJS. Integrated the Ory suite (Kratos, Hydra, Keto) for auth.",
+			"bullets": [
+				"Maintained and extended the Tauri project (90K+ GitHub stars), focusing on performance, stability, and cross-platform parity across Windows, Linux (X11/GTK), and macOS.",
+				"Contributed to a cloud platform built with Rust (Axum, Rspc), MongoDB, and SolidJS, implementing backend endpoints and frontend UI.",
+				"Integrated user management and authorization using the Ory suite (Kratos, Hydra, Keto) for SSO, OAuth2, and fine-grained permissions.",
+				"Collaborated with a distributed engineering team via async code review and design discussions."
+			]
+		},
+		{
+			"type": "Freelance",
+			"start": "2022-03",
+			"end": "2022-06",
+			"title": "Mobile Engineer · POS System",
+			"location": "Egypt",
+			"short": "Flutter-based offline-first Point of Sale for iOS and Android.",
+			"bullets": [
+				"Developed a Flutter-based Point of Sale system for iOS and Android with a companion admin dashboard.",
+				"Built local server, embedded database, and device-to-device communication layer for offline-first operation."
+			]
+		}
+	],
+	"education": [
+		{
+			"type": "Education",
+			"start": "2016",
+			"end": "2020",
+			"title": "B.A. English Literature",
+			"company": "Al-Azhar University",
+			"department": "Faculty of Languages and Translation",
+			"short": "Studied literature and translation. Built software on the side, which gradually became the foreground."
+		}
+	]
+}

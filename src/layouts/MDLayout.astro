@@ -1,67 +1,53 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { dateLong } from "@utils/date";
 
 interface Props {
-	frontmatter: {
-		title?: string;
-		description?: string;
-		showFooterGoBack?: boolean;
-		backUrl?: string;
-	};
+	title: string;
+	description?: string;
+	minutes: number;
+	published: string | Date;
+	updated?: string | Date;
+	categories?: string[];
 }
-const { frontmatter } = Astro.props;
+
+const { title, description, minutes, published, updated, categories } = Astro.props;
 ---
 
-<Layout {...frontmatter}>
-	<article class="prose dark:prose-invert slide-enter-content">
+<Layout title={title} description={description}>
+	<article class="prose prose-sm dark:prose-invert slide-enter-content">
+		<h2>{title}</h2>
+		<p class="text-xs text-muted">
+			{dateLong(updated || published)} · {minutes} min read {
+				categories && <> · {categories.join(" · ")}</>
+			}
+		</p>
+		<hr />
+
 		<slot />
 	</article>
-
-	<script>
-		// find all <details> elements and add toggle functionality
-		// on click of the summary element, hide all other details elements within the same
-		// group (i.e., with the same data-group attribute)
-		const detailsElements = document.querySelectorAll("details[data-group]");
-		detailsElements.forEach((currDetailsEl) => {
-			const summary = currDetailsEl.querySelector("summary");
-			const group = currDetailsEl.getAttribute("data-group");
-
-			summary?.addEventListener("click", () => {
-				for (const el of detailsElements) {
-					if (el === currDetailsEl) continue;
-
-					if (el.getAttribute("data-group") === group) {
-						el.removeAttribute("open");
-					}
-				}
-			});
-		});
-	</script>
 </Layout>
 
+<script>
+	// Allow only one details element to be open at a time within the same group
+	const detailsElements = document.querySelectorAll("details[data-group]");
+	detailsElements.forEach((currDetailsEl) => {
+		const summary = currDetailsEl.querySelector("summary");
+		const group = currDetailsEl.getAttribute("data-group");
+
+		summary?.addEventListener("click", () => {
+			for (const el of detailsElements) {
+				if (el === currDetailsEl) continue;
+
+				if (el.getAttribute("data-group") === group) {
+					el.removeAttribute("open");
+				}
+			}
+		});
+	});
+</script>
+
 <style is:global>
-	/* Shiki dark mode styles */
-	html.dark .astro-code,
-	html.dark .astro-code span {
-		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;
-	}
-
-	/* Add underline animation for prose links */
-	.prose a {
-		@apply decoration-none transition-[border]-300 ease-in-out;
-		@apply border-b-0.5 border-b-solid border-b-black/25;
-	}
-	.prose a:hover {
-		@apply border-b-black;
-	}
-	html.dark .prose a {
-		@apply border-b-white/25;
-	}
-	html.dark .prose a:hover {
-		@apply border-b-white;
-	}
-
 	/* Style inline code */
 	.prose code {
 		color: var(--fg-deep);
@@ -75,9 +61,28 @@ const { frontmatter } = Astro.props;
 		content: "";
 	}
 
+	/* Remove background and padding from code blocks */
 	.prose pre code {
 		background-color: transparent;
 		padding: 0;
+	}
+
+	/* Style code blocks */
+	.prose pre {
+		@apply bg-inset! border border-rule rounded-none;
+	}
+
+	/* Style code titles */
+	.prose [data-remark-code-title] {
+		@apply bg-inset! border border-rule border-b-none p-1 text-xs text-muted;
+		@apply flex items-center justify-between;
+	}
+	.prose [data-remark-code-title] + pre {
+		@apply m-0!;
+	}
+	.prose [data-remark-code-title]::before {
+		content: attr(data-language);
+		@apply text-muted/70 uppercase;
 	}
 
 	/* Code copy button styles */
@@ -86,8 +91,8 @@ const { frontmatter } = Astro.props;
 	}
 
 	pre button.copy {
-		@apply absolute right-2 top-2;
-		@apply w-8 h-8 rd-2 p-4;
+		@apply absolute right-1 top-1;
+		@apply size-6 rd-2;
 		@apply hover:bg-dark/5 dark:hover:bg-light/5;
 
 		& span {
@@ -96,11 +101,11 @@ const { frontmatter } = Astro.props;
 		}
 
 		& .ready {
-			@apply bg-current! i-myicons-copy;
+			@apply i-ri-file-copy-line;
 		}
 
 		& .success {
-			@apply opacity-0 bg-green-300! i-myicons-copy-success;
+			@apply opacity-0 bg-green-300! i-ri-check-line;
 		}
 
 		&.copied {

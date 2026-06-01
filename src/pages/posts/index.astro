@@ -1,43 +1,41 @@
 ---
-import { getCollection } from "astro:content";
+import DraftPost from "@components/DraftPost.astro";
+import Post from "@components/Post.astro";
+import Section from "@components/Section.astro";
 import Layout from "@layouts/Layout.astro";
-import PostLink from "@components/PostLink.astro";
+import { getSortedPosts } from "@utils/posts";
 
-const posts = await getCollection("posts");
-const sortedPosts = posts.sort(
-	(a, b) => new Date(b.data.published).valueOf() - new Date(a.data.published).valueOf(),
+const sortedPosts = await getSortedPosts();
+const postsByYear = Object.groupBy(sortedPosts, (post) =>
+	new Date(post.post.data.updated || post.post.data.published).getFullYear(),
 );
-const postsWithMinutesRead = sortedPosts.map((post) => {
-	return {
-		...post,
-		data: {
-			...post.data,
-			// @ts-expect-error frontmatter.minutesRead is added by remarkReadingTime plugin in astro.config.mjs
-			minutesRead: post.rendered?.metadata?.frontmatter?.minutesRead || 0,
-		},
-	};
-});
-const groupedPosts = Object.groupBy(postsWithMinutesRead, (p) =>
-	new Date(p.data.published).getFullYear(),
-);
+type PostsByYearEntry = [string, NonNullable<(typeof postsByYear)[number]>];
+const sortedPostsByYear = Object.entries(postsByYear)
+	.sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+	.filter((entry): entry is PostsByYearEntry => entry[1] !== undefined);
 ---
 
-<Layout title="Blog">
-	<h1 class="font-bold text-3xl">Blog</h1>
+<Layout title="posts" description="A collection of blog posts by Amr Bashir.">
+	<h1 class="text-2xl mt-5 mb-2">posts</h1>
+	<p class="text-muted text-xs">
+		<span class="text-fg">{sortedPosts.length}</span> published · also on <a
+			href="/rss.xml"
+			class="text-fg">/rss.xml</a
+		>
 
-	<br />
+		<hr class="my-5" />
 
-	{
-		Object.entries(groupedPosts).map(([year, posts]) => (
-			<>
-				<h2 class="text-3xl font-bold">{year}</h2>
-				<br />
-				<ul class="flex flex-col gap-4">
-					{posts?.map(({ data, id }) => (
-						<PostLink slug={id} {...data} />
-					))}
-				</ul>
-			</>
-		))
-	}
+		{
+			sortedPostsByYear.map(([year, posts]) => (
+				<Section title={year} subtitle={`${posts.length} post`}>
+					<ul>
+						{posts.map((post) => (
+							<Post {...post} />
+						))}
+						{sortedPosts.length < 5 && <DraftPost />}
+					</ul>
+				</Section>
+			))
+		}
+	</p>
 </Layout>

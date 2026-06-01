@@ -1,0 +1,22 @@
+---
+import { dateShort } from "@utils/date";
+import type { getSortedPosts } from "@utils/posts";
+type Props = Awaited<ReturnType<typeof getSortedPosts>>[number];
+
+const { post, minutes } = Astro.props as Props;
+---
+
+<li
+	class="border-b border-rule last:border-0 py-4 grid grid-cols-[10ch_1fr_10ch] gap-4 items-start"
+>
+	<span class="text-xs text-muted">
+		{dateShort(post.data.published)}
+	</span>
+	<div>
+		<a href={`/posts/${post.id}`} class="text-sm">
+			{post.data.title}
+		</a>
+		<p class="text-xs text-faint mt-2">{post.data.categories?.join(" · ")}</p>
+	</div>
+	<span class="text-xs text-muted">{Math.round(minutes)} min</span>
+</li>

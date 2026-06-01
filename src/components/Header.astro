@@ -1,60 +1,37 @@
 ---
-import DarkModeToggle from "@components/DarkModeToggle.astro";
-import NavLink from "@components/NavLink.astro";
-import SkipToMainContentButton from "@components/SkipToMainContentButton.astro";
+import Logo from "@public/logo.svg";
+import ThemeToggle from "./ThemeToggle.astro";
+import { AUTHOR, AUTHOR_LOCATION, AUTHOR_ROLE } from "@utils/constants";
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const isHome = Astro.url.pathname === "/";
+const projectsHref = isHome ? "#projects" : "/#projects";
+const postsHref = isHome ? "#posts" : "/posts";
 ---
 
-<header class="print:hidden">
-	<nav class="w-full h-20 px-7 overflow-hidden flex justify-between sticky top-0">
-		<!-- Left Content -->
-		<div class="flex items-center">
-			<SkipToMainContentButton />
+<header
+	class="grid grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2 items-center"
+	class:list={[className]}
+>
+	<a href="/" class="row-span-2 hover:text-accent hover:border-transparent"
+		><Logo class="h-10 w-6" />
+	</a>
 
-			<NavLink class="first:*:size-8" iconOnly icon="i-myicons-logo" title="Home" href="/" />
-		</div>
+	<h1 class="font-semibold col-span-2">{AUTHOR}</h1>
+	<p class="text-muted text-xs">{AUTHOR_ROLE} · {AUTHOR_LOCATION}</p>
 
-		<!-- Right Content -->
-		<div class="flex items-center gap-4">
-			<!-- Main Navigation Links -->
-			<NavLink icon="i-ri-file-text-line" title="Blog" href="/posts" />
-			<NavLink icon="i-ri-lightbulb-line" title="Projects" href="/projects" />
-
-			<!-- Socials that are hidden on smaller screens -->
-			<NavLink
-				class="hidden md:flex"
-				iconOnly
-				icon="i-ri-github-line"
-				title="GitHub"
-				href="https://github.com/amrbashir"
-				target="_blank"
-			/>
-			<NavLink
-				class="hidden md:flex"
-				iconOnly
-				icon="i-ri-twitter-x-line"
-				title="Twitter"
-				href="https://x.com/amrbashir_dev"
-				target="_blank"
-			/>
-			<NavLink
-				class="hidden md:flex"
-				iconOnly
-				icon="i-ri-linkedin-line"
-				title="LinkedIn"
-				href="https://linkedin.com/in/amrbashir-dev"
-				target="_blank"
-			/>
-			<NavLink
-				class="hidden md:flex"
-				iconOnly
-				icon="i-ri-mail-line"
-				title="hi@amrbashir.me"
-				href="mailto:hi@amrbashir.me"
-			/>
-
-			<NavLink iconOnly icon="i-ri-rss-line" title="RSS" href="/index.xml" target="_blank" />
-
-			<DarkModeToggle />
-		</div>
+	<nav class="flex items-center gap-x-2 text-xs">
+		<a href="/cv">cv</a>
+		<span class="text-muted"> · </span>
+		<a href={projectsHref}>projects</a>
+		<span class="text-muted"> · </span>
+		<a href={postsHref}>posts</a>
+		<span class="text-muted"> · </span>
+		<ThemeToggle />
 	</nav>
 </header>
