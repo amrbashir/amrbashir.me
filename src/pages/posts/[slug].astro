@@ -44,3 +44,39 @@ const minutes = Math.round(remarkPluginFrontmatter.minutes || 0);
 		crossorigin="anonymous"
 		async></script>
 </MDLayout>
+
+<script>
+	const progress = document.createElement("div");
+	progress.id = "reading-progress";
+	progress.setAttribute("aria-hidden", "true");
+	document.body.appendChild(progress);
+
+	function updateReadingProgress() {
+		if (!progress) return;
+
+		const scroller = document.scrollingElement || document.documentElement;
+		const readableDistance = scroller.scrollHeight - scroller.clientHeight;
+		const rawProgress = readableDistance <= 0 ? 1 : scroller.scrollTop / readableDistance;
+		const progressValue = Math.min(Math.max(rawProgress, 0), 1);
+
+		progress.style.width = `${progressValue * 100}%`;
+	}
+
+	function requestReadingProgressUpdate() {
+		requestAnimationFrame(updateReadingProgress);
+	}
+
+	updateReadingProgress();
+	window.addEventListener("scroll", requestReadingProgressUpdate, { passive: true });
+	window.addEventListener("resize", requestReadingProgressUpdate);
+</script>
+
+<style is:global>
+	#reading-progress {
+		@apply fixed top-0 left-0 z-50 h-1px bg-accent;
+		width: 0;
+	}
+	.slide-enter-content > #reading-progress {
+		animation: none;
+	}
+</style>
