@@ -1,8 +1,6 @@
 {
-	"printWidth": 100,
 	"semi": true,
-	"useTabs": true,
-	"tabWidth": 4,
+	"singleQuote": false,
 	"plugins": ["prettier-plugin-astro"],
 	"overrides": [
 		{
