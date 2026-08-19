@@ -1,13 +1,19 @@
 ---
 export function themeInit() {
 	const stored = localStorage.getItem("theme");
-	const theme =
-		stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
-	const isDark =
-		theme === "dark" ||
-		(theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+	const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+		? "dark"
+		: "light";
+		
+	const theme = stored === "light" || stored === "dark" ? stored : systemTheme;
+	
 	document.documentElement.dataset.theme = theme;
-	document.documentElement.classList.toggle("dark", isDark);
+	document.documentElement.classList.toggle("dark", theme === "dark");
+	
+	// Migrate the old tri-state "system" value to the new implicit system default.
+	if (stored !== null && stored !== "light" && stored !== "dark") {
+		localStorage.removeItem("theme");
+	}
 }
 
 const iconClass =
@@ -21,9 +27,6 @@ const iconClass =
 	title="Toggle theme"
 >
 	<span
-		class={`i-ri:computer-line ${iconClass} [[data-theme=system]_&]:opacity-100 [[data-theme=system]_&]:scale-100 [[data-theme=system]_&]:rotate-0`}
-		aria-hidden="true"></span>
-	<span
 		class={`i-ri:sun-line ${iconClass} [[data-theme=light]_&]:opacity-100 [[data-theme=light]_&]:scale-100 [[data-theme=light]_&]:rotate-0`}
 		aria-hidden="true"></span>
 	<span
@@ -32,30 +35,37 @@ const iconClass =
 </button>
 
 <script>
-	type Theme = "system" | "light" | "dark";
-	const order: Theme[] = ["system", "light", "dark"];
+	type Theme = "light" | "dark";
+	const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+	const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
 
-	function isDark(theme: Theme): boolean {
-		return (
-			theme === "dark" ||
-			(theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
-		);
+	function getSystemTheme(): Theme {
+		return systemPreference.matches ? "dark" : "light";
 	}
 
 	function applyTheme(theme: Theme) {
 		document.documentElement.dataset.theme = theme;
-		document.documentElement.classList.toggle("dark", isDark(theme));
+		document.documentElement.classList.toggle("dark", theme === "dark");
+		const next = theme === "dark" ? "light" : "dark";
+		toggle?.setAttribute("aria-label", `Switch to ${next} theme`);
+		toggle?.setAttribute("title", `Switch to ${next} theme`);
 	}
 
-	document.querySelector<HTMLButtonElement>(".theme-toggle")?.addEventListener("click", () => {
-		const current = (document.documentElement.dataset.theme ?? "system") as Theme;
-		const next = order[(order.indexOf(current) + 1) % order.length];
-		localStorage.setItem("theme", next);
+  const current = document.documentElement.classList.contains("dark") ? "dark" : "light";
+	applyTheme(current);
+
+	toggle?.addEventListener("click", () => {
+		const current = document.documentElement.classList.contains("dark") ? "dark" : "light";
+		const next: Theme = current === "dark" ? "light" : "dark";
+
+		if (next === getSystemTheme()) localStorage.removeItem("theme");
+		else localStorage.setItem("theme", next);
+
 		applyTheme(next);
 	});
 
-	window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+	systemPreference.addEventListener("change", () => {
 		const stored = localStorage.getItem("theme");
-		if (stored === "system" || stored === null) applyTheme("system");
+		if (!stored) applyTheme(getSystemTheme());
 	});
 </script>
